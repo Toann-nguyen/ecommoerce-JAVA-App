@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <style name="Widget.MaterialComponents.Chip.Outline" parent="Widget.MaterialComponents.Chip.Choice">
+    <!-- primary/secondary color -->
+        <item name="colorPrimary">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/purple_700</item>
+        <item name="android:statusBarColor">@color/purple_700</item>
+        <!-- nếu cần customize thêm thì thêm ở đây -->
+        <item name="chipBackgroundColor">@android:color/transparent</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipStrokeColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:minHeight">32dp</item>
+    </style>
+</resources>
