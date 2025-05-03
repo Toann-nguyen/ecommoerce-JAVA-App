@@ -1,4 +1,6 @@
 package com.example.ecommerce;
+import com.example.ecommerce.*;
+
 
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -48,8 +50,6 @@ import models.Product;
 import repository.FirebaseRepository;
 
 
-
-
 public class HomeMainActivity extends AppCompatActivity implements ProductAdapter.ProductClickListener {
     private static final String TAG = "HomeMainActivity";
     private FirebaseAuth auth;
@@ -77,6 +77,8 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
     private List<Product> featuredProducts = new ArrayList<>();
     private List<Banner> banners = new ArrayList<>();
 
+    private List<Product> flashSaleList, featuredList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +88,26 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         auth = FirebaseAuth.getInstance();
         repository = new FirebaseRepository();
         handler = new Handler(Looper.getMainLooper());
+        // Thiết lập toolbar
+        topAppBar = findViewById(R.id.topAppBar);
+        setSupportActionBar(topAppBar);
+
+        // Khởi tạo các view
+        chipGroupCategories = findViewById(R.id.chipGroupCategories);
+        rvFlashSale = findViewById(R.id.rvFlashSale);
+        rvFeatured = findViewById(R.id.rvFeatured);
+
+        // Thiết lập RecyclerView cho Flash Sale
+        rvFlashSale.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        flashSaleList = new ArrayList<>();
+        flashSaleAdapter = new ProductAdapter(this, flashSaleList);
+        rvFlashSale.setAdapter(flashSaleAdapter);
+
+        // Thiết lập RecyclerView cho Featured Products
+        rvFeatured.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        featuredList = new ArrayList<>();
+        featuredAdapter = new ProductAdapter(this, featuredList);
+        rvFeatured.setAdapter(featuredAdapter);
 
         initViews();
         setupTopAppBar();

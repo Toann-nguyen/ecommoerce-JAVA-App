@@ -135,9 +135,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFeatured"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:contentDescription="Featured products list"
         app:layout_constraintTop_toBottomOf="@id/tvFeatured"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintStart_toStartOf="parent"
