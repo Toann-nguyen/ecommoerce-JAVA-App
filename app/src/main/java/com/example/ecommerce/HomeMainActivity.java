@@ -1,5 +1,4 @@
 package com.example.ecommerce;
-import com.example.ecommerce.*;
 
 
 import android.graphics.Color;
@@ -15,22 +14,16 @@ import android.os.Looper;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.Button;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
 
-import android.widget.FrameLayout;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,17 +34,18 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import adapters.CategoryAdapter;
 import adapters.ProductAdapter;
 import adapters.SliderAdapter;
 import models.Banner;
 import models.Category;
 import models.Product;
+import models.ProductModel;
 import repository.FirebaseRepository;
 
 
 public class HomeMainActivity extends AppCompatActivity implements ProductAdapter.ProductClickListener {
     private static final String TAG = "HomeMainActivity";
+    private RecyclerView productRecyclerView;
     private FirebaseAuth auth;
     private FirebaseRepository repository;
     private Handler handler;
@@ -77,8 +71,6 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
     private List<Product> featuredProducts = new ArrayList<>();
     private List<Banner> banners = new ArrayList<>();
 
-    private List<Product> flashSaleList, featuredList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,33 +80,28 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         auth = FirebaseAuth.getInstance();
         repository = new FirebaseRepository();
         handler = new Handler(Looper.getMainLooper());
-        // Thiết lập toolbar
-        topAppBar = findViewById(R.id.topAppBar);
-        setSupportActionBar(topAppBar);
 
-        // Khởi tạo các view
-        chipGroupCategories = findViewById(R.id.chipGroupCategories);
-        rvFlashSale = findViewById(R.id.rvFlashSale);
-        rvFeatured = findViewById(R.id.rvFeatured);
-
-        // Thiết lập RecyclerView cho Flash Sale
-        rvFlashSale.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        flashSaleList = new ArrayList<>();
-        flashSaleAdapter = new ProductAdapter(this, flashSaleList);
-        rvFlashSale.setAdapter(flashSaleAdapter);
-
-        // Thiết lập RecyclerView cho Featured Products
-        rvFeatured.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        featuredList = new ArrayList<>();
-        featuredAdapter = new ProductAdapter(this, featuredList);
-        rvFeatured.setAdapter(featuredAdapter);
 
         initViews();
         setupTopAppBar();
         setupViewPager();
         setupRecyclerViews();
+        repository.getAllProducts(new FirebaseRepository.OnProductsLoadListener() {
+            @Override
+            public void onProductsLoaded(List<ProductModel> products) {
+                Log.d(TAG, "Loaded " + products.size() + " products successfully");
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Log.e(TAG, "Error loading products: " + errorMessage);
+                Toast.makeText(HomeMainActivity.this,
+                        "Lỗi tải sản phẩm: " + errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
         loadData();
         setupCountdownTimer();
+
     }
 
     private void initViews() {
@@ -122,13 +109,18 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         chipGroupCategories = findViewById(R.id.chipGroupCategories);
         rvFlashSale = findViewById(R.id.rvFlashSale);
         rvFeatured = findViewById(R.id.rvFeatured);
+        rvFeatured.setLayoutManager(new LinearLayoutManager(this));
         viewPagerSlider = findViewById(R.id.viewPagerSlider);
         tvCountdown = findViewById(R.id.tvCountdown);
+
+
+
 
         // Tạo layout cho dots indicator nếu cần
         dotsIndicator = new LinearLayout(this);
         dotsIndicator.setOrientation(LinearLayout.HORIZONTAL);
         dotsIndicator.setId(View.generateViewId());
+
     }
 
     private void setupTopAppBar() {
@@ -183,6 +175,57 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
     }
 
     private void loadData() {
+        // Load ALL products into 'Featured' section
+        repository.getAllProducts(new FirebaseRepository.OnProductsLoadListener() {
+            @Override
+            public void onProductsLoaded(List<ProductModel> models) {
+
+                featuredProducts.clear();
+                for (ProductModel m : models) {
+                    featuredProducts.add(new Product());
+                }
+                featuredAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onError(String error) {
+                Toast.makeText(HomeMainActivity.this,
+                        "Error loading all products: " + error,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Load Flash Sale Products
+        repository.getFlashSaleProducts(new FirebaseRepository.ProductsCallback() {
+            @Override
+            public void onCallback(List<Product> list) {
+                flashSaleProducts.clear();
+                flashSaleProducts.addAll(list);
+                flashSaleAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onError(String error) {
+                Toast.makeText(HomeMainActivity.this,
+                        "Error loading flash sale: " + error,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Load Category Chips
+        repository.getCategories(new FirebaseRepository.CategoriesCallback() {
+            @Override
+            public void onCallback(List<Category> list) {
+                categories.clear(); categories.addAll(list);
+                chipGroupCategories.removeAllViews();
+                for (Category c : categories) {
+                    Chip chip = new Chip(HomeMainActivity.this);
+                    chip.setText(c.getName());
+                    chipGroupCategories.addView(chip);
+                }
+            }
+            @Override
+            public void onError(String error) {}
+        });
+
         // Load Categories
         repository.getCategories(new FirebaseRepository.CategoriesCallback() {
             @Override
