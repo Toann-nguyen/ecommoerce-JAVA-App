@@ -87,3 +87,22 @@ FULL stack mobile app Develop ECOMMERCE
 - Triển khai thêm màn hình chi tiết sản phẩm và danh mục nếu cần.
 - Cải thiện chức năng giỏ hàng với hệ thống lưu trữ thực tế (ví dụ: Firestore hoặc Room).
 
+Create database firestore
+rules_version = '2';
+
+service cloud.firestore {
+match /databases/{database}/documents {
+match /{document=**} {
+allow read, write: if false;
+}
+}
+}
+Firebase admin SDK 
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("path/to/serviceAccountKey.json");
+Tải về service account key JSON từ Firebase Console → Project Settings → Service accounts → Generate new private key → lưu thành serviceAccountKey.json cạnh products.json.
+admin.initializeApp({
+credential: admin.credential.cert(serviceAccount)
+});
