@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="bottom_nav_inactive">#9E9E9E</color>
+    <color name="gray_placeholder">#E0E0E0</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="app_name">Ecommerce</string>
+    <string name="category_icon">Category icon</string>
+    <string name="gcm_defaultSenderId" translatable="false">615717299049</string>
+    <string name="google_api_key" translatable="false">AIzaSyDWrLYZt3MOsjAUDf2153oJp7BrpoBccf0</string>
+    <string name="google_app_id" translatable="false">1:615717299049:android:41d0e55e92cdd0803753f8</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDWrLYZt3MOsjAUDf2153oJp7BrpoBccf0</string>
+    <string name="google_storage_bucket" translatable="false">ecommerce-java-8579c.firebasestorage.app</string>
+    <string name="product_image">Product image</string>
+    <string name="project_id" translatable="false">ecommerce-java-8579c</string>
+    <style name="Base.Theme.Ecommerce" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    
+        
+    </style>
+    <style name="Theme.Ecommerce" parent="Base.Theme.Ecommerce"/>
+    <style name="Widget.MaterialComponents.Chip.Outline" parent="Widget.MaterialComponents.Chip.Choice">
+    
+        <item name="colorPrimary">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/purple_700</item>
+        <item name="android:statusBarColor">@color/purple_700</item>
+        
+        <item name="chipBackgroundColor">@android:color/transparent</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipStrokeColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:minHeight">32dp</item>
+    </style>
+</resources>

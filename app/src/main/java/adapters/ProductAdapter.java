@@ -22,8 +22,8 @@ import models.Product;
 
 public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final int TYPE_FLASH_SALE = 1;
-    private static final int TYPE_FEATURED = 2;
+    public static final int TYPE_FLASH_SALE = 1;
+    public static final int TYPE_FEATURED = 2;
 
     private Context context;
     private List<Product> products;
@@ -40,7 +40,6 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.products = products;
         this.listener = listener;
     }
-
     public ProductAdapter(Context context, List<Product> products, ProductClickListener listener, int viewType) {
         this(context, products, listener);
         this.viewType = viewType;
@@ -68,8 +67,14 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             // Set product name
             flashHolder.tvNameFlash.setText(product.getName());
 
-            // Set product price
-            flashHolder.tvPriceFlash.setText(String.format(Locale.getDefault(), "$%.2f", product.getPrice()));
+            // Set product price (sử dụng VND thay vì $)
+            String priceText = String.format(Locale.getDefault(), "%,.0f VNĐ", product.getPrice());
+            if (product.getDiscount() > 0) {
+                double discountedPrice = product.getDiscountedPrice();
+                priceText += String.format(Locale.getDefault(), " (-%d%%: %,.0f VNĐ)",
+                        product.getDiscount(), discountedPrice);
+            }
+            flashHolder.tvPriceFlash.setText(priceText);
 
             // Load product image
             if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
@@ -99,8 +104,14 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             // Set product name
             featuredHolder.tvNameFeatured.setText(product.getName());
 
-            // Set product price
-            featuredHolder.tvPriceFeatured.setText(String.format(Locale.getDefault(), "$%.2f", product.getPrice()));
+            // Set product price (sử dụng VND thay vì $)
+            String priceText = String.format(Locale.getDefault(), "%,.0f VNĐ", product.getPrice());
+            if (product.getDiscount() > 0) {
+                double discountedPrice = product.getDiscountedPrice();
+                priceText += String.format(Locale.getDefault(), " (-%d%%: %,.0f VNĐ)",
+                        product.getDiscount(), discountedPrice);
+            }
+            featuredHolder.tvPriceFeatured.setText(priceText);
 
             // Load product image
             if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {

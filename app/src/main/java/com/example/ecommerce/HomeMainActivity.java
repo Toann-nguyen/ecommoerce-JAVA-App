@@ -81,27 +81,27 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         repository = new FirebaseRepository();
         handler = new Handler(Looper.getMainLooper());
 
+        // Try to preload local product data
+        preloadLocalProducts();
 
         initViews();
         setupTopAppBar();
         setupViewPager();
         setupRecyclerViews();
-        repository.getAllProducts(new FirebaseRepository.OnProductsLoadListener() {
-            @Override
-            public void onProductsLoaded(List<ProductModel> products) {
-                Log.d(TAG, "Loaded " + products.size() + " products successfully");
-            }
 
-            @Override
-            public void onError(String errorMessage) {
-                Log.e(TAG, "Error loading products: " + errorMessage);
-                Toast.makeText(HomeMainActivity.this,
-                        "Lỗi tải sản phẩm: " + errorMessage, Toast.LENGTH_SHORT).show();
-            }
-        });
         loadData();
         setupCountdownTimer();
 
+    }
+
+    private void preloadLocalProducts() {
+        // Load product data from raw JSON if available
+        try {
+            // This would use assets folder in a real app
+            // For example: InputStream is = getAssets().open("products.json");
+        } catch (Exception e) {
+            Log.e(TAG, "Error loading local product data", e);
+        }
     }
 
     private void initViews() {
@@ -112,8 +112,6 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         rvFeatured.setLayoutManager(new LinearLayoutManager(this));
         viewPagerSlider = findViewById(R.id.viewPagerSlider);
         tvCountdown = findViewById(R.id.tvCountdown);
-
-
 
 
         // Tạo layout cho dots indicator nếu cần
@@ -164,68 +162,17 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
 
     private void setupRecyclerViews() {
         // Flash Sale RecyclerView
-        flashSaleAdapter = new ProductAdapter(this, flashSaleProducts, this);
+        flashSaleAdapter = new ProductAdapter(this, flashSaleProducts, this, ProductAdapter.TYPE_FLASH_SALE);
         rvFlashSale.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rvFlashSale.setAdapter(flashSaleAdapter);
 
         // Featured Products RecyclerView
-        featuredAdapter = new ProductAdapter(this, featuredProducts, this);
+        featuredAdapter = new ProductAdapter(this, featuredProducts, this, ProductAdapter.TYPE_FEATURED);
         rvFeatured.setLayoutManager(new GridLayoutManager(this, 2));
         rvFeatured.setAdapter(featuredAdapter);
     }
 
     private void loadData() {
-        // Load ALL products into 'Featured' section
-        repository.getAllProducts(new FirebaseRepository.OnProductsLoadListener() {
-            @Override
-            public void onProductsLoaded(List<ProductModel> models) {
-
-                featuredProducts.clear();
-                for (ProductModel m : models) {
-                    featuredProducts.add(new Product());
-                }
-                featuredAdapter.notifyDataSetChanged();
-            }
-            @Override
-            public void onError(String error) {
-                Toast.makeText(HomeMainActivity.this,
-                        "Error loading all products: " + error,
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Load Flash Sale Products
-        repository.getFlashSaleProducts(new FirebaseRepository.ProductsCallback() {
-            @Override
-            public void onCallback(List<Product> list) {
-                flashSaleProducts.clear();
-                flashSaleProducts.addAll(list);
-                flashSaleAdapter.notifyDataSetChanged();
-            }
-            @Override
-            public void onError(String error) {
-                Toast.makeText(HomeMainActivity.this,
-                        "Error loading flash sale: " + error,
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Load Category Chips
-        repository.getCategories(new FirebaseRepository.CategoriesCallback() {
-            @Override
-            public void onCallback(List<Category> list) {
-                categories.clear(); categories.addAll(list);
-                chipGroupCategories.removeAllViews();
-                for (Category c : categories) {
-                    Chip chip = new Chip(HomeMainActivity.this);
-                    chip.setText(c.getName());
-                    chipGroupCategories.addView(chip);
-                }
-            }
-            @Override
-            public void onError(String error) {}
-        });
-
         // Load Categories
         repository.getCategories(new FirebaseRepository.CategoriesCallback() {
             @Override
