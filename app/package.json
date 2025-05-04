@@ -8,8 +8,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "firebase-admin": "^13.3.0"
-  }
+  },
+  "description": ""
 }
