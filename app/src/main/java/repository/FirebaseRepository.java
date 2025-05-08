@@ -133,4 +133,31 @@ public class FirebaseRepository {
                 })
                 .addOnFailureListener(e -> callback.onError(e.getMessage()));
     }
+
+    /**
+     * Callback cho sản phẩm
+     */
+    public interface ProductCallback {
+        void onCallback(Product product);
+
+        void onError(String errorMessage);
+    }
+
+    /**
+     * Lấy chi tiết sản phẩm theo ID
+     */
+    public void getProductById(String productId, final ProductCallback callback) {
+        db.collection("products")
+                .document(productId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        Product product = documentSnapshot.toObject(Product.class);
+                        callback.onCallback(product);
+                    } else {
+                        callback.onError("Không tìm thấy sản phẩm");
+                    }
+                })
+                .addOnFailureListener(e -> callback.onError(e.getMessage()));
+    }
 }

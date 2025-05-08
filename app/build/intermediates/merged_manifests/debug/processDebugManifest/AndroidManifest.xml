@@ -35,6 +35,12 @@
             android:name="com.example.ecommerce.HomeMainActivity"
             android:exported="false" />
         <activity
+            android:name="com.example.ecommerce.ProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ecommerce.CartActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.ecommerce.Register"
             android:exported="false" />
         <activity

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-35:12
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-41:12
 MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\ba9949c0fb2adcc7cd9116cc8a0c81a1\transformed\glide-4.16.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\6674de8c11ac939d72bd8fd8cd9ba1b0\transformed\firebase-database-21.0.0\AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\08054e4fb65f82d8545aa9b4e7ea9112\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
@@ -56,6 +56,7 @@ MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\Admi
 MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\Admin\.gradle\caches\8.11.1\transforms\50af6c2ede9fe6aef6077ab5eac80289\transformed\fragment-1.5.4\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.10.1] C:\Users\Admin\.gradle\caches\8.11.1\transforms\df5244d6245d6e01c25cb95c046229a3\transformed\activity-1.10.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\8447ba5c2ab47e785e02e26eb781514b\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [io.grpc:grpc-android:1.62.2] C:\Users\Admin\.gradle\caches\8.11.1\transforms\02cf4886b6794011089f79c364128edb\transformed\grpc-android-1.62.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\22808b5b6d485d2f7a18a2276cb73aae\transformed\gifdecoder-4.16.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Admin\.gradle\caches\8.11.1\transforms\4540fc22bd9823fef44ebb8bb5240111\transformed\exifinterface-1.3.6\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\4b321bf1a372bc9e60705c0cb47dc93d\transformed\profileinstaller-1.4.0\AndroidManifest.xml:17:1-55:12
@@ -72,7 +73,6 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\Admin\.gradle\caches\8.11.1\tr
 MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\e8cd0a3933e0db91d42eab7b839329de\transformed\core-viewtree-1.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\a745816707c1db301d4ecf475ee845c7\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.libraries.identity.googleid:googleid:1.1.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\6a971756b69a1b27484277b7813eff37\transformed\googleid-1.1.0\AndroidManifest.xml:2:1-7:12
-MERGED from [io.grpc:grpc-android:1.62.2] C:\Users\Admin\.gradle\caches\8.11.1\transforms\02cf4886b6794011089f79c364128edb\transformed\grpc-android-1.62.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.1] C:\Users\Admin\.gradle\caches\8.11.1\transforms\5ed5445fa9c2fefe667ebc1442f67c7a\transformed\protolite-well-known-types-18.0.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\Admin\.gradle\caches\8.11.1\transforms\cfec304fbb66a3633e3b0ed4c7749312\transformed\core-common-2.0.3\AndroidManifest.xml:2:1-21:12
 	package
@@ -112,8 +112,8 @@ MERGED from [io.grpc:grpc-android:1.62.2] C:\Users\Admin\.gradle\caches\8.11.1\t
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:6:22-76
 application
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:7:5-33:19
-INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:7:5-33:19
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:7:5-39:19
+INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:7:5-39:19
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\6674de8c11ac939d72bd8fd8cd9ba1b0\transformed\firebase-database-21.0.0\AndroidManifest.xml:25:5-36:19
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\6674de8c11ac939d72bd8fd8cd9ba1b0\transformed\firebase-database-21.0.0\AndroidManifest.xml:25:5-36:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\08054e4fb65f82d8545aa9b4e7ea9112\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
@@ -188,28 +188,40 @@ ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidMa
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:20:13-37
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:19:13-45
-activity#com.example.ecommerce.Register
+activity#com.example.ecommerce.ProductDetailActivity
 ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:21:9-23:40
 	android:exported
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:23:13-37
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:22:13-37
-activity#com.example.ecommerce.MainActivity
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:24:9-32:20
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:22:13-50
+activity#com.example.ecommerce.CartActivity
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:24:9-26:40
 	android:exported
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:26:13-36
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:26:13-37
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:25:13-41
+activity#com.example.ecommerce.Register
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:27:9-29:40
+	android:exported
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:29:13-37
+	android:name
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:28:13-37
+activity#com.example.ecommerce.MainActivity
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:30:9-38:20
+	android:exported
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:32:13-36
+	android:name
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:31:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:27:13-31:29
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:33:13-37:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:28:17-69
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:34:17-69
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:28:25-66
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:34:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:30:17-77
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:36:17-77
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:30:27-74
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:36:27-74
 uses-sdk
 INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml
@@ -318,6 +330,8 @@ MERGED from [androidx.activity:activity:1.10.1] C:\Users\Admin\.gradle\caches\8.
 MERGED from [androidx.activity:activity:1.10.1] C:\Users\Admin\.gradle\caches\8.11.1\transforms\df5244d6245d6e01c25cb95c046229a3\transformed\activity-1.10.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\8447ba5c2ab47e785e02e26eb781514b\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\8447ba5c2ab47e785e02e26eb781514b\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [io.grpc:grpc-android:1.62.2] C:\Users\Admin\.gradle\caches\8.11.1\transforms\02cf4886b6794011089f79c364128edb\transformed\grpc-android-1.62.2\AndroidManifest.xml:5:5-44
+MERGED from [io.grpc:grpc-android:1.62.2] C:\Users\Admin\.gradle\caches\8.11.1\transforms\02cf4886b6794011089f79c364128edb\transformed\grpc-android-1.62.2\AndroidManifest.xml:5:5-44
 MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\22808b5b6d485d2f7a18a2276cb73aae\transformed\gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\22808b5b6d485d2f7a18a2276cb73aae\transformed\gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Admin\.gradle\caches\8.11.1\transforms\4540fc22bd9823fef44ebb8bb5240111\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
@@ -350,8 +364,6 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\Admin\.
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\a745816707c1db301d4ecf475ee845c7\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.libraries.identity.googleid:googleid:1.1.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\6a971756b69a1b27484277b7813eff37\transformed\googleid-1.1.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.libraries.identity.googleid:googleid:1.1.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\6a971756b69a1b27484277b7813eff37\transformed\googleid-1.1.0\AndroidManifest.xml:5:5-44
-MERGED from [io.grpc:grpc-android:1.62.2] C:\Users\Admin\.gradle\caches\8.11.1\transforms\02cf4886b6794011089f79c364128edb\transformed\grpc-android-1.62.2\AndroidManifest.xml:5:5-44
-MERGED from [io.grpc:grpc-android:1.62.2] C:\Users\Admin\.gradle\caches\8.11.1\transforms\02cf4886b6794011089f79c364128edb\transformed\grpc-android-1.62.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.1] C:\Users\Admin\.gradle\caches\8.11.1\transforms\5ed5445fa9c2fefe667ebc1442f67c7a\transformed\protolite-well-known-types-18.0.1\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.1] C:\Users\Admin\.gradle\caches\8.11.1\transforms\5ed5445fa9c2fefe667ebc1442f67c7a\transformed\protolite-well-known-types-18.0.1\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\Admin\.gradle\caches\8.11.1\transforms\cfec304fbb66a3633e3b0ed4c7749312\transformed\core-common-2.0.3\AndroidManifest.xml:7:5-9:41

@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -40,8 +41,8 @@ import models.Banner;
 import models.Category;
 import models.Product;
 import models.ProductModel;
+import models.ShoppingCart;
 import repository.FirebaseRepository;
-
 
 public class HomeMainActivity extends AppCompatActivity implements ProductAdapter.ProductClickListener {
     private static final String TAG = "HomeMainActivity";
@@ -56,6 +57,7 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
     private ChipGroup chipGroupCategories;
     private RecyclerView rvFlashSale;
     private RecyclerView rvFeatured;
+    private RecyclerView rvAllProducts;
     private ViewPager2 viewPagerSlider;
     private TextView tvCountdown;
     private LinearLayout dotsIndicator;
@@ -63,7 +65,8 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
     // Adapters
     private ProductAdapter flashSaleAdapter;
     private ProductAdapter featuredAdapter;
-    private SliderAdapter sliderAdapter; // Bạn cần tạo adapter này
+    private SliderAdapter sliderAdapter;
+    private ProductAdapter allProductsAdapter;
 
     // Data
     private List<Category> categories = new ArrayList<>();
@@ -89,7 +92,7 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         setupViewPager();
         setupRecyclerViews();
 
-        loadData();
+//        loadData();
         setupCountdownTimer();
 
     }
@@ -107,6 +110,7 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
     private void initViews() {
         topAppBar = findViewById(R.id.topAppBar);
         chipGroupCategories = findViewById(R.id.chipGroupCategories);
+        rvAllProducts     = findViewById(R.id.rvAllProducts);
         rvFlashSale = findViewById(R.id.rvFlashSale);
         rvFeatured = findViewById(R.id.rvFeatured);
         rvFeatured.setLayoutManager(new LinearLayoutManager(this));
@@ -126,15 +130,13 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         topAppBar.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.action_cart) {
-                // Mở trang giỏ hàng
-                Toast.makeText(this, "Cart action clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomeMainActivity.this, CartActivity.class);
+                startActivity(intent);
                 return true;
             } else if (itemId == R.id.action_search) {
-                // Mở trang tìm kiếm
                 Toast.makeText(this, "Search action clicked", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (itemId == R.id.action_logout) {
-                // Đăng xuất
                 auth.signOut();
                 Intent intent = new Intent(HomeMainActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -161,19 +163,21 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
     }
 
     private void setupRecyclerViews() {
-        // Flash Sale RecyclerView
         flashSaleAdapter = new ProductAdapter(this, flashSaleProducts, this, ProductAdapter.TYPE_FLASH_SALE);
         rvFlashSale.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rvFlashSale.setAdapter(flashSaleAdapter);
+        rvFlashSale.setNestedScrollingEnabled(true);
 
-        // Featured Products RecyclerView
         featuredAdapter = new ProductAdapter(this, featuredProducts, this, ProductAdapter.TYPE_FEATURED);
         rvFeatured.setLayoutManager(new GridLayoutManager(this, 2));
         rvFeatured.setAdapter(featuredAdapter);
+        rvFeatured.setNestedScrollingEnabled(true);
+
+        rvAllProducts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rvAllProducts.setNestedScrollingEnabled(true);
     }
 
     private void loadData() {
-        // Load Categories
         repository.getCategories(new FirebaseRepository.CategoriesCallback() {
             @Override
             public void onCallback(List<Category> categoryList) {
@@ -212,6 +216,10 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
                 featuredProducts.clear();
                 featuredProducts.addAll(productList);
                 featuredAdapter.notifyDataSetChanged();
+
+                allProductsAdapter = new ProductAdapter(HomeMainActivity.this,
+                        productList, HomeMainActivity.this, ProductAdapter.TYPE_FEATURED);
+                rvAllProducts.setAdapter(allProductsAdapter);
             }
 
             @Override
@@ -264,7 +272,7 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
             dotsIndicator.setLayoutParams(params);
-            dotsIndicator.setGravity(android.view.Gravity.CENTER);
+            dotsIndicator.setGravity(Gravity.CENTER);
 
             // Thêm vào layout (bạn cần có một container trong XML để thêm vào)
             // Hoặc tạo dynamically và thêm vào parent của viewPagerSlider
@@ -352,7 +360,6 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
                                 minutes = 59;
                                 seconds = 59;
                             } else {
-                                // Khi hết thời gian Flash Sale
                                 tvCountdown.setText("00 : 00 : 00");
                                 cancel();
                                 return;
@@ -367,30 +374,23 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         }, 0, 1000);
     }
 
-    // ProductClickListener Implementation
     @Override
     public void onProductClick(Product product) {
-        // Chuyển đến màn hình chi tiết sản phẩm
         Toast.makeText(this, "Đã chọn sản phẩm: " + product.getName(), Toast.LENGTH_SHORT).show();
-        // Intent intent = new Intent(this, ProductDetailActivity.class);
-        // intent.putExtra("PRODUCT_ID", product.getId());
-        // startActivity(intent);
+        Intent intent = new Intent(HomeMainActivity.this, ProductDetailActivity.class);
+        intent.putExtra("PRODUCT_ID", product.getId());
+        startActivity(intent);
     }
 
     @Override
     public void onAddToCartClick(Product product) {
-        // Thêm sản phẩm vào giỏ hàng
+        ShoppingCart shoppingCart = ShoppingCart.getInstance(this);
+        shoppingCart.addItem(product, 1);
         Toast.makeText(this, product.getName() + " đã được thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
     }
 
-    // Category Click Handler
     public void onCategoryClick(Category category) {
-        // Chuyển đến màn hình sản phẩm theo danh mục
         Toast.makeText(this, "Đã chọn danh mục: " + category.getName(), Toast.LENGTH_SHORT).show();
-        // Intent intent = new Intent(this, CategoryProductsActivity.class);
-        // intent.putExtra("CATEGORY_ID", category.getId());
-        // intent.putExtra("CATEGORY_NAME", category.getName());
-        // startActivity(intent);
     }
 
     @Override
@@ -401,6 +401,10 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
             Intent intent = new Intent(HomeMainActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
+        }
+        else {
+            // Nếu đã đăng nhập, có thể tải lại dữ liệu nếu cần
+            loadData();
         }
     }
 
