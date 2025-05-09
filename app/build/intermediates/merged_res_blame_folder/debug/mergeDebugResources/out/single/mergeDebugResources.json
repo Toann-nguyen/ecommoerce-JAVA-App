@@ -24,12 +24,16 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\color\\bottom_nav_item_color.xml"
     },
     {
-        "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\drawable_category_background.xml.flat",
-        "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\drawable\\category_background.xml"
+        "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\layout_activity_product_detail.xml.flat",
+        "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\layout\\activity_product_detail.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\drawable_category_background.xml.flat",
+        "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\drawable\\category_background.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\layout_item_cart.xml.flat",
@@ -50,6 +54,10 @@
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\layout_activity_cart.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\layout\\activity_cart.xml"
+    },
+    {
+        "merged": "com.example.ecommerce.app-debug-43:/layout_activity_checkout.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/layout/activity_checkout.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\layout_item_product.xml.flat",
@@ -96,16 +104,16 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\layout_item_product_image.xml.flat",
+        "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\layout\\item_product_image.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\drawable_ic_launcher_background.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\drawable\\ic_launcher_background.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\drawable_circle_badge.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\drawable\\circle_badge.xml"
-    },
-    {
-        "merged": "com.example.ecommerce.app-debug-43:/layout_activity_product_detail.xml.flat",
-        "source": "com.example.ecommerce.app-main-45:/layout/activity_product_detail.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\color_bottom_nav_color.xml.flat",
@@ -172,16 +180,16 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\layout\\item_category.xml"
     },
     {
+        "merged": "com.example.ecommerce.app-debug-43:/layout_progress_dialog.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/layout/progress_dialog.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\layout_item_banner.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\layout\\item_banner.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\layout_activity_register.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-45:\\layout\\activity_register.xml"
-    },
-    {
-        "merged": "com.example.ecommerce.app-debug-43:/layout_item_product_image.xml.flat",
-        "source": "com.example.ecommerce.app-main-45:/layout/item_product_image.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-43:\\layout_item_featured.xml.flat",
