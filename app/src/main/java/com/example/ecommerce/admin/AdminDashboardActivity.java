@@ -35,6 +35,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
     private androidx.appcompat.widget.SearchView searchView;
     private RecyclerView productRecyclerView;
     private Button btnCreateProduct;
+    private Button btnManageOrders;
     private TextView txtEmptyState;
 
     private List<Product> productList = new ArrayList<>();
@@ -73,6 +74,25 @@ public class AdminDashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(AdminDashboardActivity.this, EditProductActivity.class);
             startActivity(intent);
         });
+
+        // Setup nút quản lý đơn hàng
+        btnManageOrders.setOnClickListener(v -> {
+            // Kiểm tra quyền trước khi chuyển đến màn hình quản lý đơn hàng
+            permissionManager.loadCurrentUser(new PermissionManager.UserLoadCallback() {
+                @Override
+                public void onUserLoaded(models.User user) {
+                    // Người dùng đã được tải, chuyển đến màn hình quản lý đơn hàng
+                    Intent intent = new Intent(AdminDashboardActivity.this, AdminOrdersActivity.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onError(String error) {
+                    Toast.makeText(AdminDashboardActivity.this,
+                            "Không thể tải thông tin người dùng: " + error, Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
     }
 
     private void initViews() {
@@ -80,6 +100,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
         productRecyclerView = findViewById(R.id.productRecyclerView);
         btnCreateProduct = findViewById(R.id.btnCreateProduct);
+        btnManageOrders = findViewById(R.id.btnManageOrders);
         txtEmptyState = findViewById(R.id.txtEmptyState);
 
         // Setup search functionality
@@ -182,6 +203,12 @@ public class AdminDashboardActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.admin_menu, menu);
+
+        // Add Orders Management menu item
+        menu.add(Menu.NONE, R.id.action_orders, Menu.NONE, "Quản lý đơn hàng")
+                .setIcon(R.drawable.ic_order)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
         return true;
     }
 
@@ -190,6 +217,11 @@ public class AdminDashboardActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_logout) {
             logout();
+            return true;
+        } else if (id == R.id.action_orders) {
+            // Navigate to AdminOrdersActivity
+            Intent intent = new Intent(this, AdminOrdersActivity.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

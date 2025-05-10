@@ -40,21 +40,35 @@
             android:clipChildren="false"
             android:clipToPadding="false">
 
-            <!-- Slider -->
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerSlider"
+            <!-- Search Status -->
+            <TextView
+                android:id="@+id/tvSearchStatus"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:paddingStart="32dp"
-                android:paddingEnd="32dp"
-                android:clipChildren="false"
-                android:clipToPadding="false"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:padding="8dp"
+                android:background="#F5F5F5"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_slider" />
+                tools:text="Đang hiển thị kết quả tìm kiếm cho 'iphone'"
+                tools:visibility="visible" />
+
+            <!-- Banner Flash Sale -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerFlashSaleBanner"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_margin="0dp"
+                android:padding="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvSearchStatus"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <!-- Categories -->
             <com.google.android.material.chip.ChipGroup
@@ -65,7 +79,7 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 app:singleSelection="true"
-                app:layout_constraintTop_toBottomOf="@id/viewPagerSlider"
+                app:layout_constraintTop_toBottomOf="@id/viewPagerFlashSaleBanner"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
@@ -83,7 +97,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/chipGroupCategories"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/tvCountdown"
@@ -95,7 +109,7 @@
                 android:text="05 : 32 : 45"
                 android:textSize="16sp"
                 app:layout_constraintBaseline_toBaselineOf="@id/tvFlashSale"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <!-- Flash Sale List -->
             <androidx.recyclerview.widget.RecyclerView
@@ -111,7 +125,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvFlashSale"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:listitem="@layout/item_flash_sale"/>
+                tools:listitem="@layout/item_flash_sale" />
 
             <!-- Featured Products Title -->
             <TextView
@@ -124,7 +138,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/rvFlashSale"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
             <!-- Featured Products List -->
             <androidx.recyclerview.widget.RecyclerView
@@ -138,7 +152,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvFeatured"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:listitem="@layout/item_featured"/>
+                tools:listitem="@layout/item_featured" />
 
             <!-- All Products Title -->
             <TextView
@@ -151,7 +165,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/rvFeatured"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
             <!-- All Products List - Thay đổi layout_height thành wrap_content -->
             <androidx.recyclerview.widget.RecyclerView
@@ -167,7 +181,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:contentDescription="Danh sách tất cả sản phẩm"
-                tools:listitem="@layout/item_featured"/>
+                tools:listitem="@layout/item_featured" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -182,5 +196,5 @@
         app:itemTextColor="@color/bottom_nav_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

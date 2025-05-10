@@ -72,8 +72,7 @@ public class AdminPanelActivity extends AppCompatActivity {
         // Quản lý đơn hàng
         cardOrders.setOnClickListener(v -> {
             if (permissionManager.hasPermission(PermissionManager.PERMISSION_MANAGE_ORDERS)) {
-                // TODO: Navigate to Orders management
-                Toast.makeText(this, "Chức năng đang được phát triển", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, AdminOrdersActivity.class));
             } else {
                 showPermissionDenied();
             }

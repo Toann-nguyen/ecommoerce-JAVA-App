@@ -85,6 +85,27 @@ public class FirebaseRepository {
     }
 
     /**
+     * Lấy các sản phẩm theo danh mục
+     */
+    public void getProductsByCategory(String category, final ProductsCallback callback) {
+        db.collection("products")
+                .whereEqualTo("category", category)
+                .get()
+                .addOnSuccessListener(snapshots -> {
+                    List<Product> list = new ArrayList<>();
+                    for (DocumentSnapshot doc : snapshots.getDocuments()) {
+                        Product product = doc.toObject(Product.class);
+                        if (product != null) {
+                            product.setId(doc.getId());
+                            list.add(product);
+                        }
+                    }
+                    callback.onCallback(list);
+                })
+                .addOnFailureListener(e -> callback.onError(e.getMessage()));
+    }
+
+    /**
      * Callback cho danh mục
      */
     public interface CategoriesCallback {
