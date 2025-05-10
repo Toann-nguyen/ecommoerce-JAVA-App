@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.9.1" type="incidents">
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.application than 8.9.1 is available: 8.10.0. (There is also a newer version of 8.9.𝑥 available, if upgrading to 8.10.0 is difficult: 8.9.2)">
+        <fix-alternatives>
+            <fix-replace
+                description="Change to 8.10.0"
+                family="Update versions"
+                oldString="8.9.1"
+                replacement="8.10.0"
+                priority="0"/>
+            <fix-replace
+                description="Change to 8.9.2"
+                family="Update versions"
+                robot="true"
+                independent="true"
+                oldString="8.9.1"
+                replacement="8.9.2"
+                priority="0"/>
+        </fix-alternatives>
+        <location
+            file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
+            line="2"
+            column="7"
+            startOffset="18"
+            endLine="2"
+            endColumn="14"
+            endOffset="25"/>
+    </incident>
+
+</incidents>

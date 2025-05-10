@@ -1,0 +1,114 @@
+```
+app/
+├── src/
+│   ├── main/
+│   │   ├── java/com/example/ecommerce/
+│   │   │   ├── admin/               # Tính năng quản trị
+│   │   │   │   ├── AdminPanelActivity.java
+│   │   │   │   ├── AdminProductsActivity.java
+│   │   │   │   └── EditProductActivity.java
+│   │   │   ├── adapters/            # Các adapter
+│   │   │   │   ├── ProductAdapter.java
+│   │   │   │   ├── AdminProductAdapter.java
+│   │   │   │   └── ...
+│   │   │   ├── models/              # Các model dữ liệu
+│   │   │   │   ├── User.java
+│   │   │   │   ├── UserRole.java
+│   │   │   │   ├── Product.java
+│   │   │   │   └── ...
+│   │   │   ├── repository/          # Truy xuất dữ liệu
+│   │   │   │   ├── FirebaseRepository.java
+│   │   │   │   ├── AdminFirebaseRepository.java
+│   │   │   │   └── ...
+│   │   │   ├── utils/               # Các tiện ích
+│   │   │   │   ├── PermissionManager.java
+│   │   │   │   └── ...
+│   │   │   ├── MainActivity.java    # Màn hình đăng nhập
+│   │   │   ├── HomeMainActivity.java # Màn hình chính
+│   │   │   ├── ProductDetailActivity.java
+│   │   │   ├── CartActivity.java
+│   │   │   └── ...
+│   │   └── res/                     # Tài nguyên
+│   │       ├── layout/              # Layouts
+│   │       ├── drawable/            # Hình ảnh, icons
+│   │       ├── values/              # Strings, colors, styles
+│   │       └── ...
+│   └── ...
+└── ...
+```
+
+## Công nghệ sử dụng
+
+- **Ngôn ngữ**: Java
+- **Database**: Firebase Firestore
+- **Authentication**: Firebase Authentication
+- **Storage**: Firebase Storage
+- **UI Components**: Material Design, RecyclerView, CardView, NavigationView
+- **Thư viện hình ảnh**: Glide
+- **Kiến trúc**: Repository Pattern, Singleton Pattern
+
+## Quy trình phát triển chi tiết
+
+### CRUD sản phẩm cho Admin
+
+1. **Thiết kế giao diện**:
+   - Tạo layout cho danh sách sản phẩm (activity_admin_products.xml)
+   - Thiết kế item sản phẩm trong RecyclerView (item_admin_product.xml)
+   - Tạo layout thêm/sửa sản phẩm (activity_edit_product.xml)
+
+2. **Tạo các Activity**:
+   - AdminProductsActivity: Hiển thị danh sách sản phẩm cho admin
+   - EditProductActivity: Form thêm/sửa sản phẩm
+
+3. **Xử lý dữ liệu**:
+   - AdminFirebaseRepository: Thực hiện các thao tác CRUD với Firestore
+   - AdminProductAdapter: Hiển thị dữ liệu trong RecyclerView
+
+4. **Chức năng chính**:
+   - Hiển thị danh sách sản phẩm
+   - Thêm sản phẩm mới
+   - Chỉnh sửa sản phẩm hiện có
+   - Xóa sản phẩm
+   - Upload và hiển thị hình ảnh sản phẩm
+
+### Hệ thống phân quyền
+
+1. **Thiết kế mô hình phân quyền**:
+   - Tạo enum UserRole định nghĩa các vai trò: USER, SELLER, ADMIN
+   - Mở rộng lớp User để hỗ trợ vai trò và quyền
+
+2. **Quản lý quyền**:
+   - Tạo lớp PermissionManager để xử lý kiểm tra quyền
+   - Định nghĩa hằng số cho các quyền cụ thể (PERMISSION_MANAGE_PRODUCTS, v.v.)
+   - Cài đặt methods kiểm tra quyền dựa trên vai trò và permission list
+
+3. **Áp dụng kiểm tra quyền**:
+   - Kiểm tra quyền trước khi truy cập các tính năng admin
+   - Ẩn/hiện các menu và tính năng dựa vào quyền người dùng
+   - Hiển thị thông báo khi người dùng không có quyền truy cập
+
+4. **Giao diện quản trị tập trung**:
+   - AdminPanelActivity: Trang quản trị tập trung với các card cho từng tính năng
+   - Hiển thị chỉ các tính năng mà người dùng có quyền truy cập
+
+## Thách thức và giải pháp
+
+1. **Bảo mật dữ liệu**:
+   - Thách thức: Đảm bảo người dùng chỉ truy cập được dữ liệu họ được phép
+   - Giải pháp: Sử dụng hệ thống phân quyền và Firebase Security Rules
+
+2. **Quản lý hình ảnh**:
+   - Thách thức: Upload, lưu trữ và hiển thị hình ảnh hiệu quả
+   - Giải pháp: Sử dụng Firebase Storage và thư viện Glide
+
+3. **Trải nghiệm người dùng**:
+   - Thách thức: Tạo giao diện đẹp và dễ sử dụng
+   - Giải pháp: Áp dụng Material Design và UI patterns phổ biến
+
+4. **Hiệu suất**:
+   - Thách thức: Tối ưu hiệu suất khi làm việc với dữ liệu lớn
+   - Giải pháp: Phân trang, lazy loading và caching
+
+## Kết luận
+
+Dự án e-commerce Android đã được triển khai với đầy đủ tính năng cơ bản của một ứng dụng bán hàng. Đặc biệt, hệ thống quản trị và phân quyền đã được thiết kế để đảm bảo tính bảo mật cao và dễ dàng mở rộng. Ứng dụng kết nối với Firebase để lưu trữ và đồng bộ dữ liệu thời gian thực.

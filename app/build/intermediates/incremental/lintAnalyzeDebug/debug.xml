@@ -1,0 +1,32 @@
+<variant
+    name="debug"
+    package="com.example.ecommerce"
+    minSdkVersion="26"
+    targetSdkVersion="34"
+    debuggable="true"
+    mergedManifest="build\intermediates\merged_manifest\debug\processDebugMainManifest\AndroidManifest.xml"
+    proguardFiles="build\intermediates\default_proguard_files\global\proguard-android.txt-8.9.1"
+    partialResultsDir="build\intermediates\lint_partial_results\debug\lintAnalyzeDebug\out"
+    desugaredMethodsFiles="C:\Users\Admin\.gradle\caches\8.11.1\transforms\c850185fd6598a6572125648fd901f79\transformed\D8BackportedDesugaredMethods.txt">
+  <buildFeatures
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+    <sourceProvider
+        manifests="src\main\AndroidManifest.xml"
+        javaDirectories="src\main\java;src\debug\java;src\main\kotlin;src\debug\kotlin"
+        resDirectories="src\main\res;src\debug\res"
+        assetsDirectories="src\main\assets;src\debug\assets"/>
+  </sourceProviders>
+  <testSourceProviders>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <artifact
+      classOutputs="build\intermediates\javac\debug\compileDebugJavaWithJavac\classes;build\intermediates\compile_and_runtime_not_namespaced_r_class_jar\debug\processDebugResources\R.jar"
+      type="MAIN"
+      applicationId="com.example.ecommerce"
+      generatedSourceFolders="build\generated\ap_generated_sources\debug\out"
+      generatedResourceFolders="build\generated\res\processDebugGoogleServices;build\generated\res\resValues\debug"
+      desugaredMethodsFiles="C:\Users\Admin\.gradle\caches\8.11.1\transforms\c850185fd6598a6572125648fd901f79\transformed\D8BackportedDesugaredMethods.txt">
+  </artifact>
+</variant>

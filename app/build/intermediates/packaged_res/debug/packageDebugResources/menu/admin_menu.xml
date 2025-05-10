@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<item
+        android:id="@+id/action_sort"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Sắp xếp"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/sort_price_asc"
+                android:title="Giá tăng dần"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/sort_price_desc"
+                android:title="Giá giảm dần"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/sort_name_asc"
+                android:title="Tên A-Z"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/sort_name_desc"
+                android:title="Tên Z-A"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:title="Đăng xuất"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
+        android:name=".EcommerceApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,6 +16,18 @@
         android:theme="@style/Theme.Ecommerce"
 
         tools:targetApi="31">
+        <activity
+            android:name=".admin.AdminProductsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.EditProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminPanelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminDashboardActivity"
+            android:exported="false" />
         <activity
             android:name=".HomeMainActivity"
             android:exported="false" />
@@ -29,6 +42,15 @@
             android:exported="false" />
         <activity
             android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminOrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.OrderDetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

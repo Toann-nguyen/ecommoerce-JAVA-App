@@ -20,13 +20,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import models.CartItem;
 import models.Order;
+import models.Product;
 import models.ShippingAddress;
 import models.ShoppingCart;
+import repository.FirebaseRepository;
 import repository.OrderRepository;
 
 public class CheckoutActivity extends AppCompatActivity {
@@ -48,6 +51,11 @@ public class CheckoutActivity extends AppCompatActivity {
     private double total = 0;
     private OrderRepository orderRepository;
     private FirebaseUser currentUser;
+    private FirebaseRepository productRepository;
+    private boolean isBuyNow = false;
+    private Product singleProduct;
+    private int singleProductQuantity = 1;
+    private AlertDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,21 +73,59 @@ public class CheckoutActivity extends AppCompatActivity {
 
         // Khởi tạo Repository và Shopping Cart
         orderRepository = new OrderRepository();
+        productRepository = new FirebaseRepository();
         shoppingCart = ShoppingCart.getInstance(this);
-        cartItems = shoppingCart.getCartItems();
 
-        // Kiểm tra giỏ hàng có trống không
-        if (cartItems.isEmpty()) {
-            Toast.makeText(this, "Giỏ hàng trống", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
+        // Kiểm tra xem có đang trong chế độ mua ngay không
+        isBuyNow = getIntent().getBooleanExtra("BUY_NOW", false);
+
+        if (isBuyNow) {
+            // Xử lý mua ngay 1 sản phẩm
+            String productId = getIntent().getStringExtra("PRODUCT_ID");
+            singleProductQuantity = getIntent().getIntExtra("PRODUCT_QUANTITY", 1);
+
+            if (productId != null) {
+                productRepository.getProductById(productId, new FirebaseRepository.ProductCallback() {
+                    @Override
+                    public void onCallback(Product product) {
+                        if (product != null) {
+                            singleProduct = product;
+                            // Tạo danh sách cartItems chỉ với 1 sản phẩm này
+                            cartItems = new ArrayList<>();
+                            cartItems.add(new CartItem(product, singleProductQuantity));
+                            calculateOrderSummary();
+                            displayOrderSummary();
+                        } else {
+                            Toast.makeText(CheckoutActivity.this, "Không tìm thấy sản phẩm", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onError(String errorMessage) {
+                        Toast.makeText(CheckoutActivity.this, "Lỗi: " + errorMessage, Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
+            }
+        } else {
+            // Lấy dữ liệu từ giỏ hàng
+            cartItems = shoppingCart.getCartItems();
+
+            // Kiểm tra giỏ hàng có trống không
+            if (cartItems.isEmpty()) {
+                Toast.makeText(this, "Giỏ hàng trống", Toast.LENGTH_SHORT).show();
+                finish();
+                return;
+            }
+
+            calculateOrderSummary();
+            displayOrderSummary();
         }
 
         // Khởi tạo UI
         initViews();
         setupToolbar();
-        calculateOrderSummary();
-        displayOrderSummary();
 
         // Thiết lập nút đặt hàng
         btnPlaceOrder.setOnClickListener(v -> validateAndPlaceOrder());
@@ -209,15 +255,51 @@ public class CheckoutActivity extends AppCompatActivity {
         String paymentMethod = selectedPaymentButton.getText().toString();
 
         // Tạo đối tượng đơn hàng
-        Order order = new Order(
-                currentUser.getUid(),
-                cartItems,
-                shippingAddress,
-                paymentMethod,
-                subtotal,
-                discount,
-                shippingFee
-        );
+        Order order;
+        if (currentUser != null) {
+            String userEmail = currentUser.getEmail();
+            String userName = currentUser.getDisplayName() != null ? currentUser.getDisplayName() : "Khách hàng";
+
+            if (isBuyNow && singleProduct != null) {
+                // Tạo đơn hàng cho trường hợp mua ngay 1 sản phẩm
+                CartItem singleItem = new CartItem(singleProduct, singleProductQuantity);
+                order = new Order(
+                        currentUser.getUid(),
+                        userEmail,
+                        userName,
+                        singleItem,
+                        shippingAddress,
+                        paymentMethod,
+                        subtotal,
+                        discount,
+                        shippingFee
+                );
+            } else {
+                // Tạo đơn hàng từ giỏ hàng
+                order = new Order(
+                        currentUser.getUid(),
+                        cartItems,
+                        shippingAddress,
+                        paymentMethod,
+                        subtotal,
+                        discount,
+                        shippingFee
+                );
+                order.setUserEmail(userEmail);
+                order.setUserName(userName);
+            }
+        } else {
+            // Fallback nếu không có thông tin người dùng
+            order = new Order(
+                    "guest",
+                    cartItems,
+                    shippingAddress,
+                    paymentMethod,
+                    subtotal,
+                    discount,
+                    shippingFee
+            );
+        }
 
         // Hiển thị dialog xác nhận
         showConfirmationDialog(order);
@@ -239,32 +321,42 @@ public class CheckoutActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
         builder.setView(R.layout.progress_dialog);
-        AlertDialog progressDialog = builder.create();
+        progressDialog = builder.create();
         progressDialog.show();
 
         // Tạo đơn hàng trên Firebase
         orderRepository.createOrder(order, new OrderRepository.OrderCallback() {
             @Override
             public void onSuccess(Order createdOrder) {
-                // Đóng progress dialog
-                progressDialog.dismiss();
-
-                // Xóa giỏ hàng sau khi đặt hàng thành công
-                shoppingCart.clearCart();
-
-                // Hiển thị thông báo thành công
-                showOrderSuccessDialog(createdOrder.getId());
+                onOrderSuccessful(createdOrder);
             }
 
             @Override
             public void onError(String errorMessage) {
                 // Đóng progress dialog
-                progressDialog.dismiss();
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
 
                 // Hiển thị thông báo lỗi
                 Toast.makeText(CheckoutActivity.this, errorMessage, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void onOrderSuccessful(Order createdOrder) {
+        // Đóng progress dialog
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+
+        // Xóa giỏ hàng sau khi đặt hàng thành công từ giỏ hàng
+        if (!isBuyNow) {
+            shoppingCart.clearCart();
+        }
+
+        // Hiển thị thông báo thành công
+        showOrderSuccessDialog(createdOrder.getId());
     }
 
     private void showOrderSuccessDialog(String orderId) {

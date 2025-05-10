@@ -35,7 +35,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerImages"
                 android:layout_width="0dp"
-                android:layout_height="300dp"
+                android:layout_height="350dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -93,78 +93,15 @@
                 app:layout_constraintStart_toEndOf="@+id/tvProductPrice"
                 tools:text="Giảm 10%" />
 
-            <LinearLayout
-                android:id="@+id/ratingLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tvProductPrice"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    style="?attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:stepSize="0.1" />
-
-                <TextView
-                    android:id="@+id/tvRatingValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    tools:text="4.5" />
-            </LinearLayout>
-
-            <!-- Tình trạng kho -->
-            <TextView
-                android:id="@+id/tvStockLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Tình trạng:"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice" />
-
-            <TextView
-                android:id="@+id/tvStock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="#4CAF50"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tvStockLabel"
-                app:layout_constraintStart_toEndOf="@+id/tvStockLabel"
-                tools:text="Còn hàng" />
-
-            <!-- Số lượng -->
-            <TextView
-                android:id="@+id/tvQuantityLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Số lượng:"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvStockLabel" />
-
+            <!-- Số lượng bên cạnh giá -->
             <LinearLayout
                 android:id="@+id/quantityLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tvQuantityLabel"
-                app:layout_constraintStart_toEndOf="@+id/tvQuantityLabel">
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvProductPrice"
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <Button
                     android:id="@+id/btnDecrease"
@@ -195,6 +132,72 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/ratingLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice">
+
+            <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1" />
+
+                <TextView
+                    android:id="@+id/tvRatingValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    tools:text="4.5" />
+            </LinearLayout>
+
+            <!-- Tình trạng kho -->
+            <TextView
+                android:id="@+id/tvStockLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Tình trạng:"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingLayout" />
+
+            <TextView
+                android:id="@+id/tvStock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="#4CAF50"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvStockLabel"
+                app:layout_constraintStart_toEndOf="@+id/tvStockLabel"
+                tools:text="Còn hàng (25)" />
+
+            <!-- Số lượng - Đã chuyển lên bên cạnh giá tiền -->
+            <TextView
+                android:id="@+id/tvQuantityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Số lượng:"
+                android:visibility="gone"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvStockLabel" />
+
             <!-- Divider -->
             <View
                 android:id="@+id/divider1"
@@ -206,7 +209,7 @@
                 android:background="#E0E0E0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/quantityLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/tvStock" />
 
             <!-- Danh mục -->
             <TextView
@@ -214,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="Danh mục:"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -222,14 +225,16 @@
 
             <TextView
                 android:id="@+id/tvCategory"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tvCategoryLabel"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvCategoryLabel"
-                tools:text="Điện thoại" />
+                tools:text="Đồng hồ thông minh" />
 
             <!-- Tiêu đề mô tả -->
             <TextView
@@ -237,7 +242,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="Mô tả sản phẩm"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -250,10 +255,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="100dp"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
+                android:paddingBottom="24dp"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

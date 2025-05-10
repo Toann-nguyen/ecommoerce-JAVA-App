@@ -19,6 +19,7 @@
     <uses-permission android:name="com.example.ecommerce.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
+        android:name="com.example.ecommerce.EcommerceApp"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -32,16 +33,40 @@
         android:testOnly="true"
         android:theme="@style/Theme.Ecommerce" >
         <activity
+            android:name="com.example.ecommerce.admin.AdminProductsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ecommerce.admin.EditProductActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ecommerce.admin.AdminPanelActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ecommerce.admin.AdminDashboardActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.ecommerce.HomeMainActivity"
             android:exported="false" />
         <activity
             android:name="com.example.ecommerce.ProductDetailActivity"
             android:exported="false" />
         <activity
+            android:name="com.example.ecommerce.CheckoutActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.ecommerce.CartActivity"
             android:exported="false" />
         <activity
             android:name="com.example.ecommerce.Register"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ecommerce.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ecommerce.admin.AdminOrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ecommerce.admin.OrderDetailActivity"
             android:exported="false" />
         <activity
             android:name="com.example.ecommerce.MainActivity"
@@ -64,6 +89,12 @@
                 android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
@@ -71,6 +102,12 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"

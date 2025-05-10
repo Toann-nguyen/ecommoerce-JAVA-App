@@ -121,8 +121,10 @@ public class ProductDetailActivity extends AppCompatActivity {
             if (quantity < 99 && quantity < product.getStock()) {
                 quantity++;
                 tvQuantity.setText(String.valueOf(quantity));
+            } else if (product.getStock() <= 0) {
+                Toast.makeText(this, "Sản phẩm đã hết hàng", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Số lượng tối đa có thể mua là " + product.getStock(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Số lượng tối đa có thể mua là " + product.getStock() + " sản phẩm", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -138,10 +140,11 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         btnBuyNow.setOnClickListener(v -> {
             if (product != null) {
-                ShoppingCart shoppingCart = ShoppingCart.getInstance(this);
-                shoppingCart.addItem(product, quantity);
-
-                Intent intent = new Intent(ProductDetailActivity.this, CartActivity.class);
+                // Chuyển thẳng tới trang checkout với 1 sản phẩm
+                Intent intent = new Intent(ProductDetailActivity.this, CheckoutActivity.class);
+                intent.putExtra("BUY_NOW", true);
+                intent.putExtra("PRODUCT_ID", product.getId());
+                intent.putExtra("PRODUCT_QUANTITY", quantity);
                 startActivity(intent);
             }
         });
@@ -198,10 +201,16 @@ public class ProductDetailActivity extends AppCompatActivity {
         // Hiển thị tình trạng kho
         int stock = product.getStock();
         if (stock > 0) {
-            tvStock.setText("Còn hàng (" + stock + ")");
+            String stockText = "Còn hàng (" + stock + " sản phẩm)";
+            tvStock.setText(stockText);
             tvStock.setTextColor(Color.parseColor("#4CAF50")); // Màu xanh lá
             btnAddToCart.setEnabled(true);
             btnBuyNow.setEnabled(true);
+
+            // Kiểm tra và cảnh báo nếu số lượng hàng còn ít
+            if (stock < 10) {
+                tvStock.setTextColor(Color.parseColor("#FF9800")); // Màu cam cảnh báo
+            }
         } else {
             tvStock.setText("Hết hàng");
             tvStock.setTextColor(Color.parseColor("#F44336")); // Màu đỏ

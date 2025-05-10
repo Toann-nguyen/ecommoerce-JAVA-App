@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class Order {
     private String status;
     private Date orderDate;
     private Date deliveryDate;
+    // Thêm thông tin người dùng
+    private String userEmail;
+    private String userName;
 
     // Trạng thái đơn hàng
     public static final String STATUS_PENDING = "pending";
@@ -32,6 +36,24 @@ public class Order {
                  String paymentMethod, double subtotal, double discount, double shippingFee) {
         this.userId = userId;
         this.items = items;
+        this.shippingAddress = shippingAddress;
+        this.paymentMethod = paymentMethod;
+        this.subtotal = subtotal;
+        this.discount = discount;
+        this.shippingFee = shippingFee;
+        this.total = subtotal - discount + shippingFee;
+        this.status = STATUS_PENDING;
+        this.orderDate = new Date();
+    }
+
+    // Constructor bổ sung cho đặt hàng 1 sản phẩm
+    public Order(String userId, String userEmail, String userName, CartItem item, ShippingAddress shippingAddress,
+                 String paymentMethod, double subtotal, double discount, double shippingFee) {
+        this.userId = userId;
+        this.userEmail = userEmail;
+        this.userName = userName;
+        this.items = new ArrayList<>();
+        this.items.add(item);
         this.shippingAddress = shippingAddress;
         this.paymentMethod = paymentMethod;
         this.subtotal = subtotal;
@@ -137,5 +159,22 @@ public class Order {
 
     public void setDeliveryDate(Date deliveryDate) {
         this.deliveryDate = deliveryDate;
+    }
+
+    // Thêm getter và setter cho thông tin người dùng
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
