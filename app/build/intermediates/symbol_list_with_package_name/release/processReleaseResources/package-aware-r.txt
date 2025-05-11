@@ -77,6 +77,11 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array assume_strong_biometrics_models
+array crypto_fingerprint_fallback_prefixes
+array crypto_fingerprint_fallback_vendors
+array delay_showing_prompt_models
+array hide_fingerprint_instantly_prefixes
 attr SharedValue
 attr SharedValueId
 attr actionBarDivider
@@ -591,6 +596,7 @@ attr font
 attr fontFamily
 attr fontProviderAuthority
 attr fontProviderCerts
+attr fontProviderFallbackQuery
 attr fontProviderFetchStrategy
 attr fontProviderFetchTimeout
 attr fontProviderPackage
@@ -1379,6 +1385,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color biometric_error_color
 color black
 color bottom_nav_color
 color bottom_nav_inactive
@@ -2294,6 +2301,7 @@ dimen disabled_alpha_material_light
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
+dimen fingerprint_icon_size
 dimen highlight_alpha_material_colored
 dimen highlight_alpha_material_dark
 dimen highlight_alpha_material_light
@@ -3072,6 +3080,8 @@ drawable design_snackbar_background
 drawable discount_badge
 drawable edit_text_background
 drawable error_image
+drawable fingerprint_dialog_error
+drawable fingerprint_dialog_fp_icon
 drawable flash_sale_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
@@ -3188,6 +3198,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable placeholder_image
+drawable status_badge_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3261,6 +3272,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_orders
 id action_search
 id action_sort
 id action_text
@@ -3275,6 +3287,7 @@ id aligned
 id all
 id allStates
 id always
+id androidx_credential_pendingCredentialRequest
 id animateToEnd
 id animateToStart
 id antiClockwise
@@ -3289,6 +3302,7 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id axisRelative
+id backToLoginTextView
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3311,7 +3325,6 @@ id browser_actions_menu_view
 id btnAddCategory
 id btnAddFlash
 id btnAddToCart
-id btnAdmin
 id btnBuyNow
 id btnCheckout
 id btnCreateProduct
@@ -3319,17 +3332,23 @@ id btnDecrease
 id btnDelete
 id btnEdit
 id btnIncrease
+id btnManageOrders
 id btnPlaceOrder
 id btnRemove
 id btnSaveProduct
 id btnSelectImage
+id btnUpdateStatus
 id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
+id cardOrderInfo
+id cardOrderItems
 id cardOrders
 id cardProducts
 id cardReports
+id cardShippingAddress
+id cardUpdateStatus
 id cardUsers
 id cardView
 id carryVelocity
@@ -3422,6 +3441,7 @@ id edtRating
 id edtStock
 id elastic
 id email
+id emailEditText
 id embed
 id end
 id endToStart
@@ -3442,6 +3462,10 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id fingerprint_description
+id fingerprint_error
+id fingerprint_icon
+id fingerprint_subtitle
 id fitCenter
 id fitEnd
 id fitStart
@@ -3451,6 +3475,8 @@ id fixed
 id flip
 id floating
 id forever
+id forgotPasswordLayout
+id forgotPasswordTextView
 id fragment_container_view_tag
 id frost
 id fullscreen_header
@@ -3617,6 +3643,8 @@ id open_search_view_search_prefix
 id open_search_view_status_bar_spacer
 id open_search_view_toolbar
 id open_search_view_toolbar_container
+id orderCard
+id ordersRecyclerView
 id outline
 id outward
 id overshoot
@@ -3647,6 +3675,12 @@ id progress_circular
 id progress_horizontal
 id quantityLayout
 id radio
+id radioCancelled
+id radioConfirmed
+id radioDelivered
+id radioGroupStatus
+id radioPending
+id radioShipping
 id ratingBar
 id ratingLayout
 id ratio
@@ -3654,10 +3688,12 @@ id rbBankTransfer
 id rbCashOnDelivery
 id rbCreditCard
 id rectangles
+id recyclerOrderItems
 id recyclerViewProducts
 id registerButton
 id register_button
 id report_drawn
+id resetPasswordButton
 id reverseSawtooth
 id rgPaymentMethod
 id right
@@ -3736,6 +3772,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id tabLayout
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3820,6 +3857,7 @@ id tvProductPrice
 id tvQuantity
 id tvQuantityLabel
 id tvRatingValue
+id tvSearchStatus
 id tvShippingFee
 id tvStock
 id tvStockLabel
@@ -3831,12 +3869,30 @@ id tvTotalLabel
 id tvTotalValue
 id tvUserEmail
 id tvUserName
+id txtCustomerEmail
+id txtCustomerName
+id txtDiscount
 id txtEmptyState
 id txtHeader
 id txtId
+id txtItemCount
+id txtOrderDate
+id txtOrderId
+id txtOrderStatus
+id txtOrderTotal
+id txtPaymentMethod
 id txtPrice
+id txtProductName
+id txtProductPrice
+id txtProductQuantity
+id txtRecipientName
+id txtRecipientPhone
+id txtShippingAddress
+id txtShippingFee
 id txtSubtitle
+id txtSubtotal
 id txtTitle
+id txtTotal
 id unchecked
 id uniform
 id unlabeled
@@ -3983,6 +4039,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_admin_dashboard
+layout activity_admin_orders
 layout activity_admin_panel
 layout activity_admin_products
 layout activity_cart
@@ -3991,6 +4048,7 @@ layout activity_edit_product
 layout activity_home_main
 layout activity_home_main_drawer
 layout activity_main
+layout activity_order_detail
 layout activity_product_detail
 layout activity_register
 layout browser_actions_context_menu_page
@@ -4011,8 +4069,11 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fingerprint_dialog_layout
+layout forgot_password
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_admin_order
 layout item_admin_product
 layout item_admin_product_row
 layout item_banner
@@ -4021,6 +4082,7 @@ layout item_category
 layout item_featured
 layout item_flash_sale
 layout item_flash_sale_banner
+layout item_order_detail_product
 layout item_product
 layout item_product_image
 layout item_slider
@@ -4165,7 +4227,9 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string confirm_device_credential_password
 string copy_toast_msg
+string default_error_msg
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -4174,7 +4238,17 @@ string fab_transformation_sheet_behavior
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
+string fingerprint_dialog_touch_sensor
+string fingerprint_error_hw_not_available
+string fingerprint_error_hw_not_present
+string fingerprint_error_lockout
+string fingerprint_error_no_fingerprints
+string fingerprint_error_user_canceled
+string fingerprint_not_recognized
 string gcm_defaultSenderId
+string generic_error_no_device_credential
+string generic_error_no_keyguard
+string generic_error_user_canceled
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
@@ -5481,7 +5555,7 @@ styleable ExtendedFloatingActionButton_Behavior_Layout behavior_autoHide behavio
 styleable FloatingActionButton android_enabled backgroundTint backgroundTintMode borderWidth elevation ensureMinTouchTargetSize fabCustomSize fabSize hideMotionSpec hoveredFocusedTranslationZ maxImageSize pressedTranslationZ rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec useCompatPadding
 styleable FloatingActionButton_Behavior_Layout behavior_autoHide
 styleable FlowLayout itemSpacing lineSpacing
-styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery fontProviderSystemFontFamily
+styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFallbackQuery fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery fontProviderSystemFontFamily
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable ForegroundLinearLayout android_foreground android_foregroundGravity foregroundInsidePadding
 styleable Fragment android_name android_id android_tag

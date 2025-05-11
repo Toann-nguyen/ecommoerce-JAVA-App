@@ -1,4 +1,43 @@
 # E-commerce Android App
+web client ID
+615717299049-72rftta9r808nh8be19kfej1de6usg7q.apps.googleusercontent.com
+
+Ecommerce [signingReport]
+1:17:18 AM: Executing 'signingReport'…
+
+Executing tasks: [signingReport] in project C:\Users\Admin\AndroidStudioProjects\Ecommerce
+
+
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: C:\Users\Admin\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 75:80:CE:14:3E:C8:97:E3:29:4D:8B:C9:60:5E:23:B3
+SHA1: A6:A7:5B:F6:FD:0E:E8:8E:CA:01:82:AD:50:C4:D3:9F:25:BF:31:48
+SHA-256: B0:1E:79:44:3F:D0:95:77:AB:75:E3:BE:64:79:C3:3F:29:18:C3:BD:04:69:DF:12:03:BF:F5:9C:D0:BF:00:BC
+Valid until: Sunday, April 11, 2055
+----------
+Variant: release
+Config: null
+Store: null
+Alias: null
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\Admin\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 75:80:CE:14:3E:C8:97:E3:29:4D:8B:C9:60:5E:23:B3
+SHA1: A6:A7:5B:F6:FD:0E:E8:8E:CA:01:82:AD:50:C4:D3:9F:25:BF:31:48
+SHA-256: B0:1E:79:44:3F:D0:95:77:AB:75:E3:BE:64:79:C3:3F:29:18:C3:BD:04:69:DF:12:03:BF:F5:9C:D0:BF:00:BC
+Valid until: Sunday, April 11, 2055
+----------
+
+BUILD SUCCESSFUL in 797ms
+1 actionable task: 1 executed
+
+Build Analyzer results available
+1:17:19 AM: Execution finished 'signingReport'.
 
 ## Quá trình phát triển
 
@@ -319,6 +358,14 @@ dung.
    - ConstraintLayout cho phép điều chỉnh vị trí các thành phần một cách linh hoạt
    - RecyclerView có thể dễ dàng thay đổi LayoutManager để hiển thị theo grid, linear, staggered,
      v.v.
+
+## Chứ năng bổ sung
+   -Login thêm login google facebook authentication từ firebase
+   -Chức năng chat với admin , tích Ai để trả lời tự động các câu hỏi cơ bản như (thông tin thêm của sản phâm)
+   -Add thêm thanh toán bằng Vnpay WebView Integration
+   -Xử lý render Ui 
+   -Xử lý các trường hợp nâng cao 
+   -Bảo mật Sql , theo tiêu chuẩn OSWAP mobile app java
 
 ## Kết luận
 

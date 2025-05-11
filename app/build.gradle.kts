@@ -35,6 +35,10 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.firebase.database)
     implementation(libs.firebase.storage)
+    implementation(libs.credentials)
+    implementation(libs.credentials.play.services.auth)
+    implementation(libs.googleid)
+    implementation("com.google.firebase:firebase-auth:22.3.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -51,4 +55,5 @@ dependencies {
     implementation ("com.google.android.material:material:1.11.0")
     implementation ("com.google.firebase:firebase-firestore:24.7.1")
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation ("com.google.firebase:firebase-auth:21.3.0")
 }

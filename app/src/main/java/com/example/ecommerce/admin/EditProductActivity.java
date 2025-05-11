@@ -609,4 +609,41 @@ public class EditProductActivity extends AppCompatActivity {
         btnSaveProduct.setEnabled(!isLoading);
         btnSelectImage.setEnabled(!isLoading);
     }
+    
+    private void handleGoogleSignInError(int errorCode) {
+        String errorMessage;
+        switch (errorCode) {
+            case 10:
+                errorMessage = "Developer error: Please verify:\n" +
+                        "1. SHA-1 fingerprint in Firebase matches your keystore\n" +
+                        "2. Updated google-services.json is in app/\n" +
+                        "3. OAuth consent screen is configured\n" +
+                        "Run: keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android";
+                break;
+            case 7:
+                errorMessage = "Network error - Please check your internet connection";
+                break;
+            case 12500:
+                errorMessage = "Sign-in cancelled by user";
+                break;
+            case 16:
+                errorMessage = "Account already exists with different credentials";
+                break;
+            case 8:
+                errorMessage = "Internal error - Please try again later";
+                break;
+            default:
+                errorMessage = "Unknown error occurred (Code: " + errorCode + ")";
+        }
+        Toast.makeText(this, "Google Sign-In Error:\n" + errorMessage, Toast.LENGTH_LONG).show();
+        Log.e(TAG, "Google Sign-In error [" + errorCode + "]: " + errorMessage);
+        
+        // For developer error, log additional debug info
+        if (errorCode == 10) {
+            Log.d(TAG, "Debug Info for Error 10:\n" +
+                    "1. Verify package name in Firebase matches your app\n" +
+                    "2. Check if google-services.json is up to date\n" +
+                    "3. Ensure you've added SHA-1 to Firebase console");
+        }
+    }
 }
