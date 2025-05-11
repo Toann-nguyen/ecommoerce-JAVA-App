@@ -31,4 +31,24 @@
             endOffset="25"/>
     </incident>
 
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.gms:play-services-auth than 20.7.0 is available: 21.3.0">
+        <fix-replace
+            description="Change to 21.3.0"
+            family="Update versions"
+            oldString="20.7.0"
+            replacement="21.3.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
+            line="19"
+            column="20"
+            startOffset="461"
+            endLine="19"
+            endColumn="28"
+            endOffset="469"/>
+    </incident>
+
 </incidents>

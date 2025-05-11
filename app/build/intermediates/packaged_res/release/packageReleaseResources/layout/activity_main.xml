@@ -65,6 +65,18 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/forgotPasswordTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:textColor="@color/purple_500"
+            android:textAlignment="center"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true" />
+
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
@@ -72,19 +84,6 @@
             android:text="Register"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="16dp"
-            android:background="#DDDDDD" />
-
-        <Button
-            android:id="@+id/btnAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Admin Products Management"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

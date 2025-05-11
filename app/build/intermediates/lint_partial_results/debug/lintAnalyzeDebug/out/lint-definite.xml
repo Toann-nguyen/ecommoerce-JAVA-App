@@ -7,12 +7,12 @@
         message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminDashboardActivity.java"
-            line="172"
+            line="193"
             column="35"
-            startOffset="5971"
-            endLine="172"
+            startOffset="6953"
+            endLine="193"
             endColumn="46"
-            endOffset="5982"/>
+            endOffset="6964"/>
     </incident>
 
     <incident
@@ -21,12 +21,12 @@
         message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminDashboardActivity.java"
-            line="172"
+            line="193"
             column="64"
-            startOffset="6000"
-            endLine="172"
+            startOffset="6982"
+            endLine="193"
             endColumn="75"
-            endOffset="6011"/>
+            endOffset="6993"/>
     </incident>
 
     <incident
@@ -35,12 +35,12 @@
         message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminDashboardActivity.java"
-            line="173"
+            line="194"
             column="43"
-            startOffset="6060"
-            endLine="173"
+            startOffset="7042"
+            endLine="194"
             endColumn="54"
-            endOffset="6071"/>
+            endOffset="7053"/>
     </incident>
 
     <incident
@@ -49,12 +49,138 @@
         message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminDashboardActivity.java"
-            line="173"
+            line="194"
             column="72"
-            startOffset="6089"
-            endLine="173"
+            startOffset="7071"
+            endLine="194"
             endColumn="83"
-            endOffset="6100"/>
+            endOffset="7082"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminOrdersActivity.java"
+            line="199"
+            column="23"
+            startOffset="6768"
+            endLine="199"
+            endColumn="34"
+            endOffset="6779"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminOrdersActivity.java"
+            line="217"
+            column="56"
+            startOffset="7371"
+            endLine="217"
+            endColumn="67"
+            endOffset="7382"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminOrdersActivity.java"
+            line="223"
+            column="76"
+            startOffset="7622"
+            endLine="223"
+            endColumn="87"
+            endOffset="7633"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminOrdersActivity.java"
+            line="228"
+            column="79"
+            startOffset="7830"
+            endLine="228"
+            endColumn="90"
+            endOffset="7841"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminOrdersActivity.java"
+            line="246"
+            column="63"
+            startOffset="8326"
+            endLine="246"
+            endColumn="74"
+            endOffset="8337"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/HomeMainActivity.java"
+            line="549"
+            column="36"
+            startOffset="20596"
+            endLine="549"
+            endColumn="47"
+            endOffset="20607"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/HomeMainActivity.java"
+            line="584"
+            column="48"
+            startOffset="21846"
+            endLine="584"
+            endColumn="59"
+            endOffset="21857"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/HomeMainActivity.java"
+            line="586"
+            column="42"
+            startOffset="21973"
+            endLine="586"
+            endColumn="53"
+            endOffset="21984"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/HomeMainActivity.java"
+            line="588"
+            column="39"
+            startOffset="22096"
+            endLine="588"
+            endColumn="50"
+            endOffset="22107"/>
     </incident>
 
     <incident
@@ -63,12 +189,12 @@
         message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ProductDetailActivity.java"
-            line="197"
+            line="199"
             column="31"
-            startOffset="6981"
-            endLine="197"
+            startOffset="7134"
+            endLine="199"
             endColumn="60"
-            endOffset="7010"/>
+            endOffset="7163"/>
     </incident>
 
     <incident
@@ -123,6 +249,26 @@
     <incident
         id="GradleDependency"
         severity="warning"
+        message="A newer version of com.google.firebase:firebase-auth than 22.3.1 is available: 23.2.0">
+        <fix-replace
+            description="Change to 23.2.0"
+            family="Update versions"
+            oldString="22.3.1"
+            replacement="23.2.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="41"
+            column="20"
+            startOffset="1109"
+            endLine="41"
+            endColumn="62"
+            endOffset="1151"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
         message="A newer version of androidx.recyclerview:recyclerview than 1.3.0 is available: 1.4.0">
         <fix-replace
             description="Change to 1.4.0"
@@ -132,12 +278,12 @@
             priority="0"/>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="48"
+            line="52"
             column="21"
-            startOffset="1412"
-            endLine="48"
+            startOffset="1602"
+            endLine="52"
             endColumn="63"
-            endOffset="1454"/>
+            endOffset="1644"/>
     </incident>
 
     <incident
@@ -152,12 +298,12 @@
             priority="0"/>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="51"
+            line="55"
             column="21"
-            startOffset="1592"
-            endLine="51"
+            startOffset="1782"
+            endLine="55"
             endColumn="66"
-            endOffset="1637"/>
+            endOffset="1827"/>
     </incident>
 
     <incident
@@ -172,12 +318,52 @@
             priority="0"/>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="52"
+            line="56"
             column="21"
-            startOffset="1659"
-            endLine="52"
+            startOffset="1849"
+            endLine="56"
             endColumn="68"
-            endOffset="1706"/>
+            endOffset="1896"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.firebase:firebase-auth than 21.3.0 is available: 23.2.0">
+        <fix-replace
+            description="Change to 23.2.0"
+            family="Update versions"
+            oldString="21.3.0"
+            replacement="23.2.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="58"
+            column="21"
+            startOffset="1973"
+            endLine="58"
+            endColumn="63"
+            endOffset="2015"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.gms:play-services-auth than 20.7.0 is available: 21.3.0">
+        <fix-replace
+            description="Change to 21.3.0"
+            family="Update versions"
+            oldString="20.7.0"
+            replacement="21.3.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
+            line="19"
+            column="20"
+            startOffset="461"
+            endLine="19"
+            endColumn="28"
+            endOffset="469"/>
     </incident>
 
     <incident
@@ -290,12 +476,26 @@
         message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminDashboardActivity.java"
-            line="132"
+            line="153"
             column="21"
-            startOffset="4555"
-            endLine="132"
+            startOffset="5537"
+            endLine="153"
             endColumn="51"
-            endOffset="4585"/>
+            endOffset="5567"/>
+    </incident>
+
+    <incident
+        id="NotifyDataSetChanged"
+        severity="warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/AdminOrdersActivity.java"
+            line="272"
+            column="9"
+            startOffset="9191"
+            endLine="272"
+            endColumn="39"
+            endOffset="9221"/>
     </incident>
 
     <incident
@@ -360,12 +560,12 @@
         message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/HomeMainActivity.java"
-            line="253"
+            line="264"
             column="21"
-            startOffset="9827"
-            endLine="253"
+            startOffset="10412"
+            endLine="264"
             endColumn="66"
-            endOffset="9872"/>
+            endOffset="10457"/>
     </incident>
 
     <incident
@@ -374,12 +574,54 @@
         message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/HomeMainActivity.java"
-            line="270"
+            line="283"
             column="17"
-            startOffset="10480"
-            endLine="270"
+            startOffset="11177"
+            endLine="283"
             endColumn="55"
-            endOffset="10518"/>
+            endOffset="11215"/>
+    </incident>
+
+    <incident
+        id="NotifyDataSetChanged"
+        severity="warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/HomeMainActivity.java"
+            line="301"
+            column="17"
+            startOffset="11884"
+            endLine="301"
+            endColumn="58"
+            endOffset="11925"/>
+    </incident>
+
+    <incident
+        id="NotifyDataSetChanged"
+        severity="warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/HomeMainActivity.java"
+            line="407"
+            column="21"
+            startOffset="15710"
+            endLine="407"
+            endColumn="62"
+            endOffset="15751"/>
+    </incident>
+
+    <incident
+        id="NotifyDataSetChanged"
+        severity="warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/HomeMainActivity.java"
+            line="435"
+            column="21"
+            startOffset="16683"
+            endLine="435"
+            endColumn="62"
+            endOffset="16724"/>
     </incident>
 
     <incident
@@ -389,12 +631,12 @@
         <fix-data conditional="true"/>
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ProductDetailActivity.java"
-            line="286"
+            line="294"
             column="17"
-            startOffset="10521"
-            endLine="286"
+            startOffset="10918"
+            endLine="294"
             endColumn="72"
-            endOffset="10576"/>
+            endOffset="10973"/>
     </incident>
 
     <incident
@@ -409,37 +651,6 @@
             endLine="6"
             endColumn="43"
             endOffset="289"/>
-    </incident>
-
-    <incident
-        id="RedundantNamespace"
-        severity="warning"
-        message="This namespace declaration is redundant">
-        <fix-attribute
-            description="Delete namespace"
-            attribute="xmlns:android"/>
-        <location
-            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_register.xml"
-            line="9"
-            column="19"
-            startOffset="421"
-            endLine="9"
-            endColumn="77"
-            endOffset="479"/>
-    </incident>
-
-    <incident
-        id="UnusedNamespace"
-        severity="warning"
-        message="Unused namespace declaration xmlns:android; already declared on the root element">
-        <location
-            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_register.xml"
-            line="9"
-            column="19"
-            startOffset="421"
-            endLine="9"
-            endColumn="77"
-            endOffset="479"/>
     </incident>
 
     <incident
@@ -518,12 +729,12 @@
         </fix-alternatives>
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_register.xml"
-            line="15"
+            line="32"
             column="10"
-            startOffset="656"
-            endLine="15"
+            startOffset="1281"
+            endLine="32"
             endColumn="18"
-            endOffset="664"/>
+            endOffset="1289"/>
     </incident>
 
     <incident
@@ -546,12 +757,40 @@
         </fix-alternatives>
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_register.xml"
-            line="22"
+            line="43"
             column="10"
-            startOffset="900"
-            endLine="22"
+            startOffset="1712"
+            endLine="43"
             endColumn="18"
-            endOffset="908"/>
+            endOffset="1720"/>
+    </incident>
+
+    <incident
+        id="Autofill"
+        severity="warning"
+        message="Missing `autofillHints` attribute">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set autofillHints"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="autofillHints"
+                value=""
+                point="0"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAutofill=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAutofill"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/forgot_password.xml"
+            line="39"
+            column="10"
+            startOffset="1631"
+            endLine="39"
+            endColumn="18"
+            endOffset="1639"/>
     </incident>
 
     <incident
@@ -580,8 +819,8 @@
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                    startOffset="375"
-                    endOffset="375"/>
+                    startOffset="486"
+                    endOffset="486"/>
             </fix-replace>
             <fix-replace
                 description="Replace with libs.github.glide"
@@ -602,6 +841,71 @@
             endLine="35"
             endColumn="61"
             endOffset="876"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (com.google.firebase:firebase-auth is already available as `firebase-auth`, but using version 23.2.0 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for google-firebase-auth-v2231"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with googleFirebaseAuthVersion = &quot;22.3.1&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="googleFirebaseAuthVersion = &quot;22.3.1&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
+                        startOffset="27"
+                        endOffset="27"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with google-firebase-auth-v2231 = { module = &quot;com.google.firebase:firebase-auth&quot;, version.ref = &quot;googleFirebaseAuthVersion&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="google-firebase-auth-v2231 = { module = &quot;com.google.firebase:firebase-auth&quot;, version.ref = &quot;googleFirebaseAuthVersion&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
+                        startOffset="486"
+                        endOffset="486"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.google.firebase.auth.v2231"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.google.firebase.auth.v2231"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1109"
+                        endOffset="1151"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `firebase-auth` (version 23.2.0)"
+                replacement="libs.firebase.auth"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1109"
+                    endOffset="1151"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="41"
+            column="20"
+            startOffset="1109"
+            endLine="41"
+            endColumn="62"
+            endOffset="1151"/>
     </incident>
 
     <incident
@@ -630,8 +934,8 @@
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                    startOffset="375"
-                    endOffset="375"/>
+                    startOffset="486"
+                    endOffset="486"/>
             </fix-replace>
             <fix-replace
                 description="Replace with libs.glide.compiler"
@@ -640,18 +944,18 @@
                 priority="0">
                 <range
                     file="${:app*projectDir}/build.gradle.kts"
-                    startOffset="988"
-                    endOffset="1031"/>
+                    startOffset="1178"
+                    endOffset="1221"/>
             </fix-replace>
         </fix-composite>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="38"
+            line="42"
             column="26"
-            startOffset="988"
-            endLine="38"
+            startOffset="1178"
+            endLine="42"
             endColumn="69"
-            endOffset="1031"/>
+            endOffset="1221"/>
     </incident>
 
     <incident
@@ -669,8 +973,8 @@
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                    startOffset="360"
-                    endOffset="360"/>
+                    startOffset="471"
+                    endOffset="471"/>
             </fix-replace>
             <fix-replace
                 description="Replace with androidx-recyclerview = { module = &quot;androidx.recyclerview:recyclerview&quot;, version.ref = &quot;recyclerviewVersion&quot; }..."
@@ -680,8 +984,8 @@
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                    startOffset="375"
-                    endOffset="375"/>
+                    startOffset="486"
+                    endOffset="486"/>
             </fix-replace>
             <fix-replace
                 description="Replace with libs.androidx.recyclerview"
@@ -690,18 +994,18 @@
                 priority="0">
                 <range
                     file="${:app*projectDir}/build.gradle.kts"
-                    startOffset="1412"
-                    endOffset="1454"/>
+                    startOffset="1602"
+                    endOffset="1644"/>
             </fix-replace>
         </fix-composite>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="48"
+            line="52"
             column="21"
-            startOffset="1412"
-            endLine="48"
+            startOffset="1602"
+            endLine="52"
             endColumn="63"
-            endOffset="1454"/>
+            endOffset="1644"/>
     </incident>
 
     <incident
@@ -719,8 +1023,8 @@
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                    startOffset="360"
-                    endOffset="360"/>
+                    startOffset="471"
+                    endOffset="471"/>
             </fix-replace>
             <fix-replace
                 description="Replace with androidx-viewpager2 = { module = &quot;androidx.viewpager2:viewpager2&quot;, version.ref = &quot;viewpager2Version&quot; }..."
@@ -730,8 +1034,8 @@
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                    startOffset="375"
-                    endOffset="375"/>
+                    startOffset="486"
+                    endOffset="486"/>
             </fix-replace>
             <fix-replace
                 description="Replace with libs.androidx.viewpager2"
@@ -740,18 +1044,18 @@
                 priority="0">
                 <range
                     file="${:app*projectDir}/build.gradle.kts"
-                    startOffset="1476"
-                    endOffset="1514"/>
+                    startOffset="1666"
+                    endOffset="1704"/>
             </fix-replace>
         </fix-composite>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="49"
+            line="53"
             column="21"
-            startOffset="1476"
-            endLine="49"
+            startOffset="1666"
+            endLine="53"
             endColumn="59"
-            endOffset="1514"/>
+            endOffset="1704"/>
     </incident>
 
     <incident
@@ -780,8 +1084,8 @@
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                    startOffset="375"
-                    endOffset="375"/>
+                    startOffset="486"
+                    endOffset="486"/>
             </fix-replace>
             <fix-replace
                 description="Replace with libs.androidx.cardview"
@@ -790,18 +1094,18 @@
                 priority="0">
                 <range
                     file="${:app*projectDir}/build.gradle.kts"
-                    startOffset="1536"
-                    endOffset="1570"/>
+                    startOffset="1726"
+                    endOffset="1760"/>
             </fix-replace>
         </fix-composite>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="50"
+            line="54"
             column="21"
-            startOffset="1536"
-            endLine="50"
+            startOffset="1726"
+            endLine="54"
             endColumn="55"
-            endOffset="1570"/>
+            endOffset="1760"/>
     </incident>
 
     <incident
@@ -834,8 +1138,8 @@
                     priority="0">
                     <range
                         file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                        startOffset="375"
-                        endOffset="375"/>
+                        startOffset="486"
+                        endOffset="486"/>
                 </fix-replace>
                 <fix-replace
                     description="Replace with libs.google.material.v1110"
@@ -845,8 +1149,8 @@
                     priority="0">
                     <range
                         file="${:app*projectDir}/build.gradle.kts"
-                        startOffset="1592"
-                        endOffset="1637"/>
+                        startOffset="1782"
+                        endOffset="1827"/>
                 </fix-replace>
             </fix-composite>
             <fix-replace
@@ -855,18 +1159,18 @@
                 priority="0">
                 <range
                     file="${:app*projectDir}/build.gradle.kts"
-                    startOffset="1592"
-                    endOffset="1637"/>
+                    startOffset="1782"
+                    endOffset="1827"/>
             </fix-replace>
         </fix-alternatives>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="51"
+            line="55"
             column="21"
-            startOffset="1592"
-            endLine="51"
+            startOffset="1782"
+            endLine="55"
             endColumn="66"
-            endOffset="1637"/>
+            endOffset="1827"/>
     </incident>
 
     <incident
@@ -899,8 +1203,8 @@
                     priority="0">
                     <range
                         file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                        startOffset="375"
-                        endOffset="375"/>
+                        startOffset="486"
+                        endOffset="486"/>
                 </fix-replace>
                 <fix-replace
                     description="Replace with libs.google.firebase.firestore.v2471"
@@ -910,8 +1214,8 @@
                     priority="0">
                     <range
                         file="${:app*projectDir}/build.gradle.kts"
-                        startOffset="1659"
-                        endOffset="1706"/>
+                        startOffset="1849"
+                        endOffset="1896"/>
                 </fix-replace>
             </fix-composite>
             <fix-replace
@@ -920,18 +1224,18 @@
                 priority="0">
                 <range
                     file="${:app*projectDir}/build.gradle.kts"
-                    startOffset="1659"
-                    endOffset="1706"/>
+                    startOffset="1849"
+                    endOffset="1896"/>
             </fix-replace>
         </fix-alternatives>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="52"
+            line="56"
             column="21"
-            startOffset="1659"
-            endLine="52"
+            startOffset="1849"
+            endLine="56"
             endColumn="68"
-            endOffset="1706"/>
+            endOffset="1896"/>
     </incident>
 
     <incident
@@ -960,8 +1264,8 @@
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
-                    startOffset="375"
-                    endOffset="375"/>
+                    startOffset="486"
+                    endOffset="486"/>
             </fix-replace>
             <fix-replace
                 description="Replace with libs.google.gson"
@@ -970,18 +1274,83 @@
                 priority="0">
                 <range
                     file="${:app*projectDir}/build.gradle.kts"
-                    startOffset="1727"
-                    endOffset="1761"/>
+                    startOffset="1917"
+                    endOffset="1951"/>
             </fix-replace>
         </fix-composite>
         <location
             file="${:app*projectDir}/build.gradle.kts"
-            line="53"
+            line="57"
             column="20"
-            startOffset="1727"
-            endLine="53"
+            startOffset="1917"
+            endLine="57"
             endColumn="54"
-            endOffset="1761"/>
+            endOffset="1951"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (com.google.firebase:firebase-auth is already available as `firebase-auth`, but using version 23.2.0 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for google-firebase-auth-v2130"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with comGoogleFirebaseFirebaseAuth = &quot;21.3.0&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="comGoogleFirebaseFirebaseAuth = &quot;21.3.0&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
+                        startOffset="27"
+                        endOffset="27"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with google-firebase-auth-v2130 = { module = &quot;com.google.firebase:firebase-auth&quot;, version.ref = &quot;comGoogleFirebaseFirebaseAuth&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="google-firebase-auth-v2130 = { module = &quot;com.google.firebase:firebase-auth&quot;, version.ref = &quot;comGoogleFirebaseFirebaseAuth&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="$HOME/AndroidStudioProjects/Ecommerce/gradle/libs.versions.toml"
+                        startOffset="486"
+                        endOffset="486"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.google.firebase.auth.v2130"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.google.firebase.auth.v2130"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1973"
+                        endOffset="2015"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `firebase-auth` (version 23.2.0)"
+                replacement="libs.firebase.auth"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1973"
+                    endOffset="2015"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="58"
+            column="21"
+            startOffset="1973"
+            endLine="58"
+            endColumn="63"
+            endOffset="2015"/>
     </incident>
 
     <incident
@@ -1157,6 +1526,34 @@
         severity="warning"
         message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
         <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/adapters/AdminOrderAdapter.java"
+            line="97"
+            column="34"
+            startOffset="3620"
+            endLine="97"
+            endColumn="57"
+            endOffset="3643"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/adapters/AdminOrderAdapter.java"
+            line="97"
+            column="46"
+            startOffset="3632"
+            endLine="97"
+            endColumn="57"
+            endOffset="3643"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/CartActivity.java"
             line="117"
             column="33"
@@ -1325,13 +1722,69 @@
         severity="warning"
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
-            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="74"
-            column="45"
-            startOffset="2578"
-            endLine="74"
-            endColumn="72"
-            endOffset="2605"/>
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ForgotPasswordActivity.java"
+            line="86"
+            column="37"
+            startOffset="2687"
+            endLine="86"
+            endColumn="61"
+            endOffset="2711"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ForgotPasswordActivity.java"
+            line="103"
+            column="53"
+            startOffset="3352"
+            endLine="103"
+            endColumn="105"
+            endOffset="3404"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ForgotPasswordActivity.java"
+            line="107"
+            column="57"
+            startOffset="3675"
+            endLine="107"
+            endColumn="102"
+            endOffset="3720"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ForgotPasswordActivity.java"
+            line="107"
+            column="57"
+            startOffset="3675"
+            endLine="107"
+            endColumn="67"
+            endOffset="3685"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ForgotPasswordActivity.java"
+            line="109"
+            column="57"
+            startOffset="3816"
+            endLine="109"
+            endColumn="110"
+            endOffset="3869"/>
     </incident>
 
     <incident
@@ -1340,12 +1793,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="92"
-            column="65"
-            startOffset="3649"
-            endLine="92"
-            endColumn="85"
-            endOffset="3669"/>
+            line="76"
+            column="45"
+            startOffset="2701"
+            endLine="76"
+            endColumn="72"
+            endOffset="2728"/>
     </incident>
 
     <incident
@@ -1356,10 +1809,10 @@
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
             line="94"
             column="65"
-            startOffset="3839"
+            startOffset="3772"
             endLine="94"
-            endColumn="97"
-            endOffset="3871"/>
+            endColumn="85"
+            endOffset="3792"/>
     </incident>
 
     <incident
@@ -1370,10 +1823,24 @@
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
             line="96"
             column="65"
-            startOffset="4026"
+            startOffset="3962"
             endLine="96"
+            endColumn="97"
+            endOffset="3994"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
+            line="98"
+            column="65"
+            startOffset="4149"
+            endLine="98"
             endColumn="122"
-            endOffset="4083"/>
+            endOffset="4206"/>
     </incident>
 
     <incident
@@ -1382,12 +1849,12 @@
         message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="98"
+            line="100"
             column="65"
-            startOffset="4195"
-            endLine="98"
+            startOffset="4318"
+            endLine="100"
             endColumn="113"
-            endOffset="4243"/>
+            endOffset="4366"/>
     </incident>
 
     <incident
@@ -1396,12 +1863,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="98"
+            line="100"
             column="65"
-            startOffset="4195"
-            endLine="98"
+            startOffset="4318"
+            endLine="100"
             endColumn="87"
-            endOffset="4217"/>
+            endOffset="4340"/>
     </incident>
 
     <incident
@@ -1410,12 +1877,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="123"
+            line="135"
             column="49"
-            startOffset="5256"
-            endLine="123"
+            startOffset="5778"
+            endLine="135"
             endColumn="75"
-            endOffset="5282"/>
+            endOffset="5804"/>
     </incident>
 
     <incident
@@ -1424,12 +1891,12 @@
         message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="166"
+            line="178"
             column="69"
-            startOffset="8073"
-            endLine="166"
+            startOffset="8595"
+            endLine="178"
             endColumn="103"
-            endOffset="8107"/>
+            endOffset="8629"/>
     </incident>
 
     <incident
@@ -1438,12 +1905,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="166"
+            line="178"
             column="69"
-            startOffset="8073"
-            endLine="166"
+            startOffset="8595"
+            endLine="178"
             endColumn="86"
-            endOffset="8090"/>
+            endOffset="8612"/>
     </incident>
 
     <incident
@@ -1452,12 +1919,12 @@
         message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="173"
+            line="185"
             column="53"
-            startOffset="8357"
-            endLine="173"
+            startOffset="8879"
+            endLine="185"
             endColumn="82"
-            endOffset="8386"/>
+            endOffset="8908"/>
     </incident>
 
     <incident
@@ -1466,12 +1933,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="173"
+            line="185"
             column="53"
-            startOffset="8357"
-            endLine="173"
+            startOffset="8879"
+            endLine="185"
             endColumn="74"
-            endOffset="8378"/>
+            endOffset="8900"/>
     </incident>
 
     <incident
@@ -1480,12 +1947,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="190"
+            line="202"
             column="37"
-            startOffset="9051"
-            endLine="190"
+            startOffset="9573"
+            endLine="202"
             endColumn="65"
-            endOffset="9079"/>
+            endOffset="9601"/>
     </incident>
 
     <incident
@@ -1494,12 +1961,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="194"
+            line="206"
             column="37"
-            startOffset="9191"
-            endLine="194"
+            startOffset="9713"
+            endLine="206"
             endColumn="71"
-            endOffset="9225"/>
+            endOffset="9747"/>
     </incident>
 
     <incident
@@ -1508,12 +1975,82 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/MainActivity.java"
-            line="202"
+            line="214"
             column="33"
-            startOffset="9426"
-            endLine="202"
+            startOffset="9948"
+            endLine="214"
             endColumn="56"
-            endOffset="9449"/>
+            endOffset="9971"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/OrderDetailActivity.java"
+            line="201"
+            column="29"
+            startOffset="7784"
+            endLine="201"
+            endColumn="78"
+            endOffset="7833"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/OrderDetailActivity.java"
+            line="202"
+            column="29"
+            startOffset="7864"
+            endLine="202"
+            endColumn="84"
+            endOffset="7919"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/OrderDetailActivity.java"
+            line="203"
+            column="32"
+            startOffset="7953"
+            endLine="203"
+            endColumn="84"
+            endOffset="8005"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/admin/OrderDetailActivity.java"
+            line="204"
+            column="26"
+            startOffset="8033"
+            endLine="204"
+            endColumn="72"
+            endOffset="8079"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/adapters/OrderItemsAdapter.java"
+            line="73"
+            column="44"
+            startOffset="2472"
+            endLine="73"
+            endColumn="68"
+            endOffset="2496"/>
     </incident>
 
     <incident
@@ -1522,12 +2059,12 @@
         message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ProductDetailActivity.java"
-            line="189"
+            line="191"
             column="37"
-            startOffset="6724"
-            endLine="189"
+            startOffset="6877"
+            endLine="191"
             endColumn="61"
-            endOffset="6748"/>
+            endOffset="6901"/>
     </incident>
 
     <incident
@@ -1536,26 +2073,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ProductDetailActivity.java"
-            line="189"
+            line="191"
             column="37"
-            startOffset="6724"
-            endLine="189"
+            startOffset="6877"
+            endLine="191"
             endColumn="44"
-            endOffset="6731"/>
-    </incident>
-
-    <incident
-        id="SetTextI18n"
-        severity="warning"
-        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
-        <location
-            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ProductDetailActivity.java"
-            line="202"
-            column="29"
-            startOffset="7142"
-            endLine="202"
-            endColumn="55"
-            endOffset="7168"/>
+            endOffset="6884"/>
     </incident>
 
     <incident
@@ -1564,26 +2087,26 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ProductDetailActivity.java"
-            line="202"
+            line="215"
             column="29"
-            startOffset="7142"
-            endLine="202"
-            endColumn="41"
-            endOffset="7154"/>
-    </incident>
-
-    <incident
-        id="SetTextI18n"
-        severity="warning"
-        message="String literal in `setText` can not be translated. Use Android resources instead.">
-        <location
-            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/ecommerce/ProductDetailActivity.java"
-            line="207"
-            column="29"
-            startOffset="7377"
-            endLine="207"
+            startOffset="7774"
+            endLine="215"
             endColumn="39"
-            endOffset="7387"/>
+            endOffset="7784"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Quản lý đơn hàng&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_dashboard.xml"
+            line="46"
+            column="13"
+            startOffset="2002"
+            endLine="46"
+            endColumn="44"
+            endOffset="2033"/>
     </incident>
 
     <incident
@@ -1592,12 +2115,12 @@
         message="Hardcoded string &quot;Thêm sản phẩm mới&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_dashboard.xml"
-            line="46"
+            line="57"
             column="13"
-            startOffset="2003"
-            endLine="46"
+            startOffset="2506"
+            endLine="57"
             endColumn="45"
-            endOffset="2035"/>
+            endOffset="2538"/>
     </incident>
 
     <incident
@@ -1606,12 +2129,12 @@
         message="Hardcoded string &quot;Danh sách sản phẩm&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_dashboard.xml"
-            line="59"
+            line="70"
             column="13"
-            startOffset="2557"
-            endLine="59"
+            startOffset="3060"
+            endLine="70"
             endColumn="46"
-            endOffset="2590"/>
+            endOffset="3093"/>
     </incident>
 
     <incident
@@ -1620,12 +2143,124 @@
         message="Hardcoded string &quot;Không tìm thấy sản phẩm nào&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_dashboard.xml"
-            line="83"
+            line="94"
             column="13"
-            startOffset="3655"
-            endLine="83"
+            startOffset="4158"
+            endLine="94"
             endColumn="55"
-            endOffset="3697"/>
+            endOffset="4200"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Tất cả&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_orders.xml"
+            line="55"
+            column="17"
+            startOffset="2471"
+            endLine="55"
+            endColumn="38"
+            endOffset="2492"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Chờ xác nhận&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_orders.xml"
+            line="60"
+            column="17"
+            startOffset="2677"
+            endLine="60"
+            endColumn="44"
+            endOffset="2704"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Đã xác nhận&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_orders.xml"
+            line="65"
+            column="17"
+            startOffset="2889"
+            endLine="65"
+            endColumn="43"
+            endOffset="2915"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Đang giao&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_orders.xml"
+            line="70"
+            column="17"
+            startOffset="3100"
+            endLine="70"
+            endColumn="41"
+            endOffset="3124"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Đã giao&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_orders.xml"
+            line="75"
+            column="17"
+            startOffset="3309"
+            endLine="75"
+            endColumn="39"
+            endOffset="3331"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Đã hủy&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_orders.xml"
+            line="80"
+            column="17"
+            startOffset="3516"
+            endLine="80"
+            endColumn="38"
+            endOffset="3537"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Danh sách đơn hàng&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_orders.xml"
+            line="90"
+            column="13"
+            startOffset="3889"
+            endLine="90"
+            endColumn="46"
+            endOffset="3922"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Không tìm thấy đơn hàng nào&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_admin_orders.xml"
+            line="114"
+            column="13"
+            startOffset="4973"
+            endLine="114"
+            endColumn="55"
+            endOffset="5015"/>
     </incident>
 
     <incident
@@ -2376,12 +3011,12 @@
         message="Hardcoded string &quot;Flash Sale&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_home_main.xml"
-            line="77"
-            column="21"
-            startOffset="3678"
-            endLine="77"
-            endColumn="46"
-            endOffset="3703"/>
+            line="96"
+            column="17"
+            startOffset="4291"
+            endLine="96"
+            endColumn="42"
+            endOffset="4316"/>
     </incident>
 
     <incident
@@ -2390,12 +3025,12 @@
         message="Hardcoded string &quot;05 : 32 : 45&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_home_main.xml"
-            line="90"
-            column="21"
-            startOffset="4324"
-            endLine="90"
-            endColumn="48"
-            endOffset="4351"/>
+            line="109"
+            column="17"
+            startOffset="4890"
+            endLine="109"
+            endColumn="44"
+            endOffset="4917"/>
     </incident>
 
     <incident
@@ -2404,12 +3039,12 @@
         message="Hardcoded string &quot;Featured Products&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_home_main.xml"
-            line="118"
-            column="21"
-            startOffset="5755"
-            endLine="118"
-            endColumn="53"
-            endOffset="5787"/>
+            line="137"
+            column="17"
+            startOffset="6219"
+            endLine="137"
+            endColumn="49"
+            endOffset="6251"/>
     </incident>
 
     <incident
@@ -2418,12 +3053,12 @@
         message="Hardcoded string &quot;All Products&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_home_main.xml"
-            line="145"
-            column="21"
-            startOffset="7137"
-            endLine="145"
-            endColumn="48"
-            endOffset="7164"/>
+            line="164"
+            column="17"
+            startOffset="7503"
+            endLine="164"
+            endColumn="44"
+            endOffset="7530"/>
     </incident>
 
     <incident
@@ -2432,12 +3067,12 @@
         message="Hardcoded string &quot;Danh sách tất cả sản phẩm&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_home_main.xml"
-            line="164"
-            column="21"
-            startOffset="8215"
-            endLine="164"
-            endColumn="75"
-            endOffset="8269"/>
+            line="183"
+            column="17"
+            startOffset="8510"
+            endLine="183"
+            endColumn="71"
+            endOffset="8564"/>
     </incident>
 
     <incident
@@ -2499,57 +3134,351 @@
     <incident
         id="HardcodedText"
         severity="warning"
+        message="Hardcoded string &quot;Forgot Password?&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="73"
+            column="13"
+            startOffset="2876"
+            endLine="73"
+            endColumn="44"
+            endOffset="2907"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
         message="Hardcoded string &quot;Register&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
-            line="72"
+            line="84"
             column="13"
-            startOffset="2864"
-            endLine="72"
+            startOffset="3307"
+            endLine="84"
             endColumn="36"
-            endOffset="2887"/>
+            endOffset="3330"/>
     </incident>
 
     <incident
         id="HardcodedText"
         severity="warning"
-        message="Hardcoded string &quot;Admin Products Management&quot;, should use `@string` resource">
+        message="Hardcoded string &quot;Thông tin đơn hàng&quot;, should use `@string` resource">
         <location
-            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
-            line="86"
-            column="13"
-            startOffset="3346"
-            endLine="86"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="55"
+            column="25"
+            startOffset="2402"
+            endLine="55"
+            endColumn="58"
+            endOffset="2435"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Mã đơn:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="69"
+            column="29"
+            startOffset="3065"
+            endLine="69"
+            endColumn="51"
+            endOffset="3087"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Ngày đặt:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="88"
+            column="29"
+            startOffset="3933"
+            endLine="88"
             endColumn="53"
-            endOffset="3386"/>
+            endOffset="3957"/>
     </incident>
 
     <incident
         id="HardcodedText"
         severity="warning"
-        message="Hardcoded string &quot;Tình trạng:&quot;, should use `@string` resource">
+        message="Hardcoded string &quot;Trạng thái:&quot;, should use `@string` resource">
         <location
-            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
-            line="131"
-            column="17"
-            startOffset="5879"
-            endLine="131"
-            endColumn="43"
-            endOffset="5905"/>
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="107"
+            column="29"
+            startOffset="4812"
+            endLine="107"
+            endColumn="55"
+            endOffset="4838"/>
     </incident>
 
     <incident
         id="HardcodedText"
         severity="warning"
-        message="Hardcoded string &quot;Số lượng:&quot;, should use `@string` resource">
+        message="Hardcoded string &quot;Khách hàng:&quot;, should use `@string` resource">
         <location
-            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
-            line="155"
-            column="17"
-            startOffset="6966"
-            endLine="155"
-            endColumn="41"
-            endOffset="6990"/>
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="133"
+            column="29"
+            startOffset="6122"
+            endLine="133"
+            endColumn="55"
+            endOffset="6148"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Email:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="152"
+            column="29"
+            startOffset="7000"
+            endLine="152"
+            endColumn="50"
+            endOffset="7021"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Thanh toán:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="170"
+            column="29"
+            startOffset="7825"
+            endLine="170"
+            endColumn="55"
+            endOffset="7851"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Địa chỉ giao hàng&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="204"
+            column="25"
+            startOffset="9380"
+            endLine="204"
+            endColumn="57"
+            endOffset="9412"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Người nhận:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="218"
+            column="29"
+            startOffset="10042"
+            endLine="218"
+            endColumn="55"
+            endOffset="10068"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Số điện thoại:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="237"
+            column="29"
+            startOffset="10921"
+            endLine="237"
+            endColumn="58"
+            endOffset="10950"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Địa chỉ:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="255"
+            column="29"
+            startOffset="11743"
+            endLine="255"
+            endColumn="52"
+            endOffset="11766"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Sản phẩm&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="289"
+            column="25"
+            startOffset="13323"
+            endLine="289"
+            endColumn="48"
+            endOffset="13346"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Tạm tính:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="319"
+            column="29"
+            startOffset="14787"
+            endLine="319"
+            endColumn="53"
+            endOffset="14811"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Giảm giá:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="343"
+            column="29"
+            startOffset="15869"
+            endLine="343"
+            endColumn="53"
+            endOffset="15893"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Phí vận chuyển:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="368"
+            column="29"
+            startOffset="17007"
+            endLine="368"
+            endColumn="59"
+            endOffset="17037"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Tổng cộng:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="398"
+            column="29"
+            startOffset="18351"
+            endLine="398"
+            endColumn="54"
+            endOffset="18376"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Cập nhật trạng thái&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="440"
+            column="25"
+            startOffset="20264"
+            endLine="440"
+            endColumn="59"
+            endOffset="20298"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Chờ xác nhận&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="455"
+            column="29"
+            startOffset="20995"
+            endLine="455"
+            endColumn="56"
+            endOffset="21022"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Đã xác nhận&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="461"
+            column="29"
+            startOffset="21288"
+            endLine="461"
+            endColumn="55"
+            endOffset="21314"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Đang giao hàng&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="467"
+            column="29"
+            startOffset="21579"
+            endLine="467"
+            endColumn="58"
+            endOffset="21608"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Đã giao hàng&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="473"
+            column="29"
+            startOffset="21874"
+            endLine="473"
+            endColumn="56"
+            endOffset="21901"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Đã hủy&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="479"
+            column="29"
+            startOffset="22167"
+            endLine="479"
+            endColumn="50"
+            endOffset="22188"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Cập nhật trạng thái&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_order_detail.xml"
+            line="487"
+            column="25"
+            startOffset="22521"
+            endLine="487"
+            endColumn="59"
+            endOffset="22555"/>
     </incident>
 
     <incident
@@ -2558,12 +3487,12 @@
         message="Hardcoded string &quot;-&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
-            line="175"
+            line="112"
             column="21"
-            startOffset="7941"
-            endLine="175"
+            startOffset="5115"
+            endLine="112"
             endColumn="37"
-            endOffset="7957"/>
+            endOffset="5131"/>
     </incident>
 
     <incident
@@ -2572,12 +3501,12 @@
         message="Hardcoded string &quot;1&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
-            line="184"
+            line="121"
             column="21"
-            startOffset="8314"
-            endLine="184"
+            startOffset="5488"
+            endLine="121"
             endColumn="37"
-            endOffset="8330"/>
+            endOffset="5504"/>
     </incident>
 
     <incident
@@ -2586,12 +3515,40 @@
         message="Hardcoded string &quot;+&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
-            line="194"
+            line="131"
             column="21"
-            startOffset="8750"
-            endLine="194"
+            startOffset="5924"
+            endLine="131"
             endColumn="37"
-            endOffset="8766"/>
+            endOffset="5940"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Tình trạng:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
+            line="171"
+            column="17"
+            startOffset="7622"
+            endLine="171"
+            endColumn="43"
+            endOffset="7648"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Số lượng:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
+            line="195"
+            column="17"
+            startOffset="8746"
+            endLine="195"
+            endColumn="41"
+            endOffset="8770"/>
     </incident>
 
     <incident
@@ -2600,12 +3557,12 @@
         message="Hardcoded string &quot;Danh mục:&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
-            line="218"
+            line="221"
             column="17"
-            startOffset="9754"
-            endLine="218"
+            startOffset="9897"
+            endLine="221"
             endColumn="41"
-            endOffset="9778"/>
+            endOffset="9921"/>
     </incident>
 
     <incident
@@ -2614,12 +3571,12 @@
         message="Hardcoded string &quot;Mô tả sản phẩm&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
-            line="241"
+            line="246"
             column="17"
-            startOffset="10807"
-            endLine="241"
+            startOffset="11057"
+            endLine="246"
             endColumn="46"
-            endOffset="10836"/>
+            endOffset="11086"/>
     </incident>
 
     <incident
@@ -2628,12 +3585,12 @@
         message="Hardcoded string &quot;Thêm vào giỏ&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
-            line="282"
+            line="288"
             column="13"
-            startOffset="12767"
-            endLine="282"
+            startOffset="13064"
+            endLine="288"
             endColumn="40"
-            endOffset="12794"/>
+            endOffset="13091"/>
     </incident>
 
     <incident
@@ -2642,12 +3599,26 @@
         message="Hardcoded string &quot;Mua ngay&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_product_detail.xml"
-            line="294"
+            line="300"
             column="13"
-            startOffset="13303"
-            endLine="294"
+            startOffset="13600"
+            endLine="300"
             endColumn="36"
-            endOffset="13326"/>
+            endOffset="13623"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Đăng ký tài khoản&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_register.xml"
+            line="26"
+            column="13"
+            startOffset="1066"
+            endLine="26"
+            endColumn="45"
+            endOffset="1098"/>
     </incident>
 
     <incident
@@ -2656,12 +3627,12 @@
         message="Hardcoded string &quot;Email&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_register.xml"
-            line="19"
+            line="37"
             column="13"
-            startOffset="814"
-            endLine="19"
+            startOffset="1477"
+            endLine="37"
             endColumn="33"
-            endOffset="834"/>
+            endOffset="1497"/>
     </incident>
 
     <incident
@@ -2670,12 +3641,12 @@
         message="Hardcoded string &quot;Mật khẩu&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_register.xml"
-            line="26"
+            line="48"
             column="13"
-            startOffset="1061"
-            endLine="26"
+            startOffset="1911"
+            endLine="48"
             endColumn="36"
-            endOffset="1084"/>
+            endOffset="1934"/>
     </incident>
 
     <incident
@@ -2684,12 +3655,12 @@
         message="Hardcoded string &quot;Đăng ký&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_register.xml"
-            line="33"
+            line="58"
             column="13"
-            startOffset="1312"
-            endLine="33"
+            startOffset="2311"
+            endLine="58"
             endColumn="35"
-            endOffset="1334"/>
+            endOffset="2333"/>
     </incident>
 
     <incident
@@ -2891,6 +3862,76 @@
     <incident
         id="HardcodedText"
         severity="warning"
+        message="Hardcoded string &quot;Reset Password&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/forgot_password.xml"
+            line="26"
+            column="13"
+            startOffset="1096"
+            endLine="26"
+            endColumn="42"
+            endOffset="1125"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Enter your email address and we&apos;ll send you instructions to reset your password&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/forgot_password.xml"
+            line="35"
+            column="13"
+            startOffset="1429"
+            endLine="35"
+            endColumn="107"
+            endOffset="1523"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Email&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/forgot_password.xml"
+            line="44"
+            column="13"
+            startOffset="1835"
+            endLine="44"
+            endColumn="33"
+            endOffset="1855"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Send Reset Email&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/forgot_password.xml"
+            line="54"
+            column="13"
+            startOffset="2240"
+            endLine="54"
+            endColumn="44"
+            endOffset="2271"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Back to Login&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/forgot_password.xml"
+            line="69"
+            column="13"
+            startOffset="2805"
+            endLine="69"
+            endColumn="41"
+            endOffset="2833"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
         message="Hardcoded string &quot;Search&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/menu/home_menu.xml"
@@ -2928,6 +3969,62 @@
             endLine="18"
             endColumn="31"
             endOffset="710"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Mã đơn: &quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_admin_order.xml"
+            line="26"
+            column="17"
+            startOffset="975"
+            endLine="26"
+            endColumn="40"
+            endOffset="998"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Khách hàng: &quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_admin_order.xml"
+            line="59"
+            column="17"
+            startOffset="2154"
+            endLine="59"
+            endColumn="44"
+            endOffset="2181"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Email: &quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_admin_order.xml"
+            line="86"
+            column="17"
+            startOffset="3147"
+            endLine="86"
+            endColumn="39"
+            endOffset="3169"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Tổng tiền: &quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_admin_order.xml"
+            line="104"
+            column="17"
+            startOffset="3802"
+            endLine="104"
+            endColumn="43"
+            endOffset="3828"/>
     </incident>
 
     <incident
@@ -3320,6 +4417,20 @@
             endLine="93"
             endColumn="38"
             endOffset="3820"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Product image&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_order_detail_product.xml"
+            line="15"
+            column="9"
+            startOffset="584"
+            endLine="15"
+            endColumn="51"
+            endOffset="626"/>
     </incident>
 
     <incident

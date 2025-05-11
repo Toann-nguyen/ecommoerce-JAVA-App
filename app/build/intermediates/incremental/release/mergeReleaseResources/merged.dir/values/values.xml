@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools" xmlns:ns2="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="assume_strong_biometrics_models">
+        <item>Pixel 4</item>
+        <item>Pixel 4 XL</item>
+    </string-array>
+    <string-array name="crypto_fingerprint_fallback_prefixes">
+    </string-array>
+    <string-array name="crypto_fingerprint_fallback_vendors">
+        <item>samsung</item>
+    </string-array>
+    <string-array name="delay_showing_prompt_models">
+        <item>Pixel 4</item>
+        <item>Pixel 4 XL</item>
+    </string-array>
+    <string-array name="hide_fingerprint_instantly_prefixes">
+        <item>SM-A50</item> 
+        <item>SM-G973</item> 
+        <item>SM-G975</item> 
+        <item>SM-G977</item> 
+        <item>SM-G770</item> 
+        <item>SM-N970</item> 
+        <item>SM-N971</item> 
+        <item>SM-N975</item> 
+        <item>SM-N976</item> 
+        <item>SM-N770</item> 
+        <item>SC-03L</item> 
+        <item>SC-04L</item> 
+        <item>SC-05L</item> 
+        <item>SC-01M</item> 
+        <item>SCV41</item> 
+        <item>SCV42</item> 
+        <item>SCV45</item> 
+    </string-array>
     <attr format="enum" name="animateCircleAngleTo">
         <enum name="bestChoice" value="0"/>
         <enum name="closest" value="1"/>
@@ -641,6 +673,7 @@
     <color name="background_floating_material_light">@android:color/white</color>
     <color name="background_material_dark">@color/material_grey_850</color>
     <color name="background_material_light">@color/material_grey_50</color>
+    <color name="biometric_error_color">#ff5722</color>
     <color name="black">#FF000000</color>
     <color name="bottom_nav_inactive">#9E9E9E</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
@@ -1129,6 +1162,7 @@
     <dimen name="fastscroll_default_thickness">8dp</dimen>
     <dimen name="fastscroll_margin">0dp</dimen>
     <dimen name="fastscroll_minimum_range">50dp</dimen>
+    <dimen name="fingerprint_icon_size">64dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
@@ -1826,6 +1860,8 @@
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
+    <item name="action_orders" type="id"/>
+    <item name="androidx_credential_pendingCredentialRequest" type="id"/>
     <item name="fragment_container_view_tag" type="id"/>
     <item name="ghost_view" type="id"/>
     <item name="ghost_view_holder" type="id"/>
@@ -2046,7 +2082,9 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="confirm_device_credential_password">Use password</string>
     <string name="copy_toast_msg">Link copied to clipboard</string>
+    <string name="default_error_msg">Unknown error</string>
     <string description="Screen reader announcement for when a checkbox is on error. [CHAR LIMIT=NONE]" name="error_a11y_label">
     Error: invalid
   </string>
@@ -2057,7 +2095,17 @@
     <string name="fallback_menu_item_copy_link">Copy link</string>
     <string name="fallback_menu_item_open_in_browser">Open in browser</string>
     <string name="fallback_menu_item_share_link">Share link</string>
+    <string name="fingerprint_dialog_touch_sensor">Touch the fingerprint sensor</string>
+    <string name="fingerprint_error_hw_not_available">Fingerprint hardware not available.</string>
+    <string name="fingerprint_error_hw_not_present">This device does not have a fingerprint sensor</string>
+    <string name="fingerprint_error_lockout">Too many attempts. Please try again later.</string>
+    <string name="fingerprint_error_no_fingerprints">No fingerprints enrolled.</string>
+    <string name="fingerprint_error_user_canceled">Fingerprint operation canceled by user.</string>
+    <string name="fingerprint_not_recognized">Not recognized</string>
     <string name="gcm_defaultSenderId" translatable="false">615717299049</string>
+    <string name="generic_error_no_device_credential">No PIN, pattern, or password set.</string>
+    <string name="generic_error_no_keyguard">This device does not support PIN, pattern, or password.</string>
+    <string name="generic_error_user_canceled">Authentication canceled by user.</string>
     <string name="google_api_key" translatable="false">AIzaSyDWrLYZt3MOsjAUDf2153oJp7BrpoBccf0</string>
     <string name="google_app_id" translatable="false">1:615717299049:android:41d0e55e92cdd0803753f8</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDWrLYZt3MOsjAUDf2153oJp7BrpoBccf0</string>
@@ -11510,6 +11558,8 @@
         
         <attr format="string" name="fontProviderQuery"/>
         
+        <attr format="string" name="fontProviderFallbackQuery"/>
+        
         <attr format="reference" name="fontProviderCerts"/>
         
         <attr name="fontProviderFetchStrategy">
@@ -11520,7 +11570,7 @@
               default typeface will be used instead. -->
             <enum name="blocking" value="0"/>
             <!-- The async font fetch works as follows.
-              First, check the local cache, then if the requeted font is not cached, trigger a
+              First, check the local cache, then if the requested font is not cached, trigger a
               request the font and continue with layout inflation. Once the font fetch succeeds, the
               target text view will be refreshed with the downloaded font data. The
               fontProviderFetchTimeout will be ignored if async loading is specified. -->
