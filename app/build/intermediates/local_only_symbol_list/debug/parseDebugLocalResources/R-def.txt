@@ -38,6 +38,7 @@ drawable ic_person
 drawable ic_profile
 drawable ic_search
 drawable ic_shopping_cart
+drawable ic_success
 drawable login_background
 drawable placeholder_image
 drawable status_badge_background
@@ -58,6 +59,7 @@ id btnAddToCart
 id btnAdmin
 id btnBuyNow
 id btnCheckout
+id btnContinueShopping
 id btnCreateProduct
 id btnDecrease
 id btnDelete
@@ -69,6 +71,7 @@ id btnRemove
 id btnSaveProduct
 id btnSelectImage
 id btnUpdateStatus
+id cardOrderDetails
 id cardOrderInfo
 id cardOrderItems
 id cardOrders
@@ -115,6 +118,7 @@ id imgFlash
 id imgProduct
 id imgSlider
 id ivProductImage
+id ivSuccess
 id layoutDots
 id loginButton
 id main
@@ -190,7 +194,12 @@ id tvItemCount
 id tvItemTotal
 id tvNameFeatured
 id tvNameFlash
+id tvOrderAmount
+id tvOrderId
+id tvOrderMessage
+id tvOrderStatus
 id tvOriginalPrice
+id tvPaymentMethod
 id tvPrice
 id tvPriceFeatured
 id tvPriceFlash
@@ -206,6 +215,7 @@ id tvStockLabel
 id tvSubtotal
 id tvSubtotalLabel
 id tvSubtotalValue
+id tvThankYou
 id tvTotal
 id tvTotalLabel
 id tvTotalValue
@@ -239,6 +249,7 @@ id usernameEditText
 id viewBackground
 id viewPagerFlashSaleBanner
 id viewPagerImages
+id webView
 layout activity_admin_dashboard
 layout activity_admin_orders
 layout activity_admin_panel
@@ -249,9 +260,11 @@ layout activity_edit_product
 layout activity_home_main
 layout activity_home_main_drawer
 layout activity_main
+layout activity_order_confirmation
 layout activity_order_detail
 layout activity_product_detail
 layout activity_register
+layout activity_vnpay
 layout forgot_password
 layout item_admin_order
 layout item_admin_product

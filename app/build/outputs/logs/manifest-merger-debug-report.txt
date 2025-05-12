@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-66:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-66:12
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:2:1-69:12
 MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\53ac5986d7e37d1e562f3a0cfe753fef\transformed\glide-4.16.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\c5b0ae20d2571b71f84a121a0a8f2c67\transformed\firebase-database-21.0.0\AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.firebase:firebase-storage:21.0.1] C:\Users\Admin\.gradle\caches\8.11.1\transforms\ee8f87f5e99f43ccd4dc4f0fb07b4f3e\transformed\firebase-storage-21.0.1\AndroidManifest.xml:15:1-39:12
@@ -120,8 +120,8 @@ MERGED from [io.grpc:grpc-android:1.62.2] C:\Users\Admin\.gradle\caches\8.11.1\t
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:6:22-76
 application
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:7:5-64:19
-INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:7:5-64:19
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:7:5-67:19
+INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:7:5-67:19
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\c5b0ae20d2571b71f84a121a0a8f2c67\transformed\firebase-database-21.0.0\AndroidManifest.xml:25:5-36:19
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\Admin\.gradle\caches\8.11.1\transforms\c5b0ae20d2571b71f84a121a0a8f2c67\transformed\firebase-database-21.0.0\AndroidManifest.xml:25:5-36:19
 MERGED from [com.google.firebase:firebase-storage:21.0.1] C:\Users\Admin\.gradle\caches\8.11.1\transforms\ee8f87f5e99f43ccd4dc4f0fb07b4f3e\transformed\firebase-storage-21.0.1\AndroidManifest.xml:26:5-37:19
@@ -240,52 +240,58 @@ ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidMa
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:39:13-37
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:38:13-45
-activity#com.example.ecommerce.CartActivity
+activity#com.example.ecommerce.payment.VNPayActivity
 ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:40:9-42:40
 	android:exported
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:42:13-37
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:41:13-41
-activity#com.example.ecommerce.Register
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:41:13-50
+activity#com.example.ecommerce.CartActivity
 ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:43:9-45:40
 	android:exported
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:45:13-37
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:44:13-37
-activity#com.example.ecommerce.ForgotPasswordActivity
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:44:13-41
+activity#com.example.ecommerce.Register
 ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:46:9-48:40
 	android:exported
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:48:13-37
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:47:13-51
-activity#com.example.ecommerce.admin.AdminOrdersActivity
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:47:13-37
+activity#com.example.ecommerce.ForgotPasswordActivity
 ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:49:9-51:40
 	android:exported
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:51:13-37
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:50:13-54
-activity#com.example.ecommerce.admin.OrderDetailActivity
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:50:13-51
+activity#com.example.ecommerce.admin.AdminOrdersActivity
 ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:52:9-54:40
 	android:exported
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:54:13-37
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:53:13-54
-activity#com.example.ecommerce.MainActivity
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:55:9-63:20
+activity#com.example.ecommerce.admin.OrderDetailActivity
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:55:9-57:40
 	android:exported
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:57:13-36
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:57:13-37
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:56:13-41
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:56:13-54
+activity#com.example.ecommerce.MainActivity
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:58:9-66:20
+	android:exported
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:60:13-36
+	android:name
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:59:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:58:13-62:29
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:61:13-65:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:59:17-69
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:62:17-69
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:59:25-66
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:62:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:61:17-77
+ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:64:17-77
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:61:27-74
+		ADDED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml:64:27-74
 uses-sdk
 INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Admin\AndroidStudioProjects\Ecommerce\app\src\main\AndroidManifest.xml

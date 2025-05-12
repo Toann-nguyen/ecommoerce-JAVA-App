@@ -38,6 +38,9 @@
             android:name=".CheckoutActivity"
             android:exported="false" />
         <activity
+            android:name=".payment.VNPayActivity"
+            android:exported="false" />
+        <activity
             android:name=".CartActivity"
             android:exported="false" />
         <activity

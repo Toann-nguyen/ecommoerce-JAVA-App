@@ -132,6 +132,10 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-46:\\drawable\\ic_add.xml"
     },
     {
+        "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-44:\\layout_activity_order_confirmation.xml.flat",
+        "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-46:\\layout\\activity_order_confirmation.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-44:\\layout_activity_admin_dashboard.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-46:\\layout\\activity_admin_dashboard.xml"
     },
@@ -224,6 +228,10 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-46:\\layout\\forgot_password.xml"
     },
     {
+        "merged": "com.example.ecommerce.app-debug-44:/layout_activity_vnpay.xml.flat",
+        "source": "com.example.ecommerce.app-main-46:/layout/activity_vnpay.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-44:\\drawable_badge_background.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-46:\\drawable\\badge_background.xml"
     },
@@ -256,6 +264,10 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-46:\\drawable\\ic_add_shopping_cart.xml"
     },
     {
+        "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-44:\\drawable_ic_success.xml.flat",
+        "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-46:\\drawable\\ic_success.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-44:\\layout_item_banner.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-46:\\layout\\item_banner.xml"
     },
@@ -274,10 +286,6 @@
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-44:\\drawable_ic_person.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-main-46:\\drawable\\ic_person.xml"
-    },
-    {
-        "merged": "com.example.ecommerce.app-debug-44:/layout_activity_main.xml.flat",
-        "source": "com.example.ecommerce.app-main-46:/layout/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\8.11.1\\com.example.ecommerce.app-debug-44:\\mipmap-hdpi_ic_launcher.webp.flat",

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -32,6 +33,12 @@ import models.ShoppingCart;
 import repository.FirebaseRepository;
 import repository.OrderRepository;
 
+import com.example.ecommerce.payment.VNPayActivity;
+import com.example.ecommerce.payment.VNPayHelper;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+
 public class CheckoutActivity extends AppCompatActivity {
 
     // UI components
@@ -56,6 +63,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private Product singleProduct;
     private int singleProductQuantity = 1;
     private AlertDialog progressDialog;
+    private ActivityResultLauncher<Intent> vnPayLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +134,7 @@ public class CheckoutActivity extends AppCompatActivity {
         // Khởi tạo UI
         initViews();
         setupToolbar();
+        setupVNPayLauncher();
 
         // Thiết lập nút đặt hàng
         btnPlaceOrder.setOnClickListener(v -> validateAndPlaceOrder());
@@ -148,10 +157,45 @@ public class CheckoutActivity extends AppCompatActivity {
         tvShippingFee = findViewById(R.id.tvShippingFee);
         tvTotal = findViewById(R.id.tvTotal);
         btnPlaceOrder = findViewById(R.id.btnPlaceOrder);
+
+        // Thêm phương thức thanh toán VNPAY vào RadioGroup nếu chưa có
+        boolean hasVnpay = false;
+        for (int i = 0; i < rgPaymentMethod.getChildCount(); i++) {
+            View child = rgPaymentMethod.getChildAt(i);
+            if (child instanceof RadioButton) {
+                RadioButton rb = (RadioButton) child;
+                if ("VNPAY".equals(rb.getText().toString())) {
+                    hasVnpay = true;
+                    break;
+                }
+            }
+        }
+
+        if (!hasVnpay) {
+            RadioButton rbVnpay = new RadioButton(this);
+            rbVnpay.setId(View.generateViewId());
+            rbVnpay.setText("VNPAY");
+            rgPaymentMethod.addView(rbVnpay);
+        }
     }
 
     private void setupToolbar() {
         topAppBar.setNavigationOnClickListener(v -> onBackPressed());
+    }
+
+    private void setupVNPayLauncher() {
+        vnPayLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        String vnpayResponse = result.getData().getStringExtra("VNPAY_RESPONSE");
+                        handleVNPayResponse(vnpayResponse);
+                    } else {
+                        // Payment canceled or failed
+                        Toast.makeText(this, "Thanh toán bị hủy hoặc thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
     }
 
     private void calculateOrderSummary() {
@@ -254,30 +298,63 @@ public class CheckoutActivity extends AppCompatActivity {
         RadioButton selectedPaymentButton = findViewById(selectedPaymentId);
         String paymentMethod = selectedPaymentButton.getText().toString();
 
-        // Tạo đối tượng đơn hàng
-        Order order;
-        if (currentUser != null) {
-            String userEmail = currentUser.getEmail();
-            String userName = currentUser.getDisplayName() != null ? currentUser.getDisplayName() : "Khách hàng";
+        // Kiểm tra nếu thanh toán bằng VNPAY
+        if ("VNPAY".equals(paymentMethod)) {
+            // Tạo mã đơn hàng duy nhất cho VNPAY
+            String orderId = "ECM" + System.currentTimeMillis();
+            String orderInfo = "Thanh toan don hang #" + orderId;
 
-            if (isBuyNow && singleProduct != null) {
-                // Tạo đơn hàng cho trường hợp mua ngay 1 sản phẩm
-                CartItem singleItem = new CartItem(singleProduct, singleProductQuantity);
-                order = new Order(
-                        currentUser.getUid(),
-                        userEmail,
-                        userName,
-                        singleItem,
-                        shippingAddress,
-                        paymentMethod,
-                        subtotal,
-                        discount,
-                        shippingFee
-                );
+            // Tạo URL thanh toán VNPAY
+            String paymentUrl = VNPayHelper.generatePaymentUrl(
+                    this,
+                    orderId,
+                    total,  // Số tiền thanh toán (VND)
+                    orderInfo
+            );
+
+            // Mở VNPayActivity để thanh toán
+            Intent intent = new Intent(this, VNPayActivity.class);
+            intent.putExtra("PAYMENT_URL", paymentUrl);
+            vnPayLauncher.launch(intent);
+        } else {
+            // Tạo đối tượng đơn hàng
+            Order order;
+            if (currentUser != null) {
+                String userEmail = currentUser.getEmail();
+                String userName = currentUser.getDisplayName() != null ? currentUser.getDisplayName() : "Khách hàng";
+
+                if (isBuyNow && singleProduct != null) {
+                    // Tạo đơn hàng cho trường hợp mua ngay 1 sản phẩm
+                    CartItem singleItem = new CartItem(singleProduct, singleProductQuantity);
+                    order = new Order(
+                            currentUser.getUid(),
+                            userEmail,
+                            userName,
+                            singleItem,
+                            shippingAddress,
+                            paymentMethod,
+                            subtotal,
+                            discount,
+                            shippingFee
+                    );
+                } else {
+                    // Tạo đơn hàng từ giỏ hàng
+                    order = new Order(
+                            currentUser.getUid(),
+                            cartItems,
+                            shippingAddress,
+                            paymentMethod,
+                            subtotal,
+                            discount,
+                            shippingFee
+                    );
+                    order.setUserEmail(userEmail);
+                    order.setUserName(userName);
+                }
             } else {
-                // Tạo đơn hàng từ giỏ hàng
+                // Fallback nếu không có thông tin người dùng
                 order = new Order(
-                        currentUser.getUid(),
+                        "guest",
                         cartItems,
                         shippingAddress,
                         paymentMethod,
@@ -285,24 +362,11 @@ public class CheckoutActivity extends AppCompatActivity {
                         discount,
                         shippingFee
                 );
-                order.setUserEmail(userEmail);
-                order.setUserName(userName);
             }
-        } else {
-            // Fallback nếu không có thông tin người dùng
-            order = new Order(
-                    "guest",
-                    cartItems,
-                    shippingAddress,
-                    paymentMethod,
-                    subtotal,
-                    discount,
-                    shippingFee
-            );
-        }
 
-        // Hiển thị dialog xác nhận
-        showConfirmationDialog(order);
+            // Hiển thị dialog xác nhận
+            showConfirmationDialog(order);
+        }
     }
 
     private void showConfirmationDialog(final Order order) {
@@ -372,5 +436,87 @@ public class CheckoutActivity extends AppCompatActivity {
                 })
                 .setCancelable(false)
                 .show();
+    }
+
+    private void handleVNPayResponse(String responseUrl) {
+        // Parse URL to get response parameters
+        Uri uri = Uri.parse(responseUrl);
+        String vnpResponseCode = uri.getQueryParameter("vnp_ResponseCode");
+
+        if ("00".equals(vnpResponseCode)) {
+            // Payment successful
+            // Lấy thông tin để tạo đơn hàng
+            String fullName = etFullName.getText().toString().trim();
+            String phone = etPhone.getText().toString().trim();
+            String address = etAddress.getText().toString().trim();
+            String city = etCity.getText().toString().trim();
+            ShippingAddress shippingAddress = new ShippingAddress(fullName, phone, address, city);
+
+            // Tạo đối tượng đơn hàng với phương thức thanh toán là VNPAY
+            Order order;
+            if (currentUser != null) {
+                String userEmail = currentUser.getEmail();
+                String userName = currentUser.getDisplayName() != null ? currentUser.getDisplayName() : "Khách hàng";
+                String transactionId = uri.getQueryParameter("vnp_TransactionNo");
+
+                if (isBuyNow && singleProduct != null) {
+                    CartItem singleItem = new CartItem(singleProduct, singleProductQuantity);
+                    order = new Order(
+                            currentUser.getUid(),
+                            userEmail,
+                            userName,
+                            singleItem,
+                            shippingAddress,
+                            "VNPAY - " + transactionId,
+                            subtotal,
+                            discount,
+                            shippingFee
+                    );
+                } else {
+                    order = new Order(
+                            currentUser.getUid(),
+                            cartItems,
+                            shippingAddress,
+                            "VNPAY - " + transactionId,
+                            subtotal,
+                            discount,
+                            shippingFee
+                    );
+                    order.setUserEmail(userEmail);
+                    order.setUserName(userName);
+                }
+
+                // Lưu đơn hàng vào database
+                saveOrderAfterPayment(order);
+            }
+        } else {
+            // Payment failed
+            Toast.makeText(this, "Thanh toán thất bại! Mã lỗi: " + vnpResponseCode, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void saveOrderAfterPayment(Order order) {
+        // Hiển thị progress dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setView(R.layout.progress_dialog);
+        progressDialog = builder.create();
+        progressDialog.show();
+
+        // Lưu đơn hàng vào Firebase
+        orderRepository.createOrder(order, new OrderRepository.OrderCallback() {
+            @Override
+            public void onSuccess(Order createdOrder) {
+                onOrderSuccessful(createdOrder);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                Toast.makeText(CheckoutActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
