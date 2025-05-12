@@ -3324,6 +3324,7 @@ int id browser_actions_menu_view 0x7f090077
 int id btnAddCategory 0x7f090078
 int id btnAddFlash 0x7f090079
 int id btnAddToCart 0x7f09007a
+int id btnAdmin 0x7f0902d2
 int id btnBuyNow 0x7f09007b
 int id btnCheckout 0x7f09007c
 int id btnCreateProduct 0x7f09007d

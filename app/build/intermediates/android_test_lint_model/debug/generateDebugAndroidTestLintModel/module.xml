@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="C:\Users\Admin\AndroidStudioProjects\Ecommerce\app"
+    name=":app"
+    type="APP"
+    maven="Ecommerce:app:unspecified"
+    agpVersion="8.9.1"
+    buildFolder="build"
+    bootClassPath="C:\Users\Admin\AppData\Local\Android\Sdk\platforms\android-36\android.jar;C:\Users\Admin\AppData\Local\Android\Sdk\build-tools\35.0.0\core-lambda-stubs.jar"
+    javaSourceLevel="11"
+    compileTarget="android-36"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="debug"/>
+</lint-module>

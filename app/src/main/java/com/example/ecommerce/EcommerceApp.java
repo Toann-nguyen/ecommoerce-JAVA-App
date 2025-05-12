@@ -70,21 +70,21 @@ public class EcommerceApp extends Application {
                                                                                 PermissionManager.getInstance().setCurrentUser(adminUser);
                                                                                 Log.d(TAG, "Admin user set in PermissionManager");
                                                                             }
+                                                                        }
+                                                                    });
                                                         }
-                                                    });
-                                            }
-                                            // Đăng xuất để không ảnh hưởng đến trạng thái đăng nhập
-                                            auth.signOut();
-                                        } else {
-                                            Log.e(TAG, "Error signing in with existing email", loginTask.getException());
-                                        }
-                                    });
-                            }
-                        });
-                } else {
-                    Log.d(TAG, "Admin account already exists");
-                }
-            })
+                                                        // Đăng xuất để không ảnh hưởng đến trạng thái đăng nhập
+                                                        auth.signOut();
+                                                    } else {
+                                                        Log.e(TAG, "Error signing in with existing email", loginTask.getException());
+                                                    }
+                                                });
+                                    }
+                                });
+                    } else {
+                        Log.d(TAG, "Admin account already exists");
+                    }
+                })
                 .addOnFailureListener(e -> Log.e(TAG, "Error checking for admin accounts", e));
     }
 

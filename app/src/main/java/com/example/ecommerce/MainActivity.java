@@ -6,42 +6,26 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.Nullable;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
+import java.io.IOException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseNetworkException;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.example.ecommerce.admin.AdminDashboardActivity;
-import com.example.ecommerce.admin.AdminPanelActivity;
-
-import models.User;
-import models.UserRole;
-import utils.PermissionManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,15 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button loginButton;
     private TextView messageTextView;
-    private TextView forgotPasswordTextView;
     private Button registerButton;
-    private Button btnAdmin;
     private FirebaseAuth auth;
-    private ProgressBar progressBar;
-    private PermissionManager permissionManager;
-    private GoogleSignInClient googleSignInClient;
-    private static final String TAG = "MainActivity";
-    private static final int RC_SIGN_IN = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,81 +45,13 @@ public class MainActivity extends AppCompatActivity {
         // Khởi tạo FirebaseAuth
         auth = FirebaseAuth.getInstance();
 
-        // Khởi tạo PermissionManager
-        permissionManager = PermissionManager.getInstance();
-
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
         messageTextView = findViewById(R.id.messageTextView);
-        forgotPasswordTextView = findViewById(R.id.forgotPasswordTextView);
         // dang ky
         registerButton = findViewById(R.id.registerButton);
-        Button googleSignInButton = findViewById(R.id.googleSignInButton);
 
-        setupButtons();
-        setupGoogleSignIn(googleSignInButton);
-    }
-
-    private void setupGoogleSignIn(Button googleSignInButton) {
-        // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        googleSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isNetworkAvailable()) {
-                    messageTextView.setText("Không có kết nối internet");
-                    return;
-                }
-                Intent signInIntent = googleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, RC_SIGN_IN);
-            }
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
-                messageTextView.setText("Đăng nhập bằng Google thất bại");
-            }
-        }
-    }
-
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = auth.getCurrentUser();
-                            createNewUserInFirestore(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            messageTextView.setText("Đăng nhập bằng Google thất bại");
-                        }
-                    }
-                });
-    }
-
-    private void setupButtons() {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,16 +70,23 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    loginSuccess(task.getResult().getUser());
+                                    // Đăng nhập thành công
+                                    messageTextView.setText("Đăng nhập thành công");
+                                    Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+                                    startActivity(intent);
                                 } else {
                                     Exception e = task.getException();
                                     if (e instanceof FirebaseAuthInvalidUserException) {
+                                        // Tài khoản chưa tồn tại
                                         messageTextView.setText("Không có tài khoản");
                                     } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                                        // Sai email hoặc mật khẩu
                                         messageTextView.setText("Email hoặc mật khẩu không đúng");
                                     } else if (e instanceof FirebaseNetworkException) {
+                                        // Lỗi mạng từ Firebase
                                         messageTextView.setText("Đăng nhập thất bại: Lỗi mạng, vui lòng kiểm tra kết nối");
                                     } else {
+                                        // Các lỗi khác
                                         messageTextView.setText("Đăng nhập thất bại: " + e.getLocalizedMessage());
                                     }
                                 }
@@ -187,83 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        // Setup forgot password text view
-        forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to forgot password screen
-                Intent intent = new Intent(MainActivity.this, ForgotPasswordActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // Admin access button (for testing)
-        if (btnAdmin != null) {
-            btnAdmin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Kiểm tra người dùng đã đăng nhập chưa
-                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                    if (currentUser == null) {
-                        messageTextView.setText("Vui lòng đăng nhập trước");
-                        return;
-                    }
-
-                    // Tải thông tin người dùng với callback để đảm bảo đã có dữ liệu mới kiểm tra
-                    permissionManager.loadCurrentUser(new PermissionManager.UserLoadCallback() {
-                        @Override
-                        public void onUserLoaded(User user) {
-                            if (permissionManager.isAdmin()) {
-                                // Hiển thị thông tin để debug
-                                Toast.makeText(MainActivity.this,
-                                        "Admin: " + user.getEmail() + ", Vai trò: " + user.getRole(),
-                                        Toast.LENGTH_LONG).show();
-
-                                // Chuyển đến trang Admin Panel
-                                startActivity(new Intent(MainActivity.this, AdminPanelActivity.class));
-                            } else {
-                                // Nếu không phải admin, tạo quyền admin thử
-                                User adminUser = new User(
-                                        currentUser.getUid(),
-                                        currentUser.getEmail(),
-                                        currentUser.getDisplayName() != null ? currentUser.getDisplayName() : "Admin User",
-                                        "", "", "", "admin"
-                                );
-
-                                // Thêm các quyền cho admin
-                                adminUser.addPermission(PermissionManager.PERMISSION_MANAGE_PRODUCTS);
-                                adminUser.addPermission(PermissionManager.PERMISSION_MANAGE_ORDERS);
-                                adminUser.addPermission(PermissionManager.PERMISSION_MANAGE_USERS);
-                                adminUser.addPermission(PermissionManager.PERMISSION_VIEW_REPORTS);
-
-                                // Lưu vào Firestore và cập nhật PermissionManager
-                                FirebaseFirestore.getInstance()
-                                        .collection("users")
-                                        .document(currentUser.getUid())
-                                        .set(adminUser)
-                                        .addOnSuccessListener(aVoid -> {
-                                            permissionManager.setCurrentUser(adminUser);
-                                            Toast.makeText(MainActivity.this,
-                                                    "Đã cấp quyền Admin, vui lòng thử lại",
-                                                    Toast.LENGTH_LONG).show();
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            messageTextView.setText("Lỗi cấp quyền: " + e.getMessage());
-                                        });
-                            }
-                        }
-
-                        @Override
-                        public void onError(String error) {
-                            messageTextView.setText("Lỗi tải thông tin: " + error);
-                        }
-                    });
-                }
-            });
-        }
     }
-
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
@@ -282,89 +122,15 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
-    private void createNewUserInFirestore(FirebaseUser firebaseUser) {
-        User newUser = new User(
-                firebaseUser.getUid(),
-                firebaseUser.getEmail(),
-                firebaseUser.getDisplayName() != null ? firebaseUser.getDisplayName() : "User",
-                "", // No phone number from Google
-                "", // No address from Google
-                firebaseUser.getPhotoUrl() != null ? firebaseUser.getPhotoUrl().toString() : "",
-                UserRole.USER.getRole() // Default role is user
-        );
-
-        FirebaseFirestore.getInstance()
-                .collection("users")
-                .document(firebaseUser.getUid())
-                .set(newUser)
-                .addOnSuccessListener(aVoid -> {
-                    permissionManager.setCurrentUser(newUser);
-                    loginSuccess(firebaseUser);
-                })
-                .addOnFailureListener(e -> {
-                    Log.e(TAG, "Error creating user", e);
-                    messageTextView.setText("Error creating user: " + e.getMessage());
-                });
-    }
-
-    private void loginSuccess(FirebaseUser user) {
-        // Hiển thị thông báo đăng nhập thành công
-        messageTextView.setText("Đăng nhập thành công!");
-        messageTextView.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
-
-        // Kiểm tra kết nối internet
-        if (!isNetworkAvailable()) {
-            Toast.makeText(this, "Không có kết nối mạng. Một số tính năng có thể không hoạt động đúng.", Toast.LENGTH_LONG).show();
-        }
-
-        // Tải thông tin người dùng và quyền hạn với callback
-        permissionManager.loadCurrentUser(new PermissionManager.UserLoadCallback() {
-            @Override
-            public void onUserLoaded(User user) {
-                // Người dùng đã được tải, chuyển hướng đến màn hình phù hợp
-                if (permissionManager.isAdmin()) {
-                    // Đối với Admin, chuyển đến trang quản trị riêng
-                    Intent intent = new Intent(MainActivity.this, AdminDashboardActivity.class);
-                    startActivity(intent);
-                } else {
-                    // Đối với người dùng thường, chuyển đến trang chính
-                    Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
-                    startActivity(intent);
-                }
-                finish();
-            }
-
-            @Override
-            public void onError(String error) {
-                // Có lỗi khi tải thông tin người dùng
-                Toast.makeText(MainActivity.this,
-                        "Lỗi tải thông tin người dùng: " + error, Toast.LENGTH_SHORT).show();
-                // Chuyển đến màn hình chính mặc định
-                Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
         // Kiểm tra nếu người dùng đã đăng nhập, hiển thị thông báo
         // Nếu người dùng đã đăng nhập, chuyển sang một activity khác (ví dụ: trang chính)
         if (auth.getCurrentUser() != null) {
-            permissionManager.loadCurrentUser(new PermissionManager.UserLoadCallback() {
-                @Override
-                public void onUserLoaded(User user) {
-                    loginSuccess(auth.getCurrentUser());
-                }
-
-                @Override
-                public void onError(String error) {
-                    Toast.makeText(MainActivity.this, "Lỗi tải thông tin người dùng: " + error, Toast.LENGTH_SHORT).show();
-                }
-            });
+            Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+            startActivity(intent);
+          //  finish(); // Kết thúc MainActivity để không quay lại
         }
     }
 }

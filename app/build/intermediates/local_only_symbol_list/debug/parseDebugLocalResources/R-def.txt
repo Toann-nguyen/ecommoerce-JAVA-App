@@ -55,6 +55,7 @@ id bottomNavigation
 id btnAddCategory
 id btnAddFlash
 id btnAddToCart
+id btnAdmin
 id btnBuyNow
 id btnCheckout
 id btnCreateProduct
