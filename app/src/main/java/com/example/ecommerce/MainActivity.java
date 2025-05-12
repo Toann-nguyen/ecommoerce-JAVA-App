@@ -6,29 +6,41 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseNetworkException;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.ecommerce.admin.AdminDashboardActivity;
 import com.example.ecommerce.admin.AdminPanelActivity;
 
 import models.User;
+import models.UserRole;
 import utils.PermissionManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private PermissionManager permissionManager;
+    private GoogleSignInClient googleSignInClient;
+    private static final String TAG = "MainActivity";
+    private static final int RC_SIGN_IN = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +78,68 @@ public class MainActivity extends AppCompatActivity {
         forgotPasswordTextView = findViewById(R.id.forgotPasswordTextView);
         // dang ky
         registerButton = findViewById(R.id.registerButton);
-//        btnAdmin = findViewById(R.id.btnAdmin);
+        Button googleSignInButton = findViewById(R.id.googleSignInButton);
 
         setupButtons();
+        setupGoogleSignIn(googleSignInButton);
+    }
+
+    private void setupGoogleSignIn(Button googleSignInButton) {
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        googleSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isNetworkAvailable()) {
+                    messageTextView.setText("Không có kết nối internet");
+                    return;
+                }
+                Intent signInIntent = googleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
+                messageTextView.setText("Đăng nhập bằng Google thất bại");
+            }
+        }
+    }
+
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = auth.getCurrentUser();
+                            createNewUserInFirestore(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            messageTextView.setText("Đăng nhập bằng Google thất bại");
+                        }
+                    }
+                });
     }
 
     private void setupButtons() {
@@ -207,6 +281,31 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    private void createNewUserInFirestore(FirebaseUser firebaseUser) {
+        User newUser = new User(
+                firebaseUser.getUid(),
+                firebaseUser.getEmail(),
+                firebaseUser.getDisplayName() != null ? firebaseUser.getDisplayName() : "User",
+                "", // No phone number from Google
+                "", // No address from Google
+                firebaseUser.getPhotoUrl() != null ? firebaseUser.getPhotoUrl().toString() : "",
+                UserRole.USER.getRole() // Default role is user
+        );
+
+        FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(firebaseUser.getUid())
+                .set(newUser)
+                .addOnSuccessListener(aVoid -> {
+                    permissionManager.setCurrentUser(newUser);
+                    loginSuccess(firebaseUser);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Error creating user", e);
+                    messageTextView.setText("Error creating user: " + e.getMessage());
+                });
     }
 
     private void loginSuccess(FirebaseUser user) {

@@ -59,6 +59,7 @@
 - Thêm sản phẩm vào giỏ hàng
 - Quản lý giỏ hàng
 - Đặt hàng và thanh toán
+- Đăng nhập bằng Google
 
 ### Tính năng quản trị (Admin)
 
@@ -192,6 +193,25 @@ app/
 4. **Bảo mật**:
    - Kiểm tra quyền tại mỗi Activity admin
    - Nếu người dùng không có quyền, tự động đăng xuất và chuyển về màn hình đăng nhập
+
+## Tích hợp Google Sign-In
+
+1. **Chuẩn bị và thiết lập**:
+   - Thêm dependencies Google Play Services Auth trong build.gradle
+   - Cấu hình Google Sign-In trong Firebase Console
+   - Thêm SHA-1 fingerprint vào Firebase để xác thực OAuth
+
+2. **Flow đăng nhập bằng Google**:
+   - Khởi tạo GoogleSignInOptions và GoogleSignInClient
+   - Tích hợp nút Sign In with Google trong màn hình đăng nhập
+   - Nhận kết quả đăng nhập trong onActivityResult
+   - Xác thực Firebase với Google token
+   - Tạo người dùng mới trong Firestore nếu đây là lần đầu đăng nhập
+
+3. **Xử lý dữ liệu người dùng**:
+   - Đồng bộ thông tin từ Google account (email, tên, avatar) với dữ liệu người dùng trong Firestore
+   - Giữ nguyên role và permissions khi người dùng đăng nhập lại
+   - Áp dụng các bộ lọc phân quyền giống như với đăng nhập thông thường
 
 ## Thách thức và giải pháp
 
