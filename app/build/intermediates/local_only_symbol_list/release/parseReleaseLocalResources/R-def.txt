@@ -103,6 +103,7 @@ id fabAddFeatured
 id fabAddProduct
 id forgotPasswordLayout
 id forgotPasswordTextView
+id googleSignInButton
 id home_root
 id imageProduct
 id imageView
@@ -276,10 +277,16 @@ mipmap ic_launcher_round
 string add_to_cart
 string app_name
 string category_icon
+string default_web_client_id
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
+string google_signin_instructions
+string google_signin_step1
+string google_signin_step2
+string google_signin_step3
+string google_signin_step5
 string google_storage_bucket
 string product_image
 string project_id

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ecommerce.app-mergeReleaseResources-43:/values-pl/values-pl.xml",
+            "outputFile": "com.example.ecommerce.app-mergeReleaseResources-42:/values-pl/values-pl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\00c10e6581275746f2ad2cd6dbd2dbf6\\transformed\\browser-1.4.0\\res\\values-pl\\values-pl.xml",

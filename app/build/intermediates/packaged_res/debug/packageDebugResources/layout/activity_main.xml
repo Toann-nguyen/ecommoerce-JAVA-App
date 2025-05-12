@@ -59,6 +59,13 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/messageTextView"
             android:layout_width="match_parent"
@@ -84,6 +91,19 @@
             android:text="Register"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/googleSignInButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Sign in with Google" />
 
+        <Button
+            android:id="@+id/btnAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Admin Access"
+            android:padding="12dp"
+            android:layout_marginTop="16dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

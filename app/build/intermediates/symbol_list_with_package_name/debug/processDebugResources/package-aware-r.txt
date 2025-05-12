@@ -3325,6 +3325,7 @@ id browser_actions_menu_view
 id btnAddCategory
 id btnAddFlash
 id btnAddToCart
+id btnAdmin
 id btnBuyNow
 id btnCheckout
 id btnCreateProduct
@@ -3484,6 +3485,7 @@ id ghost_view
 id ghost_view_holder
 id glide_custom_view_target_tag
 id gone
+id googleSignInButton
 id graph
 id graph_wrap
 id group_divider
@@ -4230,6 +4232,7 @@ string common_signin_button_text_long
 string confirm_device_credential_password
 string copy_toast_msg
 string default_error_msg
+string default_web_client_id
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -4252,6 +4255,11 @@ string generic_error_user_canceled
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
+string google_signin_instructions
+string google_signin_step1
+string google_signin_step2
+string google_signin_step3
+string google_signin_step5
 string google_storage_bucket
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
