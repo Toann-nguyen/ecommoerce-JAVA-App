@@ -244,6 +244,12 @@ public class PermissionManager {
      */
     public void setCurrentUser(User user) {
         this.currentUser = user;
+
+        // Đảm bảo người dùng có quyền phù hợp với vai trò của họ
+        if (user != null) {
+            // Kiểm tra và cập nhật quyền theo vai trò
+            initializeUserPermissions(user);
+        }
     }
 
     /**

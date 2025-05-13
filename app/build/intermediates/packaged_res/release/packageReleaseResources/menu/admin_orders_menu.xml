@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@android:drawable/ic_popup_sync"
+        android:title="Làm mới"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Sắp xếp"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/sort_date_desc"
+                android:title="Ngày đặt (mới nhất trước)"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/sort_date_asc"
+                android:title="Ngày đặt (cũ nhất trước)"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/sort_price_desc"
+                android:title="Giá trị (cao đến thấp)"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/sort_price_asc"
+                android:title="Giá trị (thấp đến cao)"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:title="Đăng xuất"
+        app:showAsAction="ifRoom" />
+</menu>

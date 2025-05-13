@@ -30,8 +30,10 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.android.gms.common.SignInButton;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class MainActivity extends AppCompatActivity  implements GoogleSignInHelper.GoogleSignInCallback  {
+public class MainActivity extends AppCompatActivity implements GoogleSignInHelper.GoogleSignInCallback {
 
     // khai báo biến cho các thành phần giao diện
     private EditText usernameEditText;
@@ -53,6 +55,11 @@ public class MainActivity extends AppCompatActivity  implements GoogleSignInHelp
         auth = FirebaseAuth.getInstance();
         // Khởi tạo GoogleSignInHelper
         googleSignInHelper = new GoogleSignInHelper(this, this);
+
+        // Đăng xuất người dùng hiện tại để tránh vấn đề với phân quyền
+        auth.signOut();
+        // Đảm bảo cũng xóa thông tin người dùng trong PermissionManager
+        utils.PermissionManager.getInstance().logout();
 
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
@@ -81,9 +88,45 @@ public class MainActivity extends AppCompatActivity  implements GoogleSignInHelp
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     messageTextView.setText("Đăng nhập thành công");
-                                    Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
-                                    startActivity(intent);
-                                    finish();
+
+                                    // Kiểm tra vai trò người dùng để chuyển đến trang phù hợp
+                                    FirebaseUser firebaseUser = auth.getCurrentUser();
+                                    if (firebaseUser != null) {
+                                        FirebaseFirestore.getInstance()
+                                                .collection("users")
+                                                .document(firebaseUser.getUid())
+                                                .get()
+                                                .addOnSuccessListener(documentSnapshot -> {
+                                                    if (documentSnapshot.exists()) {
+                                                        String role = documentSnapshot.getString("role");
+                                                        if ("admin".equals(role)) {
+                                                            // Nếu là admin, chuyển đến trang Admin
+                                                            Intent adminIntent = new Intent(MainActivity.this, com.example.ecommerce.admin.AdminPanelActivity.class);
+                                                            startActivity(adminIntent);
+                                                        } else {
+                                                            // Nếu là user thường, chuyển đến trang Home
+                                                            Intent userIntent = new Intent(MainActivity.this, HomeMainActivity.class);
+                                                            startActivity(userIntent);
+                                                        }
+                                                        finish();
+                                                    } else {
+                                                        // Nếu không tìm thấy thông tin người dùng, chuyển đến trang Home mặc định
+                                                        Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+                                                })
+                                                .addOnFailureListener(e -> {
+                                                    // Nếu có lỗi khi lấy thông tin, chuyển đến trang Home mặc định
+                                                    Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                });
+                                    } else {
+                                        Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
                                 } else {
                                     Exception e = task.getException();
                                     if (e instanceof FirebaseAuthInvalidUserException) {
@@ -150,10 +193,39 @@ public class MainActivity extends AppCompatActivity  implements GoogleSignInHelp
     @Override
     protected void onStart() {
         super.onStart();
-        if (auth.getCurrentUser() != null) {
-            Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
-            startActivity(intent);
-            finish();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser != null) {
+            // Kiểm tra vai trò người dùng để chuyển đến trang phù hợp
+            FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(currentUser.getUid())
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String role = documentSnapshot.getString("role");
+                            if ("admin".equals(role)) {
+                                // Nếu là admin, chuyển đến trang Admin
+                                Intent adminIntent = new Intent(MainActivity.this, com.example.ecommerce.admin.AdminPanelActivity.class);
+                                startActivity(adminIntent);
+                            } else {
+                                // Nếu là user thường, chuyển đến trang Home
+                                Intent userIntent = new Intent(MainActivity.this, HomeMainActivity.class);
+                                startActivity(userIntent);
+                            }
+                            finish();
+                        } else {
+                            // Nếu không tìm thấy thông tin người dùng, chuyển đến trang Home mặc định
+                            Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        // Nếu có lỗi khi lấy thông tin, chuyển đến trang Home mặc định
+                        Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    });
         }
     }
 
@@ -162,9 +234,43 @@ public class MainActivity extends AppCompatActivity  implements GoogleSignInHelp
         String userName = user.getDisplayName();
         Toast.makeText(this, "Xin chào " + userName, Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
-        startActivity(intent);
-        finish();
+        // Kiểm tra vai trò người dùng để chuyển đến trang phù hợp
+        if (user != null) {
+            FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(user.getUid())
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String role = documentSnapshot.getString("role");
+                            if ("admin".equals(role)) {
+                                // Nếu là admin, chuyển đến trang Admin
+                                Intent adminIntent = new Intent(MainActivity.this, com.example.ecommerce.admin.AdminPanelActivity.class);
+                                startActivity(adminIntent);
+                            } else {
+                                // Nếu là user thường, chuyển đến trang Home
+                                Intent userIntent = new Intent(MainActivity.this, HomeMainActivity.class);
+                                startActivity(userIntent);
+                            }
+                            finish();
+                        } else {
+                            // Nếu không tìm thấy thông tin người dùng, chuyển đến trang Home mặc định
+                            Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        // Nếu có lỗi khi lấy thông tin, chuyển đến trang Home mặc định
+                        Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    });
+        } else {
+            Intent intent = new Intent(MainActivity.this, HomeMainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override

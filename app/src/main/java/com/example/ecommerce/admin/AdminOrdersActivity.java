@@ -37,6 +37,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
     private RecyclerView ordersRecyclerView;
     private TextView txtEmptyState;
     private ProgressBar progressBar;
+    private TextView txtHeader;
 
     private List<Order> orderList = new ArrayList<>();
     private List<Order> filteredOrderList = new ArrayList<>();
@@ -45,6 +46,8 @@ public class AdminOrdersActivity extends AppCompatActivity {
     private PermissionManager permissionManager;
 
     private String currentFilter = "all";
+    private String currentSortBy = "date"; // Default sort by date
+    private boolean sortAscending = false; // Default descending (newest first)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
         ordersRecyclerView = findViewById(R.id.ordersRecyclerView);
         txtEmptyState = findViewById(R.id.txtEmptyState);
         progressBar = findViewById(R.id.progressBar);
+        txtHeader = findViewById(R.id.txtHeader);
 
         // Setup search functionality
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -114,6 +118,41 @@ public class AdminOrdersActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("Quản lý đơn hàng");
         }
+
+        toolbar.setOnMenuItemClickListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.sort_date_desc) {
+                currentSortBy = "date";
+                sortAscending = false;
+                applyFilters();
+                return true;
+            } else if (id == R.id.sort_date_asc) {
+                currentSortBy = "date";
+                sortAscending = true;
+                applyFilters();
+                return true;
+            } else if (id == R.id.sort_price_desc) {
+                currentSortBy = "price";
+                sortAscending = false;
+                applyFilters();
+                return true;
+            } else if (id == R.id.sort_price_asc) {
+                currentSortBy = "price";
+                sortAscending = true;
+                applyFilters();
+                return true;
+            } else if (id == R.id.action_refresh) {
+                loadOrders();
+                return true;
+            } else if (id == R.id.action_logout) {
+                permissionManager.logout();
+                startActivity(new Intent(this, com.example.ecommerce.MainActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                finish();
+                return true;
+            }
+            return false;
+        });
     }
 
     private void setupTabs() {
@@ -245,6 +284,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
         List<Order> result = new ArrayList<>();
         String searchQuery = searchView.getQuery().toString().toLowerCase().trim();
 
+        // First filter by status and search query
         for (Order order : orderList) {
             try {
                 String orderStatus = order.getStatus();
@@ -263,7 +303,71 @@ public class AdminOrdersActivity extends AppCompatActivity {
             }
         }
 
+        // Sort the filtered results
+        sortOrders(result);
+
+        // Update the header text to display count
+        updateHeaderText(result.size());
+
         updateRecyclerView(result);
+    }
+
+    /**
+     * Sort orders by selected criteria
+     */
+    private void sortOrders(List<Order> orders) {
+        switch (currentSortBy) {
+            case "date":
+                orders.sort((o1, o2) -> {
+                    if (o1.getOrderDate() == null || o2.getOrderDate() == null) {
+                        return 0;
+                    }
+                    int result = o1.getOrderDate().compareTo(o2.getOrderDate());
+                    return sortAscending ? result : -result; // Invert if descending
+                });
+                break;
+            case "price":
+                orders.sort((o1, o2) -> {
+                    double result = o1.getTotal() - o2.getTotal();
+                    return sortAscending ? (int) result : (int) -result;
+                });
+                break;
+            default:
+                // Default sort by date descending (newest first)
+                orders.sort((o1, o2) -> {
+                    if (o1.getOrderDate() == null || o2.getOrderDate() == null) {
+                        return 0;
+                    }
+                    return o2.getOrderDate().compareTo(o1.getOrderDate());
+                });
+                break;
+        }
+    }
+
+    /**
+     * Update header text with order count
+     */
+    private void updateHeaderText(int count) {
+        String statusText = "tất cả";
+        switch (currentFilter) {
+            case Order.STATUS_PENDING:
+                statusText = "chờ xác nhận";
+                break;
+            case Order.STATUS_CONFIRMED:
+                statusText = "đã xác nhận";
+                break;
+            case Order.STATUS_SHIPPING:
+                statusText = "đang giao";
+                break;
+            case Order.STATUS_DELIVERED:
+                statusText = "đã giao";
+                break;
+            case Order.STATUS_CANCELLED:
+                statusText = "đã hủy";
+                break;
+        }
+
+        txtHeader.setText("Đơn hàng " + statusText + " (" + count + ")");
     }
 
     private void updateRecyclerView(List<Order> orders) {
@@ -302,6 +406,12 @@ public class AdminOrdersActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.admin_orders_menu, menu);
+        return true;
     }
 
     @Override

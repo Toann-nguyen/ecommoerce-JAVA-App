@@ -1,7 +1,10 @@
 package com.example.ecommerce.admin;
 
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +16,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecommerce.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,6 +59,8 @@ public class OrderDetailActivity extends AppCompatActivity {
     private String orderId;
     private NumberFormat currencyFormat;
     private SimpleDateFormat dateFormat;
+
+    private static final int STORAGE_PERMISSION_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -317,11 +327,138 @@ public class OrderDetailActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.order_detail_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
             return true;
+        } else if (item.getItemId() == R.id.action_generate_receipt) {
+            generateReceipt();
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Generate a simple text receipt for the order
+     */
+    private void generateReceipt() {
+        // Check for storage permission
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    STORAGE_PERMISSION_CODE);
+            return;
+        }
+
+        if (order == null) {
+            Toast.makeText(this, "Không thể tạo hóa đơn: Không có thông tin đơn hàng", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        StringBuilder receipt = new StringBuilder();
+        receipt.append("===============================\n");
+        receipt.append("          HÓA ĐƠN BÁN HÀNG\n");
+        receipt.append("===============================\n\n");
+
+        // Order info
+        receipt.append("Mã đơn hàng: ").append(order.getId()).append("\n");
+        receipt.append("Ngày đặt: ").append(dateFormat.format(order.getOrderDate())).append("\n");
+        receipt.append("Trạng thái: ").append(getStatusText(order.getStatus())).append("\n\n");
+
+        // Customer info
+        receipt.append("THÔNG TIN KHÁCH HÀNG:\n");
+        receipt.append("Tên: ").append(order.getUserName()).append("\n");
+        receipt.append("Email: ").append(order.getUserEmail()).append("\n\n");
+
+        // Shipping info
+        ShippingAddress address = order.getShippingAddress();
+        if (address != null) {
+            receipt.append("THÔNG TIN GIAO HÀNG:\n");
+            receipt.append("Người nhận: ").append(address.getFullName()).append("\n");
+            receipt.append("Số điện thoại: ").append(address.getPhone()).append("\n");
+            receipt.append("Địa chỉ: ").append(formatAddress(address)).append("\n\n");
+        }
+
+        // Products
+        receipt.append("DANH SÁCH SẢN PHẨM:\n");
+        receipt.append("-------------------------------\n");
+        if (order.getItems() != null) {
+            for (CartItem item : order.getItems()) {
+                if (item.getProduct() != null) {
+                    receipt.append(item.getProduct().getName())
+                            .append(" x").append(item.getQuantity())
+                            .append(" = ").append(currencyFormat.format(item.getProduct().getPrice() * item.getQuantity())).append(" đ\n");
+                }
+            }
+        }
+        receipt.append("-------------------------------\n\n");
+
+        // Totals
+        receipt.append("TỔNG TIỀN:\n");
+        receipt.append("Tạm tính: ").append(currencyFormat.format(order.getSubtotal())).append(" đ\n");
+        receipt.append("Giảm giá: -").append(currencyFormat.format(order.getDiscount())).append(" đ\n");
+        receipt.append("Phí vận chuyển: ").append(currencyFormat.format(order.getShippingFee())).append(" đ\n");
+        receipt.append("-------------------------------\n");
+        receipt.append("TỔNG CỘNG: ").append(currencyFormat.format(order.getTotal())).append(" đ\n\n");
+
+        // Payment method
+        receipt.append("Phương thức thanh toán: ").append(order.getPaymentMethod()).append("\n\n");
+        receipt.append("===============================\n");
+        receipt.append("Cảm ơn quý khách đã mua hàng!\n");
+        receipt.append("===============================\n");
+
+        try {
+            // Create a file in Downloads directory
+            File receiptFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                    "Receipt_" + order.getId() + ".txt");
+
+            FileOutputStream fos = new FileOutputStream(receiptFile);
+            fos.write(receipt.toString().getBytes());
+            fos.close();
+
+            Toast.makeText(this, "Đã lưu hóa đơn vào thư mục Downloads", Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            Toast.makeText(this, "Không thể tạo hóa đơn: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, generate receipt
+                generateReceipt();
+            } else {
+                Toast.makeText(this, "Không thể tạo hóa đơn: Không có quyền truy cập bộ nhớ", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    /**
+     * Convert status code to readable text
+     */
+    private String getStatusText(String status) {
+        switch (status) {
+            case Order.STATUS_PENDING:
+                return "Chờ xác nhận";
+            case Order.STATUS_CONFIRMED:
+                return "Đã xác nhận";
+            case Order.STATUS_SHIPPING:
+                return "Đang giao";
+            case Order.STATUS_DELIVERED:
+                return "Đã giao";
+            case Order.STATUS_CANCELLED:
+                return "Đã hủy";
+            default:
+                return "Không xác định";
+        }
     }
 }
