@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import com.example.ecommerce.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
+import models.User;
 import utils.PermissionManager;
 
 /**
@@ -31,20 +32,31 @@ public class AdminPanelActivity extends AppCompatActivity {
         // Khởi tạo Permission Manager
         permissionManager = PermissionManager.getInstance();
 
-        // Kiểm tra quyền truy cập
-        if (!permissionManager.canAccessAdminArea()) {
-            Toast.makeText(this, "Bạn không có quyền truy cập khu vực này", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
-
         // Khởi tạo UI
         initViews();
         setupToolbar();
-        setupCardClickListeners();
 
-        // Hiển thị/ẩn các tính năng dựa vào quyền
-        updateUIBasedOnPermissions();
+        // Tải thông tin người dùng từ Firestore trước khi kiểm tra quyền
+        permissionManager.loadCurrentUser(new PermissionManager.UserLoadCallback() {
+            @Override
+            public void onUserLoaded(User user) {
+                // Kiểm tra quyền truy cập sau khi đã tải thông tin người dùng
+                if (!permissionManager.canAccessAdminArea()) {
+                    Toast.makeText(AdminPanelActivity.this, "Bạn không có quyền truy cập khu vực này", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    // Thiết lập các chức năng của trang admin
+                    setupCardClickListeners();
+                    updateUIBasedOnPermissions();
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(AdminPanelActivity.this, "Lỗi tải thông tin người dùng: " + error, Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 
     private void initViews() {
@@ -81,8 +93,7 @@ public class AdminPanelActivity extends AppCompatActivity {
         // Quản lý người dùng
         cardUsers.setOnClickListener(v -> {
             if (permissionManager.hasPermission(PermissionManager.PERMISSION_MANAGE_USERS)) {
-                // TODO: Navigate to User management
-                Toast.makeText(this, "Chức năng đang được phát triển", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, AdminUsersActivity.class));
             } else {
                 showPermissionDenied();
             }
@@ -134,5 +145,20 @@ public class AdminPanelActivity extends AppCompatActivity {
         // Cập nhật thông tin người dùng và quyền truy cập
         permissionManager.loadCurrentUser();
         updateUIBasedOnPermissions();
+    }
+
+    /**
+     * Override back button to confirm exit
+     */
+    @Override
+    public void onBackPressed() {
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Xác nhận thoát")
+                .setMessage("Bạn có muốn thoát khỏi khu vực quản trị?")
+                .setPositiveButton("Có", (dialog, which) -> {
+                    super.onBackPressed();
+                })
+                .setNegativeButton("Không", null)
+                .show();
     }
 }

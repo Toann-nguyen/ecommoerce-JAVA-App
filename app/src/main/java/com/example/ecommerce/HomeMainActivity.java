@@ -29,9 +29,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.ecommerce.admin.AdminPanelActivity;
+import com.example.ecommerce.fragments.ProfileFragment;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -70,6 +73,7 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private TextView tvSearchStatus;
+    private BottomNavigationView bottomNavigationView;
 
     // Adapters
     private ProductAdapter featuredAdapter;
@@ -104,6 +108,7 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         setupRecyclerViews();
         setupNavigationDrawer();
         setupFlashSaleBannerAutoScroll();
+        setupBottomNavigation();
     }
 
     private void initViews() {
@@ -117,6 +122,7 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
         drawerLayout = findViewById(R.id.drawer_layout);
         viewPagerFlashSaleBanner = findViewById(R.id.viewPagerFlashSaleBanner);
         tvSearchStatus = findViewById(R.id.tvSearchStatus);
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
 
         // Thiết lập adapter cho Flash Sale Banner
         if (viewPagerFlashSaleBanner != null) {
@@ -649,5 +655,38 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
             // Hide search status when not searching
             tvSearchStatus.setVisibility(View.GONE);
         }
+    }
+
+    private void setupBottomNavigation() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                // Show home content, hide fragment container
+                findViewById(R.id.nestedScrollView).setVisibility(View.VISIBLE);
+                findViewById(R.id.fragment_container).setVisibility(View.GONE);
+                return true;
+            } else if (id == R.id.nav_categories) {
+                // Show categories
+                // This could be another fragment in the future
+                findViewById(R.id.nestedScrollView).setVisibility(View.VISIBLE);
+                findViewById(R.id.fragment_container).setVisibility(View.GONE);
+                return true;
+            } else if (id == R.id.nav_cart) {
+                // Open cart activity
+                startActivity(new Intent(HomeMainActivity.this, CartActivity.class));
+                return true;
+            } else if (id == R.id.nav_profile) {
+                // Show profile fragment, hide other content
+                findViewById(R.id.nestedScrollView).setVisibility(View.GONE);
+                findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);
+
+                // Load the profile fragment
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new ProfileFragment())
+                        .commit();
+                return true;
+            }
+            return false;
+        });
     }
 }

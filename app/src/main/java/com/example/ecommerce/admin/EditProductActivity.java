@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -81,12 +82,41 @@ public class EditProductActivity extends AppCompatActivity {
 
         // Kiểm tra quyền truy cập
         permissionManager = PermissionManager.getInstance();
-        if (!permissionManager.hasPermission(PermissionManager.PERMISSION_MANAGE_PRODUCTS)) {
-            Toast.makeText(this, "Bạn không có quyền truy cập trang này", Toast.LENGTH_SHORT).show();
+
+        // Đảm bảo người dùng đã đăng nhập và tải quyền truy cập
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Toast.makeText(this, "Vui lòng đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show();
+            // Quay lại màn hình đăng nhập
+            Intent loginIntent = new Intent(this, com.example.ecommerce.MainActivity.class);
+            loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(loginIntent);
             finish();
             return;
         }
 
+        // Tải quyền người dùng trước khi kiểm tra
+        permissionManager.loadCurrentUser(new PermissionManager.UserLoadCallback() {
+            @Override
+            public void onUserLoaded(models.User user) {
+                if (!permissionManager.hasPermission(PermissionManager.PERMISSION_MANAGE_PRODUCTS)) {
+                    Toast.makeText(EditProductActivity.this, "Bạn không có quyền truy cập trang này", Toast.LENGTH_SHORT).show();
+                    finish();
+                    return;
+                }
+
+                // Tiếp tục khởi tạo giao diện sau khi kiểm tra quyền
+                continueInitialization();
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(EditProductActivity.this, "Lỗi kiểm tra quyền: " + error, Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+    }
+
+    private void continueInitialization() {
         setContentView(R.layout.activity_edit_product);
 
         // Initialize Firebase
@@ -644,6 +674,16 @@ public class EditProductActivity extends AppCompatActivity {
                     "1. Verify package name in Firebase matches your app\n" +
                     "2. Check if google-services.json is up to date\n" +
                     "3. Ensure you've added SHA-1 to Firebase console");
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Kiểm tra lại quyền mỗi khi activity được hiển thị
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Toast.makeText(this, "Phiên đăng nhập đã hết hạn", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 }

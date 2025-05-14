@@ -1,4 +1,43 @@
 # E-commerce Android App
+web client ID
+615717299049-72rftta9r808nh8be19kfej1de6usg7q.apps.googleusercontent.com
+
+Ecommerce [signingReport]
+1:17:18 AM: Executing 'signingReport'…
+
+Executing tasks: [signingReport] in project C:\Users\Admin\AndroidStudioProjects\Ecommerce
+
+
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: C:\Users\Admin\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 75:80:CE:14:3E:C8:97:E3:29:4D:8B:C9:60:5E:23:B3
+SHA1: A6:A7:5B:F6:FD:0E:E8:8E:CA:01:82:AD:50:C4:D3:9F:25:BF:31:48
+SHA-256: B0:1E:79:44:3F:D0:95:77:AB:75:E3:BE:64:79:C3:3F:29:18:C3:BD:04:69:DF:12:03:BF:F5:9C:D0:BF:00:BC
+Valid until: Sunday, April 11, 2055
+----------
+Variant: release
+Config: null
+Store: null
+Alias: null
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\Admin\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 75:80:CE:14:3E:C8:97:E3:29:4D:8B:C9:60:5E:23:B3
+SHA1: A6:A7:5B:F6:FD:0E:E8:8E:CA:01:82:AD:50:C4:D3:9F:25:BF:31:48
+SHA-256: B0:1E:79:44:3F:D0:95:77:AB:75:E3:BE:64:79:C3:3F:29:18:C3:BD:04:69:DF:12:03:BF:F5:9C:D0:BF:00:BC
+Valid until: Sunday, April 11, 2055
+----------
+
+BUILD SUCCESSFUL in 797ms
+1 actionable task: 1 executed
+
+Build Analyzer results available
+1:17:19 AM: Execution finished 'signingReport'.
 
 ## Quá trình phát triển
 
@@ -59,7 +98,6 @@
 - Thêm sản phẩm vào giỏ hàng
 - Quản lý giỏ hàng
 - Đặt hàng và thanh toán
-- Đăng nhập bằng Google
 
 ### Tính năng quản trị (Admin)
 
@@ -131,44 +169,44 @@ app/
 ### CRUD sản phẩm cho Admin
 
 1. **Thiết kế giao diện**:
-    - Tạo layout cho danh sách sản phẩm (activity_admin_products.xml)
-    - Thiết kế item sản phẩm trong RecyclerView (item_admin_product.xml)
-    - Tạo layout thêm/sửa sản phẩm (activity_edit_product.xml)
+   - Tạo layout cho danh sách sản phẩm (activity_admin_products.xml)
+   - Thiết kế item sản phẩm trong RecyclerView (item_admin_product.xml)
+   - Tạo layout thêm/sửa sản phẩm (activity_edit_product.xml)
 
 2. **Tạo các Activity**:
-    - AdminProductsActivity: Hiển thị danh sách sản phẩm cho admin
-    - EditProductActivity: Form thêm/sửa sản phẩm
+   - AdminProductsActivity: Hiển thị danh sách sản phẩm cho admin
+   - EditProductActivity: Form thêm/sửa sản phẩm
 
 3. **Xử lý dữ liệu**:
-    - AdminFirebaseRepository: Thực hiện các thao tác CRUD với Firestore
-    - AdminProductAdapter: Hiển thị dữ liệu trong RecyclerView
+   - AdminFirebaseRepository: Thực hiện các thao tác CRUD với Firestore
+   - AdminProductAdapter: Hiển thị dữ liệu trong RecyclerView
 
 4. **Chức năng chính**:
-    - Hiển thị danh sách sản phẩm
-    - Thêm sản phẩm mới
-    - Chỉnh sửa sản phẩm hiện có
-    - Xóa sản phẩm
-    - Upload và hiển thị hình ảnh sản phẩm
+   - Hiển thị danh sách sản phẩm
+   - Thêm sản phẩm mới
+   - Chỉnh sửa sản phẩm hiện có
+   - Xóa sản phẩm
+   - Upload và hiển thị hình ảnh sản phẩm
 
 ### Hệ thống phân quyền
 
 1. **Thiết kế mô hình phân quyền**:
-    - Tạo enum UserRole định nghĩa các vai trò: USER, SELLER, ADMIN
-    - Mở rộng lớp User để hỗ trợ vai trò và quyền
+   - Tạo enum UserRole định nghĩa các vai trò: USER, SELLER, ADMIN
+   - Mở rộng lớp User để hỗ trợ vai trò và quyền
 
 2. **Quản lý quyền**:
-    - Tạo lớp PermissionManager để xử lý kiểm tra quyền
-    - Định nghĩa hằng số cho các quyền cụ thể (PERMISSION_MANAGE_PRODUCTS, v.v.)
-    - Cài đặt methods kiểm tra quyền dựa trên vai trò và permission list
+   - Tạo lớp PermissionManager để xử lý kiểm tra quyền
+   - Định nghĩa hằng số cho các quyền cụ thể (PERMISSION_MANAGE_PRODUCTS, v.v.)
+   - Cài đặt methods kiểm tra quyền dựa trên vai trò và permission list
 
 3. **Áp dụng kiểm tra quyền**:
-    - Kiểm tra quyền trước khi truy cập các tính năng admin
-    - Ẩn/hiện các menu và tính năng dựa vào quyền người dùng
-    - Hiển thị thông báo khi người dùng không có quyền truy cập
+   - Kiểm tra quyền trước khi truy cập các tính năng admin
+   - Ẩn/hiện các menu và tính năng dựa vào quyền người dùng
+   - Hiển thị thông báo khi người dùng không có quyền truy cập
 
 4. **Giao diện quản trị tập trung**:
-    - AdminPanelActivity: Trang quản trị tập trung với các card cho từng tính năng
-    - Hiển thị chỉ các tính năng mà người dùng có quyền truy cập
+   - AdminPanelActivity: Trang quản trị tập trung với các card cho từng tính năng
+   - Hiển thị chỉ các tính năng mà người dùng có quyền truy cập
 
 ### Tài khoản Admin và Giao diện Riêng
 
@@ -182,7 +220,7 @@ app/
    - AdminDashboardActivity: Giao diện quản lý sản phẩm chuyên dụng cho admin
    - Hiển thị sản phẩm dạng bảng với các cột: ID, Hình ảnh, Tên, Danh mục, Giá, Đánh giá
    - Tích hợp tìm kiếm sản phẩm theo tên và danh mục
-   - Nút tạo sản phẩm mới
+   - Nút tạo sản phẩm mới``
 
 3. **Điều hướng dựa trên vai trò**:
    - Sau đăng nhập, kiểm tra vai trò người dùng và chuyển đến giao diện phù hợp
@@ -194,42 +232,144 @@ app/
    - Kiểm tra quyền tại mỗi Activity admin
    - Nếu người dùng không có quyền, tự động đăng xuất và chuyển về màn hình đăng nhập
 
-## Tích hợp Google Sign-In
-
-1. **Chuẩn bị và thiết lập**:
-   - Thêm dependencies Google Play Services Auth trong build.gradle
-   - Cấu hình Google Sign-In trong Firebase Console
-   - Thêm SHA-1 fingerprint vào Firebase để xác thực OAuth
-
-2. **Flow đăng nhập bằng Google**:
-   - Khởi tạo GoogleSignInOptions và GoogleSignInClient
-   - Tích hợp nút Sign In with Google trong màn hình đăng nhập
-   - Nhận kết quả đăng nhập trong onActivityResult
-   - Xác thực Firebase với Google token
-   - Tạo người dùng mới trong Firestore nếu đây là lần đầu đăng nhập
-
-3. **Xử lý dữ liệu người dùng**:
-   - Đồng bộ thông tin từ Google account (email, tên, avatar) với dữ liệu người dùng trong Firestore
-   - Giữ nguyên role và permissions khi người dùng đăng nhập lại
-   - Áp dụng các bộ lọc phân quyền giống như với đăng nhập thông thường
-
 ## Thách thức và giải pháp
 
 1. **Bảo mật dữ liệu**:
-    - Thách thức: Đảm bảo người dùng chỉ truy cập được dữ liệu họ được phép
-    - Giải pháp: Sử dụng hệ thống phân quyền và Firebase Security Rules
+   - Thách thức: Đảm bảo người dùng chỉ truy cập được dữ liệu họ được phép
+   - Giải pháp: Sử dụng hệ thống phân quyền và Firebase Security Rules
 
 2. **Quản lý hình ảnh**:
-    - Thách thức: Upload, lưu trữ và hiển thị hình ảnh hiệu quả
-    - Giải pháp: Sử dụng Firebase Storage và thư viện Glide
+   - Thách thức: Upload, lưu trữ và hiển thị hình ảnh hiệu quả
+   - Giải pháp: Sử dụng Firebase Storage và thư viện Glide
 
 3. **Trải nghiệm người dùng**:
-    - Thách thức: Tạo giao diện đẹp và dễ sử dụng
-    - Giải pháp: Áp dụng Material Design và UI patterns phổ biến
+   - Thách thức: Tạo giao diện đẹp và dễ sử dụng
+   - Giải pháp: Áp dụng Material Design và UI patterns phổ biến
 
 4. **Hiệu suất**:
-    - Thách thức: Tối ưu hiệu suất khi làm việc với dữ liệu lớn
-    - Giải pháp: Phân trang, lazy loading và caching
+   - Thách thức: Tối ưu hiệu suất khi làm việc với dữ liệu lớn
+   - Giải pháp: Phân trang, lazy loading và caching
+
+## Phân tích giao diện HomeMainActivity
+
+### Cấu trúc tổng thể
+
+Màn hình HomeMainActivity là màn hình chính của ứng dụng, được thiết kế theo mô hình Material Design
+với các thành phần hiện đại như ConstraintLayout, NestedScrollView, RecyclerView, ChipGroup và
+ViewPager2. Giao diện được thiết kế theo hướng responsive và có khả năng cuộn để hiển thị nhiều nội
+dung.
+
+### Các thành phần chính
+
+1. **TopAppBar (MaterialToolbar)**
+   - Vị trí: Phía trên cùng của màn hình
+   - Chức năng: Hiển thị tên ứng dụng "SHOP" và các nút menu (tìm kiếm, giỏ hàng)
+   - Thiết kế: Nền màu tím (colorPrimary), chữ màu trắng
+   - Tương tác: Menu dropdown với các lựa chọn
+
+2. **Banner Flash Sale (ViewPager2)**
+   - Vị trí: Ngay dưới TopAppBar
+   - Chức năng: Hiển thị slider các sản phẩm Flash Sale nổi bật
+   - Kích thước: Chiếm toàn bộ chiều rộng màn hình, cao 180dp
+   - Tính năng: Auto-scroll tự động chuyển sản phẩm
+   - Hiển thị: Hình ảnh sản phẩm, tên, giá gốc (gạch ngang), giá giảm và phần trăm giảm giá
+
+3. **Danh mục sản phẩm (ChipGroup)**
+   - Vị trí: Dưới banner Flash Sale
+   - Chức năng: Cho phép lọc sản phẩm theo danh mục
+   - Thiết kế: Các chip có thể chọn (selectable chips)
+   - Tương tác: Single selection - chỉ chọn một danh mục tại một thời điểm
+   - Tính năng đặc biệt: Chip "Tất cả" được chọn mặc định, khi chọn danh mục khác sẽ lọc sản phẩm
+     tương ứng
+
+4. **Phần Flash Sale**
+   - Tiêu đề "Flash Sale" và đồng hồ đếm ngược
+   - RecyclerView hiển thị sản phẩm Flash Sale theo chiều ngang
+   - Sản phẩm hiển thị với giá gốc, giá giảm và phần trăm giảm giá
+   - Tính năng: Cuộn ngang để xem thêm sản phẩm Flash Sale
+
+5. **Phần Featured Products**
+   - Tiêu đề "Featured Products"
+   - RecyclerView hiển thị sản phẩm nổi bật theo dạng lưới 2 cột
+   - Hiển thị hình ảnh, tên sản phẩm, giá và đánh giá
+   - Tính năng: Nhấn để xem chi tiết sản phẩm, nút thêm vào giỏ hàng
+
+6. **Phần All Products**
+   - Tiêu đề "All Products"
+   - RecyclerView hiển thị tất cả sản phẩm
+   - Tính năng đặc biệt: Sản phẩm được lọc theo danh mục khi người dùng chọn chip
+
+7. **Bottom Navigation**
+   - Vị trí: Dưới cùng màn hình
+   - Chức năng: Điều hướng giữa các màn hình chính của ứng dụng
+   - Thiết kế: Các icon và text với màu tùy chỉnh
+
+### Cách thức hoạt động
+
+1. **Cuộn và hiển thị**
+   - NestedScrollView quản lý việc cuộn toàn bộ nội dung
+   - Tất cả RecyclerView có thuộc tính nestedScrollingEnabled để tương tác mượt mà với
+     NestedScrollView
+   - Thuộc tính clipChildren và clipToPadding được đặt false để cho phép hiệu ứng overflow
+
+2. **Lọc sản phẩm theo danh mục**
+   - Khi người dùng chọn một danh mục từ ChipGroup, sự kiện OnCheckedChangeListener được kích hoạt
+   - HomeMainActivity gọi phương thức updateProductsByCategory() với tên danh mục
+   - Repository truy vấn Firestore để lấy sản phẩm theo danh mục
+   - RecyclerView hiển thị sản phẩm được lọc
+
+3. **Hiển thị Banner Flash Sale**
+   - ViewPager2 sử dụng FlashSaleBannerAdapter để hiển thị các sản phẩm Flash Sale
+   - Auto-scroll được quản lý bởi Handler và Runnable
+   - Khi được nhấp vào, chuyển đến trang chi tiết sản phẩm
+
+### Tối ưu hóa hiệu suất
+
+1. **Lazy loading**
+   - RecyclerView sử dụng ViewHolder pattern để tái sử dụng view
+   - Chỉ tạo và bind dữ liệu cho các item nhìn thấy trên màn hình
+
+2. **Hiệu suất cuộn**
+   - NestedScrollView với fillViewport=true để tận dụng toàn bộ không gian
+   - RecyclerView có nestedScrollingEnabled=true để cuộn mượt mà
+
+3. **Constraints tối ưu**
+   - Sử dụng ConstraintLayout để giảm độ phức tạp của layout
+   - Các view được neo vào nhau với constraints để tạo giao diện responsive
+
+### Thiết kế Material
+
+1. **Components Material**
+   - MaterialToolbar thay cho ActionBar thông thường
+   - ChipGroup cho việc lọc danh mục
+   - CardView cho các item sản phẩm
+
+2. **Phối màu**
+   - Sử dụng màu chính (colorPrimary) cho TopAppBar và các element nhấn mạnh
+   - Bottom navigation có màu tùy chỉnh để phù hợp với theme
+
+### Khả năng tùy biến và mở rộng
+
+1. **Thiết kế module**
+   - Mỗi phần (Flash Sale, Featured, All Products) là một module riêng biệt
+   - Dễ dàng thêm/bỏ các section khi cần
+
+2. **Flexible layout**
+   - ConstraintLayout cho phép điều chỉnh vị trí các thành phần một cách linh hoạt
+   - RecyclerView có thể dễ dàng thay đổi LayoutManager để hiển thị theo grid, linear, staggered,
+     v.v.
+
+## Chứ năng bổ sung
+-Login thêm login facebook authentication từ firebase
+-Chức năng chat với admin , tích Ai để trả lời tự động các câu hỏi cơ bản như (thông tin thêm của sản phâm)
+-Add thêm thanh toán bằng Vnpay WebView Integration
+-Xử lý render Ui
+-Xử lý các trường hợp nâng cao
+-Bảo mật Sql , theo tiêu chuẩn OSWAP mobile app java
+
+## Tich Hop Vnpay vao Android  Studio with firebase
+-tao tai khoan moi truong test: https://sandbox.vnpayment.vn/devreg/
+-code 
 
 ## Kết luận
 

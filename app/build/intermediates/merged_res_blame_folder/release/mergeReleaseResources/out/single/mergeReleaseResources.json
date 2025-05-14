@@ -48,24 +48,28 @@
         "source": "com.example.ecommerce.app-main-45:/drawable/ic_order.xml"
     },
     {
-        "merged": "com.example.ecommerce.app-release-44:/drawable_error_image.xml.flat",
-        "source": "com.example.ecommerce.app-main-45:/drawable/error_image.xml"
-    },
-    {
         "merged": "com.example.ecommerce.app-release-44:/layout_activity_cart.xml.flat",
         "source": "com.example.ecommerce.app-main-45:/layout/activity_cart.xml"
     },
     {
-        "merged": "com.example.ecommerce.app-release-44:/drawable_login_background.xml.flat",
-        "source": "com.example.ecommerce.app-main-45:/drawable/login_background.xml"
+        "merged": "com.example.ecommerce.app-release-44:/drawable_error_image.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/drawable/error_image.xml"
     },
     {
         "merged": "com.example.ecommerce.app-release-44:/layout_item_order_detail_product.xml.flat",
         "source": "com.example.ecommerce.app-main-45:/layout/item_order_detail_product.xml"
     },
     {
+        "merged": "com.example.ecommerce.app-release-44:/drawable_login_background.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/drawable/login_background.xml"
+    },
+    {
         "merged": "com.example.ecommerce.app-release-44:/drawable_ic_back.xml.flat",
         "source": "com.example.ecommerce.app-main-45:/drawable/ic_back.xml"
+    },
+    {
+        "merged": "com.example.ecommerce.app-release-44:/layout_activity_order_confirmation.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/layout/activity_order_confirmation.xml"
     },
     {
         "merged": "com.example.ecommerce.app-release-44:/xml_backup_rules.xml.flat",
@@ -90,6 +94,14 @@
     {
         "merged": "com.example.ecommerce.app-release-44:/layout_activity_admin_products.xml.flat",
         "source": "com.example.ecommerce.app-main-45:/layout/activity_admin_products.xml"
+    },
+    {
+        "merged": "com.example.ecommerce.app-release-44:/drawable_search_background.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/drawable/search_background.xml"
+    },
+    {
+        "merged": "com.example.ecommerce.app-release-44:/menu_order_detail_menu.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/menu/order_detail_menu.xml"
     },
     {
         "merged": "com.example.ecommerce.app-release-44:/drawable_placeholder_image.xml.flat",
@@ -122,6 +134,10 @@
     {
         "merged": "com.example.ecommerce.app-release-44:/drawable_ic_category.xml.flat",
         "source": "com.example.ecommerce.app-main-45:/drawable/ic_category.xml"
+    },
+    {
+        "merged": "com.example.ecommerce.app-release-44:/menu_admin_orders_menu.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/menu/admin_orders_menu.xml"
     },
     {
         "merged": "com.example.ecommerce.app-release-44:/drawable_edit_text_background.xml.flat",
@@ -160,6 +176,10 @@
         "source": "com.example.ecommerce.app-main-45:/layout/activity_admin_orders.xml"
     },
     {
+        "merged": "com.example.ecommerce.app-release-44:/layout_fragment_edit_profile.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/layout/fragment_edit_profile.xml"
+    },
+    {
         "merged": "com.example.ecommerce.app-release-44:/layout_activity_home_main_drawer.xml.flat",
         "source": "com.example.ecommerce.app-main-45:/layout/activity_home_main_drawer.xml"
     },
@@ -174,6 +194,10 @@
     {
         "merged": "com.example.ecommerce.app-release-44:/drawable_buy_now_button.xml.flat",
         "source": "com.example.ecommerce.app-main-45:/drawable/buy_now_button.xml"
+    },
+    {
+        "merged": "com.example.ecommerce.app-release-44:/layout_activity_vnpay.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/layout/activity_vnpay.xml"
     },
     {
         "merged": "com.example.ecommerce.app-release-44:/layout_forgot_password.xml.flat",
@@ -228,6 +252,10 @@
         "source": "com.example.ecommerce.app-main-45:/drawable/ic_cart.xml"
     },
     {
+        "merged": "com.example.ecommerce.app-release-44:/drawable_ic_success.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/drawable/ic_success.xml"
+    },
+    {
         "merged": "com.example.ecommerce.app-release-44:/layout_item_flash_sale.xml.flat",
         "source": "com.example.ecommerce.app-main-45:/layout/item_flash_sale.xml"
     },
@@ -246,6 +274,10 @@
     {
         "merged": "com.example.ecommerce.app-release-44:/menu_menu_navigation_drawer.xml.flat",
         "source": "com.example.ecommerce.app-main-45:/menu/menu_navigation_drawer.xml"
+    },
+    {
+        "merged": "com.example.ecommerce.app-release-44:/layout_fragment_profile.xml.flat",
+        "source": "com.example.ecommerce.app-main-45:/layout/fragment_profile.xml"
     },
     {
         "merged": "com.example.ecommerce.app-release-44:/menu_admin_menu.xml.flat",

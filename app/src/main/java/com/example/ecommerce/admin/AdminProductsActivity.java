@@ -2,6 +2,7 @@ package com.example.ecommerce.admin;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,16 +16,17 @@ import android.widget.Toast;
 
 import com.example.ecommerce.R;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import adapters.AdminProductAdapter;
 import models.Product;
 import repository.AdminFirebaseRepository;
 import utils.PermissionManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminProductsActivity extends AppCompatActivity implements AdminProductAdapter.OnProductItemClickListener {
     private static final String TAG = "AdminProductsActivity";
@@ -34,8 +36,12 @@ public class AdminProductsActivity extends AppCompatActivity implements AdminPro
     private TextView tvEmpty;
     private FloatingActionButton fabAddProduct;
     private MaterialToolbar topAppBar;
+    private SearchView searchView;
+    private ChipGroup sortChipGroup;
+    private Chip chipSortName, chipSortNameDesc, chipSortPriceAsc, chipSortPriceDesc;
 
     private List<Product> productList;
+    private List<Product> filteredList;
     private AdminProductAdapter adapter;
     private AdminFirebaseRepository repository;
     private PermissionManager permissionManager;
@@ -62,16 +68,20 @@ public class AdminProductsActivity extends AppCompatActivity implements AdminPro
         setupToolbar();
         setupRecyclerView();
         setupFab();
+        setupSearchView();
+        setupSortingChips();
 
-        // Load products
-        loadProducts();
+        // Load products with default sort (name, ascending)
+        loadProducts("name", true, "");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Reload products when returning to this activity
-        loadProducts();
+        // Reload products when returning to this activity using current sort and search
+        String currentSort = getCurrentSortField();
+        boolean isAscending = isCurrentSortAscending();
+        loadProducts(currentSort, isAscending, searchView.getQuery().toString());
     }
 
     private void initViews() {
@@ -80,6 +90,12 @@ public class AdminProductsActivity extends AppCompatActivity implements AdminPro
         tvEmpty = findViewById(R.id.tvEmpty);
         fabAddProduct = findViewById(R.id.fabAddProduct);
         topAppBar = findViewById(R.id.topAppBar);
+        searchView = findViewById(R.id.searchView);
+        sortChipGroup = findViewById(R.id.sortChipGroup);
+        chipSortName = findViewById(R.id.chipSortName);
+        chipSortNameDesc = findViewById(R.id.chipSortNameDesc);
+        chipSortPriceAsc = findViewById(R.id.chipSortPriceAsc);
+        chipSortPriceDesc = findViewById(R.id.chipSortPriceDesc);
     }
 
     private void setupToolbar() {
@@ -88,7 +104,8 @@ public class AdminProductsActivity extends AppCompatActivity implements AdminPro
 
     private void setupRecyclerView() {
         productList = new ArrayList<>();
-        adapter = new AdminProductAdapter(this, productList, this);
+        filteredList = new ArrayList<>();
+        adapter = new AdminProductAdapter(this, filteredList, this);
         recyclerViewProducts.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewProducts.setAdapter(adapter);
     }
@@ -101,10 +118,10 @@ public class AdminProductsActivity extends AppCompatActivity implements AdminPro
         });
     }
 
-    private void loadProducts() {
+    private void loadProducts(String sortBy, boolean ascending, String searchQuery) {
         showLoading(true);
 
-        repository.getAllProducts(new AdminFirebaseRepository.ProductsCallback() {
+        repository.getAllProducts(sortBy, ascending, searchQuery, new AdminFirebaseRepository.ProductsCallback() {
             @Override
             public void onCallback(List<Product> products) {
                 showLoading(false);
@@ -112,8 +129,8 @@ public class AdminProductsActivity extends AppCompatActivity implements AdminPro
                 if (products != null && !products.isEmpty()) {
                     productList.clear();
                     productList.addAll(products);
-                    adapter.notifyDataSetChanged();
-                    showEmptyView(false);
+                    filterProducts(searchView.getQuery().toString());
+                    showEmptyView(filteredList.isEmpty());
                 } else {
                     showEmptyView(true);
                 }
@@ -138,6 +155,82 @@ public class AdminProductsActivity extends AppCompatActivity implements AdminPro
     private void showEmptyView(boolean isEmpty) {
         tvEmpty.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
         recyclerViewProducts.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
+    }
+
+    private void setupSearchView() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                String currentSort = getCurrentSortField();
+                boolean isAscending = isCurrentSortAscending();
+                loadProducts(currentSort, isAscending, query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterProducts(newText);
+                return true;
+            }
+        });
+    }
+
+    private void filterProducts(String query) {
+        filteredList.clear();
+
+        if (query.isEmpty()) {
+            filteredList.addAll(productList);
+        } else {
+            String lowerCaseQuery = query.toLowerCase().trim();
+            for (Product product : productList) {
+                if (product.getName().toLowerCase().contains(lowerCaseQuery)) {
+                    filteredList.add(product);
+                }
+            }
+        }
+
+        adapter.notifyDataSetChanged();
+        showEmptyView(filteredList.isEmpty());
+    }
+
+    private void setupSortingChips() {
+        // Mặc định sắp xếp theo tên tăng dần
+        chipSortName.setChecked(true);
+
+        chipSortName.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                loadProducts("name", true, searchView.getQuery().toString());
+            }
+        });
+
+        chipSortNameDesc.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                loadProducts("name", false, searchView.getQuery().toString());
+            }
+        });
+
+        chipSortPriceAsc.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                loadProducts("price", true, searchView.getQuery().toString());
+            }
+        });
+
+        chipSortPriceDesc.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                loadProducts("price", false, searchView.getQuery().toString());
+            }
+        });
+    }
+
+    private String getCurrentSortField() {
+        if (chipSortPriceAsc.isChecked() || chipSortPriceDesc.isChecked()) {
+            return "price";
+        }
+        return "name"; // Mặc định sắp xếp theo tên
+    }
+
+    private boolean isCurrentSortAscending() {
+        return chipSortName.isChecked() || chipSortPriceAsc.isChecked();
     }
 
     @Override
@@ -174,7 +267,7 @@ public class AdminProductsActivity extends AppCompatActivity implements AdminPro
                 showLoading(false);
                 Toast.makeText(AdminProductsActivity.this,
                         "Đã xóa sản phẩm thành công", Toast.LENGTH_SHORT).show();
-                loadProducts(); // Reload the list
+                loadProducts(getCurrentSortField(), isCurrentSortAscending(), searchView.getQuery().toString()); // Reload the list
             }
 
             @Override
