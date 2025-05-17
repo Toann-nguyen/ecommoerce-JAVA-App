@@ -10,6 +10,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -17,7 +18,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import models.User;
@@ -26,11 +29,13 @@ public class UserRepository {
     private final FirebaseAuth auth;
     private final FirebaseFirestore db;
     private final FirebaseStorage storage;
+    private CollectionReference usersRef;
 
     public UserRepository() {
         this.auth = FirebaseAuth.getInstance();
         this.db = FirebaseFirestore.getInstance();
         this.storage = FirebaseStorage.getInstance();
+        this.usersRef = db.collection("users");
     }
 
     /**
@@ -181,5 +186,51 @@ public class UserRepository {
      */
     public void signOut() {
         auth.signOut();
+    }
+
+    public void getUsersByIds(List<String> userIds, OnUsersLoadedListener listener) {
+        List<User> users = new ArrayList<>();
+
+        if (userIds.isEmpty()) {
+            listener.onUsersLoaded(users);
+            return;
+        }
+
+        // Counter to track completed queries
+        final int[] counter = {userIds.size()};
+
+        for (String userId : userIds) {
+            usersRef.document(userId).get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        User user = documentSnapshot.toObject(User.class);
+                        if (user != null) {
+                            // Set the user ID since it's the document ID
+                            user.setUserId(documentSnapshot.getId());
+                            users.add(user);
+                        }
+
+                        counter[0]--;
+                        if (counter[0] == 0) {
+                            // All queries completed
+                            listener.onUsersLoaded(users);
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        counter[0]--;
+                        if (counter[0] == 0) {
+                            if (users.isEmpty()) {
+                                listener.onError(e.getMessage());
+                            } else {
+                                listener.onUsersLoaded(users);
+                            }
+                        }
+                    });
+        }
+    }
+
+    public interface OnUsersLoadedListener {
+        void onUsersLoaded(List<User> users);
+
+        void onError(String error);
     }
 }

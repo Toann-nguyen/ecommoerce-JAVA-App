@@ -665,11 +665,9 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
                 findViewById(R.id.nestedScrollView).setVisibility(View.VISIBLE);
                 findViewById(R.id.fragment_container).setVisibility(View.GONE);
                 return true;
-            } else if (id == R.id.nav_categories) {
-                // Show categories
-                // This could be another fragment in the future
-                findViewById(R.id.nestedScrollView).setVisibility(View.VISIBLE);
-                findViewById(R.id.fragment_container).setVisibility(View.GONE);
+            } else if (id == R.id.nav_chat) {
+                // Open chat activity with admin
+                startActivity(new Intent(HomeMainActivity.this, ChatActivity.class));
                 return true;
             } else if (id == R.id.nav_cart) {
                 // Open cart activity

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ecommerce.app-mergeDebugResources-42:/values-mn/values-mn.xml",
+            "outputFile": "com.example.ecommerce.app-mergeDebugResources-41:/values-mn/values-mn.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\9882aabb55d3a14878bcc315a64fba34\\transformed\\credentials-1.5.0\\res\\values-mn\\values-mn.xml",
@@ -74,23 +74,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\f1389cd54090a0073ef5f891eba1e5c8\\transformed\\play-services-base-18.5.0\\res\\values-mn\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "193,299,452,580,683,816,938,1063,1169,1309,1412,1576,1701,1838,2002,2059,2117",
-                        "endColumns": "105,152,127,102,132,121,124,105,139,102,163,124,136,163,56,57,72",
-                        "endOffsets": "298,451,579,682,815,937,1062,1168,1308,1411,1575,1700,1837,2001,2058,2116,2189"
-                    },
-                    "to": {
-                        "startLines": "50,51,52,53,54,55,56,57,59,60,61,62,63,64,65,66,67",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "4676,4786,4943,5075,5182,5319,5445,5574,5834,5978,6085,6253,6382,6523,6691,6752,6814",
-                        "endColumns": "109,156,131,106,136,125,128,109,143,106,167,128,140,167,60,61,76",
-                        "endOffsets": "4781,4938,5070,5177,5314,5440,5569,5679,5973,6080,6248,6377,6518,6686,6747,6809,6886"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\00c10e6581275746f2ad2cd6dbd2dbf6\\transformed\\browser-1.4.0\\res\\values-mn\\values-mn.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -125,7 +108,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\fb3fbc9616a779956d1ba862c437dcb9\\transformed\\play-services-basement-18.4.0\\res\\values-mn\\values.xml",
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\18b63e71f53c32e6c762289c2c46e119\\transformed\\play-services-base-18.1.0\\res\\values-mn\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "193,299,452,580,683,816,938,1063,1169,1309,1412,1576,1701,1838,2002,2059,2117",
+                        "endColumns": "105,152,127,102,132,121,124,105,139,102,163,124,136,163,56,57,72",
+                        "endOffsets": "298,451,579,682,815,937,1062,1168,1308,1411,1575,1700,1837,2001,2058,2116,2189"
+                    },
+                    "to": {
+                        "startLines": "50,51,52,53,54,55,56,57,59,60,61,62,63,64,65,66,67",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "4676,4786,4943,5075,5182,5319,5445,5574,5834,5978,6085,6253,6382,6523,6691,6752,6814",
+                        "endColumns": "109,156,131,106,136,125,128,109,143,106,167,128,140,167,60,61,76",
+                        "endOffsets": "4781,4938,5070,5177,5314,5440,5569,5679,5973,6080,6248,6377,6518,6686,6747,6809,6886"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\8f52bdfbdea3286bc2f5d3b239081a5f\\transformed\\play-services-basement-18.2.0\\res\\values-mn\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -35,11 +37,15 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartA
 
     private ShoppingCart shoppingCart;
     private CartAdapter cartAdapter;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
+        // Get current user
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         initViews();
         setupToolbar();
@@ -120,11 +126,54 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartA
     }
 
     private void processCheckout() {
-        // Trong ứng dụng thực tế, phần này sẽ chuyển người dùng đến màn hình thanh toán
+        // Kiểm tra giỏ hàng có trống không
+        if (shoppingCart.getCartItems().isEmpty()) {
+            Toast.makeText(this, "Giỏ hàng trống, vui lòng thêm sản phẩm trước khi thanh toán", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Kiểm tra người dùng đã đăng nhập chưa
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            // Nếu chưa đăng nhập, hiển thị thông báo và chuyển đến màn hình đăng nhập
+            Toast.makeText(this, "Vui lòng đăng nhập để tiếp tục thanh toán", Toast.LENGTH_SHORT).show();
+            Intent loginIntent = new Intent(this, MainActivity.class);
+            startActivity(loginIntent);
+            return;
+        }
+
+        // Kiểm tra số lượng sản phẩm trong kho
+        boolean insufficientStock = false;
+        StringBuilder stockMessage = new StringBuilder("Sản phẩm không đủ số lượng trong kho:\n");
+
+        for (CartItem item : shoppingCart.getCartItems()) {
+            if (item.getQuantity() > item.getProduct().getStock()) {
+                insufficientStock = true;
+                stockMessage.append("- ")
+                        .append(item.getProduct().getName())
+                        .append(" (còn ")
+                        .append(item.getProduct().getStock())
+                        .append(")\n");
+            }
+        }
+
+        if (insufficientStock) {
+            Toast.makeText(this, stockMessage.toString(), Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Nếu đã đăng nhập và giỏ hàng có sản phẩm, chuyển đến màn hình thanh toán
         Toast.makeText(this, "Đang chuyển đến trang thanh toán...", Toast.LENGTH_SHORT).show();
 
-        // Thêm mã để chuyển đến màn hình thanh toán
+        // Chuyển sang màn hình thanh toán
         Intent intent = new Intent(this, CheckoutActivity.class);
+        // Thiết lập BUY_NOW flag giống như nút "Mua ngay" để có cùng trải nghiệm
+        intent.putExtra("BUY_NOW", true);
+
+        // Lấy sản phẩm đầu tiên trong giỏ hàng để xử lý giống như nút "Mua ngay"
+        CartItem firstItem = shoppingCart.getCartItems().get(0);
+        intent.putExtra("PRODUCT_ID", firstItem.getProduct().getId());
+        intent.putExtra("PRODUCT_QUANTITY", firstItem.getQuantity());
+
         startActivity(intent);
     }
 

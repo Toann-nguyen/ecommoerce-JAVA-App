@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class User implements Serializable {
     private String uid;
+    private String userId; // Added for chat functionality
     private String email;
     private String fullName;
     private String phone;
@@ -25,6 +26,7 @@ public class User implements Serializable {
     // Constructor với các tham số cơ bản
     public User(String uid, String email, String fullName) {
         this.uid = uid;
+        this.userId = uid; // Initialize userId with uid for compatibility
         this.email = email;
         this.fullName = fullName;
         this.role = UserRole.USER.getRole(); // Default role
@@ -34,6 +36,7 @@ public class User implements Serializable {
     // Constructor đầy đủ
     public User(String uid, String email, String fullName, String phone, String address, String avatarUrl, String role) {
         this.uid = uid;
+        this.userId = uid; // Initialize userId with uid for compatibility
         this.email = email;
         this.fullName = fullName;
         this.phone = phone;
@@ -52,8 +55,21 @@ public class User implements Serializable {
         this.uid = uid;
     }
 
+    public String getUserId() {
+        return userId != null ? userId : uid; // Return userId if available, otherwise uid
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    // For compatibility with UserChatAdapter
+    public String getPhotoUrl() {
+        return avatarUrl;
     }
 
     public void setEmail(String email) {

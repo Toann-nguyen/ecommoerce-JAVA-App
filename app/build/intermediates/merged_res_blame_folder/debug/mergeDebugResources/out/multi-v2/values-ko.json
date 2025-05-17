@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.ecommerce.app-mergeDebugResources-42:/values-ko/values-ko.xml",
+            "outputFile": "com.example.ecommerce.app-mergeDebugResources-41:/values-ko/values-ko.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\18b63e71f53c32e6c762289c2c46e119\\transformed\\play-services-base-18.1.0\\res\\values-ko\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "193,293,428,540,638,749,862,965,1056,1197,1296,1428,1542,1656,1771,1826,1880",
+                        "endColumns": "99,134,111,97,110,112,102,90,140,98,131,113,113,114,54,53,70",
+                        "endOffsets": "292,427,539,637,748,861,964,1055,1196,1295,1427,1541,1655,1770,1825,1879,1950"
+                    },
+                    "to": {
+                        "startLines": "50,51,52,53,54,55,56,57,59,60,61,62,63,64,65,66,67",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "4389,4493,4632,4748,4850,4965,5082,5189,5405,5550,5653,5789,5907,6025,6144,6203,6261",
+                        "endColumns": "103,138,115,101,114,116,106,94,144,102,135,117,117,118,58,57,74",
+                        "endOffsets": "4488,4627,4743,4845,4960,5077,5184,5279,5545,5648,5784,5902,6020,6139,6198,6256,6331"
+                    }
+                },
                 {
                     "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\f05a4147f83c2dcf8e83224c5a2cafa6\\transformed\\biometric-1.1.0\\res\\values-ko\\values-ko.xml",
                     "from": {
@@ -38,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\fb3fbc9616a779956d1ba862c437dcb9\\transformed\\play-services-basement-18.4.0\\res\\values-ko\\values.xml",
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\8f52bdfbdea3286bc2f5d3b239081a5f\\transformed\\play-services-basement-18.2.0\\res\\values-ko\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -122,23 +139,6 @@
                         "startOffsets": "6437,6805,6898,7001",
                         "endColumns": "85,92,102,93",
                         "endOffsets": "6518,6893,6996,7090"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\f1389cd54090a0073ef5f891eba1e5c8\\transformed\\play-services-base-18.5.0\\res\\values-ko\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "193,293,428,540,638,749,862,965,1056,1197,1296,1428,1542,1656,1771,1826,1880",
-                        "endColumns": "99,134,111,97,110,112,102,90,140,98,131,113,113,114,54,53,70",
-                        "endOffsets": "292,427,539,637,748,861,964,1055,1196,1295,1427,1541,1655,1770,1825,1879,1950"
-                    },
-                    "to": {
-                        "startLines": "50,51,52,53,54,55,56,57,59,60,61,62,63,64,65,66,67",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "4389,4493,4632,4748,4850,4965,5082,5189,5405,5550,5653,5789,5907,6025,6144,6203,6261",
-                        "endColumns": "103,138,115,101,114,116,106,94,144,102,135,117,117,118,58,57,74",
-                        "endOffsets": "4488,4627,4743,4845,4960,5077,5184,5279,5545,5648,5784,5902,6020,6139,6198,6256,6331"
                     }
                 }
             ]

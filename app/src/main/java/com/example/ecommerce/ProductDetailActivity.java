@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -140,12 +141,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         btnBuyNow.setOnClickListener(v -> {
             if (product != null) {
-                // Chuyển thẳng tới trang checkout với 1 sản phẩm
-                Intent intent = new Intent(ProductDetailActivity.this, CheckoutActivity.class);
-                intent.putExtra("BUY_NOW", true);
-                intent.putExtra("PRODUCT_ID", product.getId());
-                intent.putExtra("PRODUCT_QUANTITY", quantity);
-                startActivity(intent);
+                processBuyNow();
             }
         });
     }
@@ -313,5 +309,41 @@ public class ProductDetailActivity extends AppCompatActivity {
                 drawable.setColor(Color.LTGRAY);
             }
         }
+    }
+
+    /**
+     * Xử lý khi người dùng nhấn nút "Mua ngay"
+     */
+    private void processBuyNow() {
+        // Kiểm tra số lượng tồn kho
+        if (product.getStock() <= 0) {
+            Toast.makeText(this, "Sản phẩm đã hết hàng", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Kiểm tra số lượng mua có hợp lệ không
+        if (quantity <= 0 || quantity > product.getStock()) {
+            Toast.makeText(this, "Số lượng không hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Kiểm tra người dùng đã đăng nhập chưa
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            // Nếu chưa đăng nhập, hiển thị thông báo và chuyển đến màn hình đăng nhập
+            Toast.makeText(this, "Vui lòng đăng nhập để tiếp tục thanh toán", Toast.LENGTH_SHORT).show();
+            Intent loginIntent = new Intent(this, MainActivity.class);
+            startActivity(loginIntent);
+            return;
+        }
+
+        // Nếu đã đăng nhập và kiểm tra tồn kho OK, chuyển đến màn hình thanh toán
+        Toast.makeText(this, "Đang chuyển đến trang thanh toán...", Toast.LENGTH_SHORT).show();
+
+        // Chuyển sang màn hình thanh toán với thông tin mua ngay
+        Intent intent = new Intent(ProductDetailActivity.this, CheckoutActivity.class);
+        intent.putExtra("BUY_NOW", true);
+        intent.putExtra("PRODUCT_ID", product.getId());
+        intent.putExtra("PRODUCT_QUANTITY", quantity);
+        startActivity(intent);
     }
 }
