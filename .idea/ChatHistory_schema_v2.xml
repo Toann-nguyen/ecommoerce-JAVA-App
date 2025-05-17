@@ -3,6 +3,7 @@
   <component name="ChatHistoryState">
     <option name="serializedSessions">
       <map>
+        <entry key="ccf609b7-91ab-43be-b33f-89129654c16a" value="{&quot;id&quot;:&quot;ccf609b7-91ab-43be-b33f-89129654c16a&quot;,&quot;name&quot;:&quot;Quick Greeting from User&quot;,&quot;timestamp&quot;:1747488654868,&quot;messages&quot;:[{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:[{&quot;type&quot;:&quot;text&quot;,&quot;text&quot;:&quot;\u003cuser_query\u003e\nhi\n\u003c/user_query\u003e&quot;}]}]}" />
         <entry key="da8edaf3-8fb5-4507-b27b-29f99fad8746" value="{&quot;id&quot;:&quot;da8edaf3-8fb5-4507-b27b-29f99fad8746&quot;,&quot;name&quot;:&quot;Greeting and Introduction&quot;,&quot;timestamp&quot;:1747470651204,&quot;messages&quot;:[{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:[{&quot;type&quot;:&quot;text&quot;,&quot;text&quot;:&quot;\u003cuser_query\u003e\nalo\n\u003c/user_query\u003e&quot;}]}]}" />
       </map>
     </option>

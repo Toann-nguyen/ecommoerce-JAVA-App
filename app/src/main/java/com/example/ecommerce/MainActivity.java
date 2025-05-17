@@ -164,7 +164,29 @@ public class MainActivity extends AppCompatActivity implements GoogleSignInHelpe
                 startActivity(intent);
             }
         });
+
+        // Check if we need to show login dialog
+        if (getIntent().getBooleanExtra("SHOW_LOGIN", false)) {
+            // Show login form or dialog here
+            if (loginButton != null) {
+                loginButton.performClick(); // Trigger login form if using a button to show it
+            }
+            Toast.makeText(this, "Vui lòng đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show();
+        }
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (intent.getBooleanExtra("SHOW_LOGIN", false)) {
+            // Show login form or dialog here
+            if (loginButton != null) {
+                loginButton.performClick(); // Trigger login form if using a button to show it
+            }
+            Toast.makeText(this, "Vui lòng đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

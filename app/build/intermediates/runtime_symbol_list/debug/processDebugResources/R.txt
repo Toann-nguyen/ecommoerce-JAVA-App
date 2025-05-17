@@ -1378,6 +1378,7 @@ int color abc_tint_spinner 0x7f060017
 int color abc_tint_switch_track 0x7f060018
 int color accent_material_dark 0x7f060019
 int color accent_material_light 0x7f06001a
+int color admin_message_bg 0x7f060320
 int color androidx_core_ripple_material_light 0x7f06001b
 int color androidx_core_secondary_text_default_material_light 0x7f06001c
 int color background_floating_material_dark 0x7f06001d
@@ -2066,6 +2067,8 @@ int color material_timepicker_button_stroke 0x7f0602c7
 int color material_timepicker_clock_text_color 0x7f0602c8
 int color material_timepicker_clockface 0x7f0602c9
 int color material_timepicker_modebutton_tint 0x7f0602ca
+int color message_text_color_admin 0x7f060321
+int color message_text_color_user 0x7f060322
 int color mtrl_btn_bg_color_selector 0x7f0602cb
 int color mtrl_btn_ripple_color 0x7f0602cc
 int color mtrl_btn_stroke_color_selector 0x7f0602cd
@@ -2150,6 +2153,7 @@ int color teal_200 0x7f06031b
 int color teal_700 0x7f06031c
 int color tooltip_background_dark 0x7f06031d
 int color tooltip_background_light 0x7f06031e
+int color user_message_bg 0x7f060323
 int color white 0x7f06031f
 int dimen abc_action_bar_content_inset_material 0x7f070000
 int dimen abc_action_bar_content_inset_with_nav 0x7f070001
@@ -2736,6 +2740,8 @@ int dimen material_textinput_max_width 0x7f070245
 int dimen material_textinput_min_width 0x7f070246
 int dimen material_time_picker_minimum_screen_height 0x7f070247
 int dimen material_time_picker_minimum_screen_width 0x7f070248
+int dimen message_margin_large 0x7f070326
+int dimen message_margin_small 0x7f070327
 int dimen mtrl_alert_dialog_background_inset_bottom 0x7f070249
 int dimen mtrl_alert_dialog_background_inset_end 0x7f07024a
 int dimen mtrl_alert_dialog_background_inset_start 0x7f07024b
@@ -3266,6 +3272,7 @@ int id action_bar_spinner 0x7f090038
 int id action_bar_subtitle 0x7f090039
 int id action_bar_title 0x7f09003a
 int id action_cart 0x7f09003b
+int id action_chat 0x7f090321
 int id action_container 0x7f09003c
 int id action_context_bar 0x7f09003d
 int id action_divider 0x7f09003e
@@ -3371,6 +3378,7 @@ int id cardUser 0x7f09031c
 int id cardUsers 0x7f0900a0
 int id cardView 0x7f0900a1
 int id cardViewMessage 0x7f0900a2
+int id cardViewProduct 0x7f090322
 int id carryVelocity 0x7f0900a3
 int id cartSummaryPanel 0x7f0900a4
 int id center 0x7f0900a5
@@ -3493,6 +3501,7 @@ int id expand_activities_button 0x7f090119
 int id expanded_menu 0x7f09011a
 int id fabAddFeatured 0x7f09011b
 int id fabAddProduct 0x7f09011c
+int id fabChat 0x7f090323
 int id fade 0x7f09011d
 int id fill 0x7f09011e
 int id fill_horizontal 0x7f09011f
@@ -4176,6 +4185,7 @@ int layout item_featured 0x7f0c004c
 int layout item_flash_sale 0x7f0c004d
 int layout item_flash_sale_banner 0x7f0c004e
 int layout item_message 0x7f0c004f
+int layout item_message_product 0x7f0c0096
 int layout item_order_detail_product 0x7f0c0050
 int layout item_product 0x7f0c0051
 int layout item_product_image 0x7f0c0052
@@ -4252,6 +4262,7 @@ int menu bottom_navigation_menu 0x7f0e0004
 int menu home_menu 0x7f0e0005
 int menu menu_navigation_drawer 0x7f0e0006
 int menu order_detail_menu 0x7f0e0007
+int menu product_detail_menu 0x7f0e0008
 int mipmap ic_launcher 0x7f0f0000
 int mipmap ic_launcher_round 0x7f0f0001
 int plurals mtrl_badge_content_description 0x7f100000

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="admin_message_bg">#2196F3</color>
+    <color name="user_message_bg">#E91E63</color>
+    <color name="message_text_color_admin">#FFFFFF</color>
+    <color name="message_text_color_user">#FFFFFF</color>
+</resources>

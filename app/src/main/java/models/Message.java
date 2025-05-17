@@ -1,13 +1,21 @@
 package models;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
     private String senderId;
     private String receiverId;
     private String messageText;
     private long timestamp;
+    private Product product;
+    private String messageType;
+
+    public static final String TYPE_TEXT = "text";
+    public static final String TYPE_PRODUCT = "product";
 
     public Message() {
         // Default constructor required for Firestore
+        this.messageType = TYPE_TEXT;
     }
 
     public Message(String senderId, String receiverId, String messageText, long timestamp) {
@@ -15,6 +23,16 @@ public class Message {
         this.receiverId = receiverId;
         this.messageText = messageText;
         this.timestamp = timestamp;
+        this.messageType = TYPE_TEXT;
+    }
+
+    public Message(String senderId, String receiverId, String messageText, Product product, long timestamp) {
+        this.senderId = senderId;
+        this.receiverId = receiverId;
+        this.messageText = messageText;
+        this.product = product;
+        this.timestamp = timestamp;
+        this.messageType = TYPE_PRODUCT;
     }
 
     public String getSenderId() {
@@ -47,5 +65,28 @@ public class Message {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public boolean isProductMessage() {
+        return TYPE_PRODUCT.equals(messageType) && product != null;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+        if (product != null) {
+            this.messageType = TYPE_PRODUCT;
+        }
+    }
+
+    public String getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(String messageType) {
+        this.messageType = messageType;
     }
 }

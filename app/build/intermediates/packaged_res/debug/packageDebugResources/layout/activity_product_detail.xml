@@ -91,7 +91,18 @@
                 android:textStyle="italic"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tvProductPrice"
                 app:layout_constraintStart_toEndOf="@+id/tvProductPrice"
-                tools:text="Giảm 10%" />
+                tools:text="Giảm 10%" />            <!-- FAB Chat với Admin -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_chat"
+                app:fabSize="mini"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/white"
+                android:contentDescription="Chat với Admin"/>
 
             <!-- Số lượng bên cạnh giá -->
             <LinearLayout

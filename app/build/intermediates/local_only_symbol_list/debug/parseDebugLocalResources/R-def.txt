@@ -1,16 +1,22 @@
 R_DEF: Internal format may change without notice
 local
+color admin_message_bg
 color black
 color bottom_nav_color
 color bottom_nav_inactive
 color bottom_nav_item_color
 color gray_placeholder
+color message_text_color_admin
+color message_text_color_user
 color purple_200
 color purple_500
 color purple_700
 color teal_200
 color teal_700
+color user_message_bg
 color white
+dimen message_margin_large
+dimen message_margin_small
 drawable badge_background
 drawable banner_gradient_bg
 drawable bg_countdown
@@ -47,6 +53,7 @@ drawable profile_placeholder
 drawable search_background
 drawable status_badge_background
 id action_cart
+id action_chat
 id action_generate_receipt
 id action_logout
 id action_orders
@@ -98,6 +105,7 @@ id cardUser
 id cardUsers
 id cardView
 id cardViewMessage
+id cardViewProduct
 id cartSummaryPanel
 id chatToolbar
 id checkManageOrders
@@ -138,6 +146,7 @@ id etFullName
 id etPhone
 id fabAddFeatured
 id fabAddProduct
+id fabChat
 id forgotPasswordLayout
 id forgotPasswordTextView
 id fragment_container
@@ -355,6 +364,7 @@ layout item_featured
 layout item_flash_sale
 layout item_flash_sale_banner
 layout item_message
+layout item_message_product
 layout item_order_detail_product
 layout item_product
 layout item_product_image
@@ -370,6 +380,7 @@ menu bottom_navigation_menu
 menu home_menu
 menu menu_navigation_drawer
 menu order_detail_menu
+menu product_detail_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 string add_to_cart

@@ -1,5 +1,6 @@
 package com.example.ecommerce.admin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.ProductDetailActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,11 +23,12 @@ import java.util.List;
 import adapters.MessageAdapter;
 import adapters.UserChatAdapter;
 import models.Message;
+import models.Product;
 import models.User;
 import repository.ChatRepository;
 import repository.UserRepository;
 
-public class AdminChatActivity extends AppCompatActivity implements UserChatAdapter.OnUserClickListener {
+public class AdminChatActivity extends AppCompatActivity implements UserChatAdapter.OnUserClickListener, MessageAdapter.OnProductClickListener {
 
     private RecyclerView recyclerUsers;
     private RecyclerView recyclerMessages;
@@ -68,7 +71,7 @@ public class AdminChatActivity extends AppCompatActivity implements UserChatAdap
 
         // Initialize message list and adapter
         messageList = new ArrayList<>();
-        messageAdapter = new MessageAdapter(this, messageList);
+        messageAdapter = new MessageAdapter(this, messageList, this);
         recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerMessages.setAdapter(messageAdapter);
 
@@ -86,7 +89,7 @@ public class AdminChatActivity extends AppCompatActivity implements UserChatAdap
             if (selectedUserId != null) {
                 String message = editTextMessage.getText().toString().trim();
                 if (!message.isEmpty()) {
-                    sendMessage(message);
+                    sendMessage();
                 }
             } else {
                 Toast.makeText(this, "Vui lòng chọn người dùng để chat", Toast.LENGTH_SHORT).show();
@@ -159,29 +162,48 @@ public class AdminChatActivity extends AppCompatActivity implements UserChatAdap
         });
     }
 
-    private void sendMessage(String messageText) {
-        chatRepository.sendAdminMessage(adminId, selectedUserId, messageText, new ChatRepository.OnMessageSentListener() {
-            @Override
-            public void onMessageSent(boolean success) {
-                if (success) {
-                    editTextMessage.setText("");
-                } else {
-                    Toast.makeText(AdminChatActivity.this, "Không thể gửi tin nhắn", Toast.LENGTH_SHORT).show();
+    private void sendMessage() {
+        String messageText = editTextMessage.getText().toString().trim();
+        if (!messageText.isEmpty()) {
+            // Clear the input field
+            editTextMessage.setText("");
+
+            chatRepository.sendAdminMessage(
+                adminId,
+                selectedUserId,
+                messageText,
+                success -> {
+                    if (!success) {
+                        // Show error message if sending failed
+                        Toast.makeText(AdminChatActivity.this, "Không thể gửi tin nhắn", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                messages -> {
+                    // Update the messages list
+                    messageAdapter.updateData(messages);
                 }
-            }
-        });
+            );
+        }
+    }
+
+    @Override
+    public void onUserClick(User user) {
+        selectedUserId = user.getUid();  // Sử dụng getUid() thay vì getUserId()
+        getSupportActionBar().setTitle("Chat với " + user.getFullName());
+        loadMessages(selectedUserId);
+    }
+
+    @Override
+    public void onProductClick(Product product) {
+        // Open product details when clicking a product in chat
+        Intent intent = new Intent(this, ProductDetailActivity.class);
+        intent.putExtra("PRODUCT_ID", product.getId());
+        startActivity(intent);
     }
 
     private void scrollToBottom() {
         if (messageAdapter.getItemCount() > 0) {
             recyclerMessages.smoothScrollToPosition(messageAdapter.getItemCount() - 1);
         }
-    }
-
-    @Override
-    public void onUserClick(User user) {
-        selectedUserId = user.getUid();
-        getSupportActionBar().setTitle("Chat với " + user.getFullName());
-        loadMessages(selectedUserId);
     }
 }

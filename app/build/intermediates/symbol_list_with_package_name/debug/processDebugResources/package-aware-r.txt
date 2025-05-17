@@ -1379,6 +1379,7 @@ color abc_tint_spinner
 color abc_tint_switch_track
 color accent_material_dark
 color accent_material_light
+color admin_message_bg
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
 color background_floating_material_dark
@@ -2067,6 +2068,8 @@ color material_timepicker_button_stroke
 color material_timepicker_clock_text_color
 color material_timepicker_clockface
 color material_timepicker_modebutton_tint
+color message_text_color_admin
+color message_text_color_user
 color mtrl_btn_bg_color_selector
 color mtrl_btn_ripple_color
 color mtrl_btn_stroke_color_selector
@@ -2151,6 +2154,7 @@ color teal_200
 color teal_700
 color tooltip_background_dark
 color tooltip_background_light
+color user_message_bg
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -2737,6 +2741,8 @@ dimen material_textinput_max_width
 dimen material_textinput_min_width
 dimen material_time_picker_minimum_screen_height
 dimen material_time_picker_minimum_screen_width
+dimen message_margin_large
+dimen message_margin_small
 dimen mtrl_alert_dialog_background_inset_bottom
 dimen mtrl_alert_dialog_background_inset_end
 dimen mtrl_alert_dialog_background_inset_start
@@ -3267,6 +3273,7 @@ id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
 id action_cart
+id action_chat
 id action_container
 id action_context_bar
 id action_divider
@@ -3372,6 +3379,7 @@ id cardUser
 id cardUsers
 id cardView
 id cardViewMessage
+id cardViewProduct
 id carryVelocity
 id cartSummaryPanel
 id center
@@ -3494,6 +3502,7 @@ id expand_activities_button
 id expanded_menu
 id fabAddFeatured
 id fabAddProduct
+id fabChat
 id fade
 id fill
 id fill_horizontal
@@ -4177,6 +4186,7 @@ layout item_featured
 layout item_flash_sale
 layout item_flash_sale_banner
 layout item_message
+layout item_message_product
 layout item_order_detail_product
 layout item_product
 layout item_product_image
@@ -4253,6 +4263,7 @@ menu bottom_navigation_menu
 menu home_menu
 menu menu_navigation_drawer
 menu order_detail_menu
+menu product_detail_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
