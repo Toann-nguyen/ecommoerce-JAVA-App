@@ -6,26 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.ecommerce.OrderDetailActivity;
 import com.example.ecommerce.R;
-
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
-
 import models.Order;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
     private Context context;
-    private List<Order> orders;
+    private final List<Order> orders;
     private final NumberFormat currencyFormatter;
     private final SimpleDateFormat dateFormatter;
-    private OnOrderClickListener listener;
+    private OnItemClickListener itemClickListener;
 
     public OrderAdapter(Context context, List<Order> orders) {
         this.context = context;
@@ -34,67 +29,35 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         this.dateFormatter = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
     }
 
-    @NonNull
-    @Override
-    public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_order, parent, false);
-        return new OrderViewHolder(view);
+    public interface OnItemClickListener {
+        void onItemClick(Order order);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        Order order = orders.get(position);
-        holder.bind(order);
+    public void setItemClickListener(OnItemClickListener listener) {
+        this.itemClickListener = listener;
     }
 
-    @Override
-    public int getItemCount() {
-        return orders.size();
-    }
+    public static class OrderViewHolder extends RecyclerView.ViewHolder {
+        private final TextView tvOrderId;
+        private final TextView tvOrderDate;
+        private final TextView tvOrderStatus;
+        private final TextView tvOrderTotal;
 
-    public void updateOrders(List<Order> newOrders) {
-        this.orders = newOrders;
-        notifyDataSetChanged();
-    }
-    public interface OnOrderClickListener {
-        void onOrderClick(Order order);
-    }
-
-    public void setItemClickListener(OnOrderClickListener listener) {
-        this.listener = listener;
-    }
-
-    class OrderViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvOrderId;
-        private TextView tvOrderDate;
-        private TextView tvOrderStatus;
-        private TextView tvOrderTotal;
-
-        public OrderViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvOrderId = itemView.findViewById(R.id.tvOrderId);
-            tvOrderDate = itemView.findViewById(R.id.tvOrderDate);
-            tvOrderStatus = itemView.findViewById(R.id.tvOrderStatus);
-            tvOrderTotal = itemView.findViewById(R.id.tvOrderTotal);
-
-            itemView.setOnClickListener(v -> {
-                int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    Order order = orders.get(position);
-                    Intent intent = new Intent(context, OrderDetailActivity.class);
-                    intent.putExtra("ORDER_ID", order.getId());
-                    context.startActivity(intent);
-                }
-            });
+        public OrderViewHolder(View view) {
+            super(view);
+            tvOrderId = view.findViewById(R.id.tvOrderId);
+            tvOrderDate = view.findViewById(R.id.tvOrderDate);
+            tvOrderStatus = view.findViewById(R.id.tvOrderStatus);
+            tvOrderTotal = view.findViewById(R.id.tvOrderTotal);
         }
 
-        public void bind(Order order) {
+        public void bind(Order order, Context context, NumberFormat currencyFormatter, SimpleDateFormat dateFormatter) {
             tvOrderId.setText("Đơn hàng #" + order.getId());
             tvOrderDate.setText(dateFormatter.format(order.getOrderDate()));
             tvOrderStatus.setText(getStatusText(order.getStatus()));
             tvOrderTotal.setText(currencyFormatter.format(order.getTotal()) + " đ");
 
-            // Set status color based on order status
+            // Set status color
             int statusColor;
             switch (order.getStatus()) {
                 case "pending":
@@ -129,5 +92,31 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                     return "Không xác định";
             }
         }
+    }
+
+    @Override
+    public OrderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_order, parent, false);
+        return new OrderViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(OrderViewHolder holder, int position) {
+        Order order = orders.get(position);
+        holder.bind(order, context, currencyFormatter, dateFormatter);
+        holder.itemView.setOnClickListener(v -> {
+            if (itemClickListener != null) {
+                itemClickListener.onItemClick(order);
+            } else {
+                Intent intent = new Intent(context, OrderDetailActivity.class);
+                intent.putExtra("ORDER_ID", order.getId());
+                context.startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return orders.size();
     }
 }
