@@ -92,6 +92,7 @@ id btnDelete
 id btnEdit
 id btnEditProfile
 id btnEditRole
+id btnGenerateReport
 id btnIncrease
 id btnLogout
 id btnManageOrders
@@ -111,6 +112,7 @@ id cardOrders
 id cardProducts
 id cardReports
 id cardShippingAddress
+id cardStatisticsReport
 id cardUpdateStatus
 id cardUser
 id cardUsers

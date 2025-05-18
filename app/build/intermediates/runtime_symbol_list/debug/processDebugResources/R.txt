@@ -3278,6 +3278,7 @@ int id btnDelete 0x7f080082
 int id btnEdit 0x7f080083
 int id btnEditProfile 0x7f080084
 int id btnEditRole 0x7f080085
+int id btnGenerateReport 0x7f08031e
 int id btnIncrease 0x7f080086
 int id btnLogout 0x7f080087
 int id btnManageOrders 0x7f080088
@@ -3301,6 +3302,7 @@ int id cardOrders 0x7f080099
 int id cardProducts 0x7f08009a
 int id cardReports 0x7f08009b
 int id cardShippingAddress 0x7f08009c
+int id cardStatisticsReport 0x7f08031f
 int id cardUpdateStatus 0x7f08009d
 int id cardUser 0x7f08009e
 int id cardUsers 0x7f08009f
