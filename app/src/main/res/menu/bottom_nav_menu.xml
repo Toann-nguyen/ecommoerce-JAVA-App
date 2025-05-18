@@ -5,9 +5,13 @@
         android:icon="@drawable/ic_home"
         android:title="Home" />
     <item
-        android:id="@+id/nav_categories"
-        android:icon="@drawable/ic_category"
-        android:title="Categories" />
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/ic_chat"
+        android:title="Chat với Admin" />
+    <item
+        android:id="@+id/nav_orders"
+        android:icon="@android:drawable/ic_menu_recent_history"
+        android:title="Lịch sử đơn hàng" />
     <item
         android:id="@+id/nav_cart"
         android:icon="@drawable/ic_shopping_cart"

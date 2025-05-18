@@ -2,6 +2,7 @@ package com.example.ecommerce;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -51,6 +53,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private Button btnIncrease;
     private Button btnAddToCart;
     private Button btnBuyNow;
+    private FloatingActionButton fabChat;
 
     // Data
     private Product product;
@@ -103,6 +106,22 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnIncrease = findViewById(R.id.btnIncrease);
         btnAddToCart = findViewById(R.id.btnAddToCart);
         btnBuyNow = findViewById(R.id.btnBuyNow);
+        
+        // Initialize chat FAB
+        fabChat = findViewById(R.id.fabChat);
+        if (fabChat != null) {
+            fabChat.setOnClickListener(v -> openChatWithProduct());
+        } else {
+            Log.e(TAG, "FAB Chat not found in layout");
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (fabChat != null) {
+            fabChat.show(); // Đảm bảo FAB hiển thị khi quay lại màn hình
+        }
     }
 
     private void setupToolbar() {
@@ -140,12 +159,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         btnBuyNow.setOnClickListener(v -> {
             if (product != null) {
-                // Chuyển thẳng tới trang checkout với 1 sản phẩm
-                Intent intent = new Intent(ProductDetailActivity.this, CheckoutActivity.class);
-                intent.putExtra("BUY_NOW", true);
-                intent.putExtra("PRODUCT_ID", product.getId());
-                intent.putExtra("PRODUCT_QUANTITY", quantity);
-                startActivity(intent);
+                processBuyNow();
             }
         });
     }
@@ -312,6 +326,89 @@ public class ProductDetailActivity extends AppCompatActivity {
             } else {
                 drawable.setColor(Color.LTGRAY);
             }
+        }
+    }
+
+    /**
+     * Xử lý khi người dùng nhấn nút "Mua ngay"
+     */
+    private void processBuyNow() {
+        // Kiểm tra số lượng tồn kho
+        if (product.getStock() <= 0) {
+            Toast.makeText(this, "Sản phẩm đã hết hàng", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Kiểm tra số lượng mua có hợp lệ không
+        if (quantity <= 0 || quantity > product.getStock()) {
+            Toast.makeText(this, "Số lượng không hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Kiểm tra người dùng đã đăng nhập chưa
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            // Nếu chưa đăng nhập, hiển thị thông báo và chuyển đến màn hình đăng nhập
+            Toast.makeText(this, "Vui lòng đăng nhập để tiếp tục thanh toán", Toast.LENGTH_SHORT).show();
+            Intent loginIntent = new Intent(this, MainActivity.class);
+            startActivity(loginIntent);
+            return;
+        }
+
+        // Nếu đã đăng nhập và kiểm tra tồn kho OK, chuyển đến màn hình thanh toán
+        Toast.makeText(this, "Đang chuyển đến trang thanh toán...", Toast.LENGTH_SHORT).show();
+
+        // Chuyển sang màn hình thanh toán với thông tin mua ngay
+        Intent intent = new Intent(ProductDetailActivity.this, CheckoutActivity.class);
+        intent.putExtra("BUY_NOW", true);
+        intent.putExtra("PRODUCT_ID", product.getId());
+        intent.putExtra("PRODUCT_QUANTITY", quantity);
+        startActivity(intent);
+    }
+
+    private void setupMenu() {
+        topAppBar.inflateMenu(R.menu.product_detail_menu);
+        topAppBar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.action_chat) {
+                // Mở chat và gửi sản phẩm
+                openChatWithProduct();
+                return true;
+            }
+            return false;
+        });
+    }    private void openChatWithProduct() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() == null) {
+            Toast.makeText(this, "Vui lòng đăng nhập để chat với admin", Toast.LENGTH_SHORT).show();
+            Intent loginIntent = new Intent(this, MainActivity.class);
+            loginIntent.putExtra("SHOW_LOGIN", true);
+            startActivity(loginIntent);
+            return;
+        }
+
+        if (product != null) {
+            Intent intent = new Intent(this, ChatActivity.class);
+            // Add product object to intent
+            intent.putExtra("PRODUCT_DATA", product);
+            
+            // Add default message with product information
+            String defaultMessage = String.format(
+                "Xin chào Admin, tôi muốn hỏi về sản phẩm:\n" +
+                "Tên: %s\n" +
+                "Giá: %s đ\n" +
+                "Danh mục: %s\n" +
+                "Tình trạng: %s",
+                product.getName(),
+                NumberFormat.getNumberInstance(new Locale("vi", "VN")).format(product.getPrice()),
+                product.getCategory(),
+                product.getStock() > 0 ? "Còn hàng (" + product.getStock() + " sản phẩm)" : "Hết hàng"
+            );
+            intent.putExtra("DEFAULT_MESSAGE", defaultMessage);
+            
+            // Add flags to handle activity properly
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Không thể tải thông tin sản phẩm", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -665,11 +665,13 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
                 findViewById(R.id.nestedScrollView).setVisibility(View.VISIBLE);
                 findViewById(R.id.fragment_container).setVisibility(View.GONE);
                 return true;
-            } else if (id == R.id.nav_categories) {
-                // Show categories
-                // This could be another fragment in the future
-                findViewById(R.id.nestedScrollView).setVisibility(View.VISIBLE);
-                findViewById(R.id.fragment_container).setVisibility(View.GONE);
+            } else if (id == R.id.nav_chat) {
+                // Open chat activity with admin
+                startActivity(new Intent(HomeMainActivity.this, ChatActivity.class));
+                return true;
+            } else if (id == R.id.nav_orders) {
+                // Open order history
+                startActivity(new Intent(HomeMainActivity.this, OrderHistoryActivity.class));
                 return true;
             } else if (id == R.id.nav_cart) {
                 // Open cart activity
@@ -679,7 +681,6 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
                 // Show profile fragment, hide other content
                 findViewById(R.id.nestedScrollView).setVisibility(View.GONE);
                 findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);
-
                 // Load the profile fragment
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, new ProfileFragment())

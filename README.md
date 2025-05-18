@@ -366,6 +366,9 @@ dung.
 -Xử lý render Ui
 -Xử lý các trường hợp nâng cao
 -Bảo mật Sql , theo tiêu chuẩn OSWAP mobile app java
+-Neu đăng nhạpa sai 5 lần liên tiếp thì khoá tạm thời đăng nhập sau 5p
+- Luu lai lich chinh sua trang thai don hang de truy vet sau nay.
+- Trong truong hop nguoi dùng spam gian lận (quản lý người dùng)
 
 ## Tich Hop Vnpay vao Android  Studio with firebase
 -tao tai khoan moi truong test: https://sandbox.vnpayment.vn/devreg/
