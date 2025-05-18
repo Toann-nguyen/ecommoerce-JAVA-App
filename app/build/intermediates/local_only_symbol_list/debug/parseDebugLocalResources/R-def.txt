@@ -1,5 +1,7 @@
 R_DEF: Internal format may change without notice
 local
+bool use_adaptive_icons
+color accent
 color admin_message_bg
 color black
 color bottom_nav_color
@@ -8,9 +10,18 @@ color bottom_nav_item_color
 color gray_placeholder
 color message_text_color_admin
 color message_text_color_user
+color primary
+color primary_dark
 color purple_200
 color purple_500
 color purple_700
+color status_cancelled
+color status_completed
+color status_confirmed
+color status_delivered
+color status_pending
+color status_processing
+color status_shipping
 color teal_200
 color teal_700
 color user_message_bg
@@ -115,6 +126,8 @@ id checkViewReports
 id chipAdmins
 id chipAllUsers
 id chipGroupCategories
+id chipGroupSort
+id chipGroupStatus
 id chipSellers
 id chipSortName
 id chipSortNameDesc
@@ -147,6 +160,7 @@ id etPhone
 id fabAddFeatured
 id fabAddProduct
 id fabChat
+id filterScrollView
 id forgotPasswordLayout
 id forgotPasswordTextView
 id fragment_container
@@ -164,6 +178,7 @@ id imgSlider
 id imgUserAvatar
 id inputLayoutMessage
 id ivEditProfileAvatar
+id ivProduct
 id ivProductImage
 id ivProfileAvatar
 id ivSuccess
@@ -210,6 +225,7 @@ id rbCreditCard
 id recyclerMessages
 id recyclerOrderItems
 id recyclerUsers
+id recyclerView
 id recyclerViewProducts
 id registerButton
 id register_button
@@ -220,9 +236,11 @@ id rvAllProducts
 id rvCartItems
 id rvFeatured
 id rvFlashSale
+id rvOrders
 id searchView
 id sortChipGroup
 id sortOptionsScrollView
+id sortScrollView
 id sort_date_asc
 id sort_date_desc
 id sort_email_asc
@@ -231,6 +249,7 @@ id sort_name_desc
 id sort_price_asc
 id sort_price_desc
 id sort_role_asc
+id swipeRefresh
 id tabLayout
 id textMessage
 id textNoUsers
@@ -240,6 +259,7 @@ id tilAddress
 id tilCity
 id tilFullName
 id tilPhone
+id titleTextView
 id toolbar
 id topAppBar
 id tvAllProducts
@@ -256,6 +276,7 @@ id tvDiscountPrice
 id tvDiscountValue
 id tvEmpty
 id tvEmptyCart
+id tvEmptyOrders
 id tvFeatured
 id tvFlashSale
 id tvItemCount
@@ -263,9 +284,11 @@ id tvItemTotal
 id tvNameFeatured
 id tvNameFlash
 id tvOrderAmount
+id tvOrderDate
 id tvOrderId
 id tvOrderMessage
 id tvOrderStatus
+id tvOrderTotal
 id tvOriginalPrice
 id tvPaymentMethod
 id tvPrice
@@ -282,6 +305,7 @@ id tvQuantityLabel
 id tvRatingValue
 id tvSearchStatus
 id tvShippingFee
+id tvStatus
 id tvStock
 id tvStockLabel
 id tvSubtotal
@@ -333,6 +357,7 @@ id viewPagerImages
 id webView
 layout activity_admin_chat
 layout activity_admin_dashboard
+layout activity_admin_order_management
 layout activity_admin_orders
 layout activity_admin_panel
 layout activity_admin_products
@@ -346,8 +371,11 @@ layout activity_home_main_drawer
 layout activity_main
 layout activity_order_confirmation
 layout activity_order_detail
+layout activity_order_history
 layout activity_product_detail
 layout activity_register
+layout activity_user_order_history
+layout activity_user_products
 layout activity_vnpay
 layout dialog_edit_user_role
 layout forgot_password
@@ -365,9 +393,12 @@ layout item_flash_sale
 layout item_flash_sale_banner
 layout item_message
 layout item_message_product
+layout item_order
+layout item_order_detail
 layout item_order_detail_product
 layout item_product
 layout item_product_image
+layout item_product_simple
 layout item_slider
 layout item_user
 layout nav_header_main

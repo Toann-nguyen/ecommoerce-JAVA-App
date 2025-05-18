@@ -96,13 +96,14 @@
                 android:id="@+id/fabChat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/ic_chat"
-                app:fabSize="mini"
+                android:contentDescription="Chat với Admin"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDiscountPrice"
+                app:layout_constraintBottom_toTopOf="@+id/btnAddToCart"
                 app:tint="@android:color/white"
-                android:contentDescription="Chat với Admin"/>
+                app:fabSize="normal"/>
 
             <!-- Số lượng bên cạnh giá -->
             <LinearLayout

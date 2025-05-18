@@ -9,6 +9,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="gray_placeholder">#E0E0E0</color>
 
+    <!-- Theme colors -->
+    <color name="primary">@color/purple_500</color>
+    <color name="primary_dark">@color/purple_700</color>
+    <color name="accent">@color/teal_200</color>
+
     <!-- Bottom navigation color selector -->
     <color name="bottom_nav_inactive">#9E9E9E</color>
+
+    <!-- Order status colors -->
+    <color name="status_pending">#FF9800</color>  <!-- Orange -->
+    <color name="status_confirmed">#2196F3</color> <!-- Blue -->
+    <color name="status_shipping">#673AB7</color>  <!-- Purple -->
+    <color name="status_delivered">#4CAF50</color> <!-- Green -->
+    <color name="status_cancelled">#F44336</color>
+    <color name="status_processing">#2196F3</color>
+    <color name="status_completed">#4CAF50</color> <!-- Red -->
 </resources>
