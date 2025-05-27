@@ -20,6 +20,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.example.ecommerce.payment.VNPayActivity;
+import com.example.ecommerce.payment.VNPayHelper;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,7 @@ import repository.OrderRepository;
 
 import com.example.ecommerce.payment.VNPayActivity;
 import com.example.ecommerce.payment.VNPayHelper;
+import com.example.ecommerce.dialogs.OrderCompleteDialog;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -176,6 +180,34 @@ public class CheckoutActivity extends AppCompatActivity {
             rbVnpay.setId(View.generateViewId());
             rbVnpay.setText("VNPAY");
             rgPaymentMethod.addView(rbVnpay);
+        }
+
+        // Auto-populate the name field
+        if (currentUser != null) {
+            // Get user information from FirebaseUser
+            String displayName = currentUser.getDisplayName();
+            String email = currentUser.getEmail();
+            String name;
+
+            // For Google login, use the display name
+            if (displayName != null && !displayName.isEmpty()) {
+                name = displayName;
+            } else if (email != null && !email.isEmpty()) {
+                // For email login, extract the name from email (e.g., "minhtoan" from "minhtoan@gmail.com")
+                int atIndex = email.indexOf('@');
+                if (atIndex > 0) {
+                    name = email.substring(0, atIndex);
+                } else {
+                    name = email;
+                }
+            } else {
+                name = "Khách hàng";
+            }
+
+            // Set the name in the field
+            etFullName.setText(name);
+            // Keep the name field enabled but show it's auto-populated
+            tilFullName.setHint("Họ và tên (Tự động điền)");
         }
     }
 
@@ -425,17 +457,38 @@ public class CheckoutActivity extends AppCompatActivity {
 
     private void showOrderSuccessDialog(String orderId) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Đặt hàng thành công")
-                .setMessage("Đơn hàng của bạn đã được đặt thành công!\n\nMã đơn hàng: " + orderId)
-                .setPositiveButton("Tiếp tục mua sắm", (dialog, which) -> {
-                    // Chuyển về trang chủ
-                    Intent intent = new Intent(CheckoutActivity.this, HomeMainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(intent);
-                    finish();
-                })
-                .setCancelable(false)
-                .show();
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_order_complete_review, null);
+
+        TextView tvOrderId = dialogView.findViewById(R.id.tvOrderId);
+        Button btnContinueShopping = dialogView.findViewById(R.id.btnContinueShopping);
+        Button btnReviewProducts = dialogView.findViewById(R.id.btnReviewProducts);
+
+        // Configurar ID de pedido
+        tvOrderId.setText("Mã đơn hàng: #" + orderId);
+
+        // Crear diálogo
+        AlertDialog dialog = builder.setView(dialogView).setCancelable(false).create();
+
+        // Configurar botones
+        btnContinueShopping.setOnClickListener(v -> {
+            dialog.dismiss();
+            Intent intent = new Intent(this, HomeMainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+        });
+
+        btnReviewProducts.setOnClickListener(v -> {
+            dialog.dismiss();
+            Intent intent = new Intent(this, ProductReviewActivity.class);
+            intent.putExtra("ORDER_ID", orderId);
+            intent.putExtra("DIRECT_REVIEW", true);
+            startActivity(intent);
+            finish();
+        });
+
+        // Mostrar diálogo
+        dialog.show();
     }
 
     private void handleVNPayResponse(String responseUrl) {

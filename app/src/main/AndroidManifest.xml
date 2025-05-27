@@ -66,10 +66,19 @@
             android:name=".admin.AdminUsersActivity"
             android:exported="false" />
         <activity
+            android:name=".admin.AdminReviewsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChatActivity"
             android:exported="false" />
         <activity
             android:name=".admin.AdminChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

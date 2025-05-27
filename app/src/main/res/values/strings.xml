@@ -16,4 +16,22 @@
     <string name="google_signin_step2">2. Enable Google Sign-In in your Firebase console</string>
     <string name="google_signin_step3">3. Update the SHA-1 certificate fingerprint in Firebase</string>
     <string name="google_signin_step5">4. Make sure to rebuild the project after making these changes</string>
+
+    <!-- Login screen translations -->
+    <string name="welcome">Welcome</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="register">Register</string>
+    <string name="welcome_back">Welcome</string>
+    <string name="sign_in">Login</string>
+    <string name="create_account">Register</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+
+    <!-- Forgot password screen -->
+    <string name="reset_password">Reset Password</string>
+    <string name="reset_password_instructions">Enter your email address and we\'ll send you instructions to reset your password</string>
+    <string name="send_reset_email">Send Reset Email</string>
+    <string name="back_to_login">Back to Login</string>
 </resources>

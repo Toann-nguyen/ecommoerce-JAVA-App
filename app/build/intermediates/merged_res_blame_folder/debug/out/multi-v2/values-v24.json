@@ -1,0 +1,81 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.ecommerce.app-mergeDebugResources-42:/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\cbefd738ecbcfc2d253be015fda448cb\\transformed\\material-1.11.0\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,9,12,15",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,140,239,326,427,626,839,1040",
+                        "endLines": "2,3,4,5,8,11,14,17",
+                        "endColumns": "84,98,86,100,10,10,10,10",
+                        "endOffsets": "135,234,321,422,621,834,1035,1250"
+                    },
+                    "to": {
+                        "startLines": "5,6,7,8,9,12,15,18",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "395,480,579,666,767,966,1179,1380",
+                        "endLines": "5,6,7,8,11,14,17,20",
+                        "endColumns": "84,98,86,100,10,10,10,10",
+                        "endOffsets": "475,574,661,762,961,1174,1375,1590"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\AndroidStudioProjects\\Ecommerce\\app\\src\\main\\res\\values-v24\\styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "145",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "378"
+                    },
+                    "to": {
+                        "startLines": "21",
+                        "startColumns": "4",
+                        "startOffsets": "1595",
+                        "endLines": "24",
+                        "endColumns": "12",
+                        "endOffsets": "1825"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\AndroidStudioProjects\\Ecommerce\\app\\src\\main\\res\\values-v24\\config.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "47",
+                        "endOffsets": "100"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "47",
+                        "endOffsets": "98"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.11.1\\transforms\\fe23f6509c54d3b703c3e833d6470faa\\transformed\\appcompat-1.6.1\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    },
+                    "to": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "103,260",
+                        "endColumns": "156,134",
+                        "endOffsets": "255,390"
+                    }
+                }
+            ]
+        }
+    ]
+}

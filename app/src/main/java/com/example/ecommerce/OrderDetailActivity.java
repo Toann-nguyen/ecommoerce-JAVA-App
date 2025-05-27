@@ -1,5 +1,6 @@
 package com.example.ecommerce;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,9 +28,12 @@ import java.util.List;
 import java.util.Locale;
 
 import adapters.OrderDetailAdapter;
+
+import com.example.ecommerce.dialogs.ProductReviewDialog;
 import models.CartItem;
 import models.Order;
 import models.OrderItem;
+import models.Product;
 
 public class OrderDetailActivity extends AppCompatActivity {
     private MaterialToolbar toolbar;
@@ -51,6 +56,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     private RadioGroup radioGroupStatus;
     private Button btnUpdateStatus;
     private Button btnGenerateReport;
+    private Button btnRateProducts;
     private OrderDetailAdapter orderDetailAdapter;
 
     private FirebaseFirestore db;
@@ -59,6 +65,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     private boolean isAdmin = false;
     private NumberFormat currencyFormatter;
     private SimpleDateFormat dateFormatter;
+    private boolean showReviewDialog = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +78,9 @@ public class OrderDetailActivity extends AppCompatActivity {
             finish();
             return;
         }
+
+        // Check if we should show review dialog automatically
+        showReviewDialog = getIntent().getBooleanExtra("SHOW_REVIEW", false);
 
         db = FirebaseFirestore.getInstance();
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -106,6 +116,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         radioGroupStatus = findViewById(R.id.radioGroupStatus);
         btnUpdateStatus = findViewById(R.id.btnUpdateStatus);
         btnGenerateReport = findViewById(R.id.btnGenerateReport);
+        btnRateProducts = findViewById(R.id.btnRateProducts);
     }
 
     private void setupToolbar() {
@@ -128,6 +139,9 @@ public class OrderDetailActivity extends AppCompatActivity {
             if (cardStatisticsReport != null) {
                 cardStatisticsReport.setVisibility(View.VISIBLE);
             }
+            if (btnRateProducts != null) {
+                btnRateProducts.setVisibility(View.GONE);
+            }
             setupUpdateStatus();
             setupGenerateReport();
         } else {
@@ -136,6 +150,9 @@ public class OrderDetailActivity extends AppCompatActivity {
             }
             if (cardStatisticsReport != null) {
                 cardStatisticsReport.setVisibility(View.GONE);
+            }
+            if (btnRateProducts != null) {
+                btnRateProducts.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -218,6 +235,16 @@ public class OrderDetailActivity extends AppCompatActivity {
                     Order order = documentSnapshot.toObject(Order.class);
                     if (order != null) {
                         displayOrderDetails(order);
+
+                        // If we should show review dialog automatically and order is delivered
+                        if (showReviewDialog && Order.STATUS_DELIVERED.equals(order.getStatus())) {
+                            // Show product selection dialog after a short delay
+                            new android.os.Handler().postDelayed(() -> {
+                                if (!isFinishing() && !isDestroyed()) {
+                                    showProductSelectionDialog(order);
+                                }
+                            }, 500);
+                        }
                     }
                 })
                 .addOnFailureListener(e -> {
@@ -308,6 +335,16 @@ public class OrderDetailActivity extends AppCompatActivity {
             }
         }
 
+        // Show or hide rate button based on order status
+        if (btnRateProducts != null && !isAdmin) {
+            if (Order.STATUS_DELIVERED.equals(order.getStatus())) {
+                btnRateProducts.setVisibility(View.VISIBLE);
+                setupRateButton(order);
+            } else {
+                btnRateProducts.setVisibility(View.GONE);
+            }
+        }
+
         List<OrderItem> orderItems = new ArrayList<>();
         if (order.getItems() != null) {
             for (CartItem cartItem : order.getItems()) {
@@ -346,5 +383,89 @@ public class OrderDetailActivity extends AppCompatActivity {
             default:
                 return method;
         }
+    }
+
+    private void setupRateButton(Order order) {
+        if (btnRateProducts != null) {
+            btnRateProducts.setOnClickListener(v -> {
+                if (order.getItems() != null && !order.getItems().isEmpty()) {
+                    // If only one product, go directly to review
+                    if (order.getItems().size() == 1) {
+                        showReviewScreen(order.getItems().get(0).getProduct().getId(), order.getId());
+                    } else {
+                        // If multiple products, show dialog to select which product to review
+                        showProductSelectionDialog(order);
+                    }
+                }
+            });
+        }
+    }
+
+    private void showReviewScreen(String productId, String orderId) {
+        // Mostrar diálogo de carga
+        AlertDialog progressDialog = new AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setView(R.layout.progress_dialog)
+                .create();
+        progressDialog.show();
+
+        // Cargar datos del producto
+        FirebaseFirestore.getInstance().collection("products").document(productId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    // Ocultar diálogo de carga
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+
+                    // Obtener producto
+                    Product product = documentSnapshot.toObject(Product.class);
+                    if (product != null) {
+                        // Mostrar diálogo de revisión
+                        ProductReviewDialog dialog = new ProductReviewDialog(
+                                this,
+                                product,
+                                orderId,
+                                () -> {
+                                    // Callback cuando se envía la revisión
+                                    Toast.makeText(this, "Đánh giá đã được gửi thành công!", Toast.LENGTH_SHORT).show();
+                                });
+                        dialog.show();
+                    } else {
+                        Toast.makeText(this, "Không tìm thấy thông tin sản phẩm", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // Ocultar diálogo de carga
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+
+                    Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void showProductSelectionDialog(Order order) {
+        if (order.getItems() == null || order.getItems().isEmpty()) return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Chọn sản phẩm để đánh giá");
+
+        // Create list of product names
+        final String[] productNames = new String[order.getItems().size()];
+        final String[] productIds = new String[order.getItems().size()];
+
+        for (int i = 0; i < order.getItems().size(); i++) {
+            productNames[i] = order.getItems().get(i).getProduct().getName();
+            productIds[i] = order.getItems().get(i).getProduct().getId();
+        }
+
+        builder.setItems(productNames, (dialog, which) -> {
+            String selectedProductId = productIds[which];
+            showReviewScreen(selectedProductId, order.getId());
+        });
+
+        builder.setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss());
+        builder.show();
     }
 }

@@ -35,7 +35,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -152,6 +151,10 @@ public class HomeMainActivity extends AppCompatActivity implements ProductAdapte
                 Intent intent = new Intent(HomeMainActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
+                return true;
+            } else if (itemId == R.id.action_reviews) {
+                Intent intent = new Intent(HomeMainActivity.this, ReviewsActivity.class);
+                startActivity(intent);
                 return true;
             }
             return false;

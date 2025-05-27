@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <bool name="use_adaptive_icons">false</bool>
+    <color name="accent">#FFB300</color>
+    <color name="admin_message_bg">#2196F3</color>
+    <color name="black">#FF000000</color>
+    <color name="bottom_nav_inactive">#9E9E9E</color>
+    <color name="danger_red">#F44336</color>
+    <color name="gray_placeholder">#E0E0E0</color>
+    <color name="md_theme_dark_onPrimary">#350082</color>
+    <color name="md_theme_dark_onSecondary">#221300</color>
+    <color name="md_theme_dark_primary">#C9B3FF</color>
+    <color name="md_theme_dark_secondary">#FFD54F</color>
+    <color name="md_theme_light_background">#F5F5F5</color>
+    <color name="md_theme_light_error">#B00020</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onBackground">#1C1B1F</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_onPrimaryContainer">#220056</color>
+    <color name="md_theme_light_onSecondary">#000000</color>
+    <color name="md_theme_light_onSecondaryContainer">#553500</color>
+    <color name="md_theme_light_onSurface">#1C1B1F</color>
+    <color name="md_theme_light_onSurfaceVariant">#49454F</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_onTertiaryContainer">#001E2D</color>
+    <color name="md_theme_light_outline">#79747E</color>
+    <color name="md_theme_light_primary">#5E35B1</color>
+    <color name="md_theme_light_primaryContainer">#E8DDFF</color>
+    <color name="md_theme_light_secondary">#FFB300</color>
+    <color name="md_theme_light_secondaryContainer">#FFECB3</color>
+    <color name="md_theme_light_surface">#FFFFFF</color>
+    <color name="md_theme_light_surfaceVariant">#F3EFFA</color>
+    <color name="md_theme_light_tertiary">#03A9F4</color>
+    <color name="md_theme_light_tertiaryContainer">#C2E8FF</color>
+    <color name="message_text_color_admin">#FFFFFF</color>
+    <color name="message_text_color_user">#FFFFFF</color>
+    <color name="primary">#5E35B1</color>
+    <color name="primary_dark">#350082</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#5E35B1</color>
+    <color name="purple_700">#350082</color>
+    <color name="ripple_color">#1F000000</color>
+    <color name="scrim">#52000000</color>
+    <color name="status_cancelled">#F44336</color>
+    <color name="status_completed">#4CAF50</color>
+    <color name="status_confirmed">#2196F3</color>
+    <color name="status_delivered">#4CAF50</color>
+    <color name="status_pending">#FF9800</color>
+    <color name="status_processing">#2196F3</color>
+    <color name="status_shipping">#673AB7</color>
+    <color name="success_green">#4CAF50</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="user_message_bg">#E91E63</color>
+    <color name="warning_orange">#FF9800</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="message_margin_large">64dp</dimen>
+    <dimen name="message_margin_small">8dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <item name="action_orders" type="id"/>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="app_name">Ecommerce</string>
+    <string name="back_to_login">Back to Login</string>
+    <string name="category_icon">Category icon</string>
+    <string name="create_account">Register</string>
+    <string name="default_web_client_id">615717299049-98drm6uvnvko183pch9u62suviccphcv.apps.googleusercontent.com</string>
+    <string name="email">Email</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="gcm_defaultSenderId" translatable="false">615717299049</string>
+    <string name="google_api_key" translatable="false">AIzaSyDWrLYZt3MOsjAUDf2153oJp7BrpoBccf0</string>
+    <string name="google_app_id" translatable="false">1:615717299049:android:41d0e55e92cdd0803753f8</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDWrLYZt3MOsjAUDf2153oJp7BrpoBccf0</string>
+    <string name="google_signin_instructions">To implement Google Sign-In:</string>
+    <string name="google_signin_step1">1. Add the Google Sign-In dependencies in your app/build.gradle.kts</string>
+    <string name="google_signin_step2">2. Enable Google Sign-In in your Firebase console</string>
+    <string name="google_signin_step3">3. Update the SHA-1 certificate fingerprint in Firebase</string>
+    <string name="google_signin_step5">4. Make sure to rebuild the project after making these changes</string>
+    <string name="google_storage_bucket" translatable="false">ecommerce-java-8579c.firebasestorage.app</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="product_image">Product image</string>
+    <string name="project_id" translatable="false">ecommerce-java-8579c</string>
+    <string name="register">Register</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset_password_instructions">Enter your email address and we\'ll send you instructions to reset your password</string>
+    <string name="send_reset_email">Send Reset Email</string>
+    <string name="sign_in">Login</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="title_activity_admin_chat">Chat với người dùng</string>
+    <string name="title_activity_admin_users">Quản lý người dùng</string>
+    <string name="title_activity_cart">Giỏ hàng</string>
+    <string name="title_activity_chat">Chat với Admin</string>
+    <string name="title_activity_checkout">Thanh toán</string>
+    <string name="title_activity_order_detail">Chi tiết đơn hàng</string>
+    <string name="title_activity_product_detail">Chi tiết sản phẩm</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome_back">Welcome</string>
+    <style name="AppAnimation" parent="android:Animation"/>
+    <style name="AppAnimation.Activity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+    </style>
+    <style name="Base.Theme.Ecommerce" parent="Theme.Material3.Light.NoActionBar">
+        
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorPrimaryVariant">@color/md_theme_light_primaryContainer</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        
+        <item name="colorSecondary">@color/md_theme_light_secondary</item>
+        <item name="colorSecondaryVariant">@color/md_theme_light_secondaryContainer</item>
+        <item name="colorOnSecondary">@color/md_theme_light_onSecondary</item>
+        
+        <item name="colorTertiary">@color/md_theme_light_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_light_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_light_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_light_onTertiaryContainer</item>
+        
+        <item name="android:colorBackground">@color/md_theme_light_background</item>
+        <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
+        <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_theme_light_outline</item>
+        
+        <item name="colorError">@color/md_theme_light_error</item>
+        <item name="colorOnError">@color/md_theme_light_onError</item>
+        <item name="colorErrorContainer">@color/md_theme_light_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md_theme_light_onErrorContainer</item>
+        
+        <item name="android:statusBarColor">@color/md_theme_light_primary</item>
+        <item name="android:navigationBarColor">@color/md_theme_light_background</item>
+        
+        <item name="android:windowLightStatusBar" ns1:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" ns1:targetApi="o_mr1">true</item>
+        <item name="android:forceDarkAllowed" ns1:targetApi="q">false</item>
+        
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.LargeComponent</item>
+    </style>
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="FadeAnimation">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+    <style name="RoundedButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:padding">12dp</item>
+        <item name="cornerRadius">24dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerSize">24dp</item>
+    </style>
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">16dp</item>
+    </style>
+    <style name="ShapeAppearance.App.MediumComponent.Top" parent="ShapeAppearance.App.MediumComponent">
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">8dp</item>
+    </style>
+    <style name="Theme.Ecommerce" parent="Base.Theme.Ecommerce">
+        
+        <item name="android:windowAnimationStyle">@style/AppAnimation.Activity</item>
+    </style>
+    <style name="Widget.App.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">24dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="Widget.App.Button.OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">24dp</item>
+        <item name="strokeWidth">1.5dp</item>
+    </style>
+    <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="contentPadding">16dp</item>
+    </style>
+    <style name="Widget.App.ExtendedFloatingActionButton" parent="Widget.Material3.ExtendedFloatingActionButton.Primary">
+        <item name="elevation">6dp</item>
+    </style>
+    <style name="Widget.MaterialComponents.Chip.Outline" parent="Widget.MaterialComponents.Chip.Choice">
+    
+        <item name="colorPrimary">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/purple_700</item>
+        <item name="android:statusBarColor">@color/purple_700</item>
+        
+        <item name="chipBackgroundColor">@android:color/transparent</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipStrokeColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:minHeight">32dp</item>
+    </style>
+</resources>

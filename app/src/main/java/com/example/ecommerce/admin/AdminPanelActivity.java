@@ -21,7 +21,7 @@ import utils.PermissionManager;
 public class AdminPanelActivity extends AppCompatActivity {
 
     private MaterialToolbar topAppBar;
-    private CardView cardProducts, cardOrders, cardUsers, cardReports, cardChat;
+    private CardView cardProducts, cardOrders, cardUsers, cardReports, cardChat, cardReviews;
     private PermissionManager permissionManager;
 
     @Override
@@ -66,6 +66,7 @@ public class AdminPanelActivity extends AppCompatActivity {
         cardUsers = findViewById(R.id.cardUsers);
         cardReports = findViewById(R.id.cardReports);
         cardChat = findViewById(R.id.cardChat);
+        cardReviews = findViewById(R.id.cardReviews);
     }
 
     private void setupToolbar() {
@@ -118,6 +119,15 @@ public class AdminPanelActivity extends AppCompatActivity {
                 showPermissionDenied();
             }
         });
+
+        // Quản lý đánh giá
+        cardReviews.setOnClickListener(v -> {
+            if (permissionManager.hasPermission(PermissionManager.PERMISSION_MANAGE_PRODUCTS)) {
+                startActivity(new Intent(this, AdminReviewsActivity.class));
+            } else {
+                showPermissionDenied();
+            }
+        });
     }
 
     /**
@@ -147,6 +157,11 @@ public class AdminPanelActivity extends AppCompatActivity {
         // Hiển thị chat với người dùng chỉ khi có quyền
         cardChat.setVisibility(
                 permissionManager.hasPermission(PermissionManager.PERMISSION_MANAGE_USERS)
+                        ? View.VISIBLE : View.GONE);
+
+        // Hiển thị quản lý đánh giá chỉ khi có quyền quản lý sản phẩm
+        cardReviews.setVisibility(
+                permissionManager.hasPermission(PermissionManager.PERMISSION_MANAGE_PRODUCTS)
                         ? View.VISIBLE : View.GONE);
     }
 

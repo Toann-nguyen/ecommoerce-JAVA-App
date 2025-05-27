@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.example.ecommerce.util.DynamicColorUtils;
 
 import java.util.Arrays;
 
@@ -20,6 +21,9 @@ public class EcommerceApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Initialize Material 3 Dynamic Colors
+        DynamicColorUtils.applyDynamicColors(this);
 
         // Khởi tạo Firebase
         auth = FirebaseAuth.getInstance();

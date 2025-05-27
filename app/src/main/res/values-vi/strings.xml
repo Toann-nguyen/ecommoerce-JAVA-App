@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ecommerce</string>
+    <string name="title_activity_admin_users">Quản lý người dùng</string>
+    <string name="title_activity_cart">Giỏ hàng</string>
+    <string name="title_activity_order_detail">Chi tiết đơn hàng</string>
+    <string name="title_activity_product_detail">Chi tiết sản phẩm</string>
+    <string name="title_activity_checkout">Thanh toán</string>
+    <string name="title_activity_chat">Chat với Admin</string>
+    <string name="title_activity_admin_chat">Chat với người dùng</string>
+    <string name="add_to_cart">Thêm vào giỏ</string>
+    <string name="product_image">Hình ảnh sản phẩm</string>
+    <string name="category_icon">Biểu tượng danh mục</string>
+    <string name="default_web_client_id">615717299049-98drm6uvnvko183pch9u62suviccphcv.apps.googleusercontent.com</string>
+    <string name="google_signin_instructions">Để triển khai Đăng nhập bằng Google:</string>
+    <string name="google_signin_step1">1. Thêm dependencies Google Sign-In trong app/build.gradle.kts</string>
+    <string name="google_signin_step2">2. Kích hoạt Google Sign-In trong Firebase console</string>
+    <string name="google_signin_step3">3. Cập nhật mã SHA-1 trong Firebase</string>
+    <string name="google_signin_step5">4. Đảm bảo rebuild dự án sau khi thay đổi</string>
+
+    <!-- Login screen translations -->
+    <string name="welcome">Chào mừng</string>
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="register">Đăng ký</string>
+    <string name="welcome_back">Chào mừng</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="create_account">Đăng ký</string>
+    <string name="sign_in_with_google">Đăng nhập bằng Google</string>
+
+    <!-- Forgot password screen -->
+    <string name="reset_password">Đặt lại mật khẩu</string>
+    <string name="reset_password_instructions">Nhập địa chỉ email của bạn và chúng tôi sẽ gửi hướng dẫn để đặt lại mật khẩu</string>
+    <string name="send_reset_email">Gửi email đặt lại</string>
+    <string name="back_to_login">Quay lại đăng nhập</string>
+</resources>

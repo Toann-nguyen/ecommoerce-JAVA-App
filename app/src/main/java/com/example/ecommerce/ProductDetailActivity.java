@@ -33,6 +33,8 @@ import models.Product;
 import models.ShoppingCart;
 import repository.FirebaseRepository;
 
+import com.example.ecommerce.util.AnimationHelper;
+
 public class ProductDetailActivity extends AppCompatActivity {
     private static final String TAG = "ProductDetailActivity";
 
@@ -154,6 +156,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 ShoppingCart shoppingCart = ShoppingCart.getInstance(this);
                 shoppingCart.addItem(product, quantity);
                 Toast.makeText(this, "Đã thêm " + quantity + " sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                AnimationHelper.showAddToCartAnimation(ProductDetailActivity.this, null);
             }
         });
 
