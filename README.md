@@ -1,6 +1,49 @@
 # E-commerce Android App
 
 ![Image](https://github.com/user-attachments/assets/6ada4a8b-118c-4be5-a59c-d5ed93713215)
+
+## 🛒 Chức Năng Ứng Dụng
+### Tính năng bổ sung & nâng cao
+- Đăng nhập đa nền tảng (Google, Facebook, Email)
+- Thanh toán qua VNPAY WebView
+- Chatbot AI hỗ trợ khách hàng
+- Xử lý giao diện/UI tối ưu trải nghiệm
+- Xử lý các trường hợp nâng cao & bảo mật
+
+### Chức năng khách hàng (User)
+- Đăng ký & đăng nhập tài khoản (hỗ trợ Google, Facebook)
+- Xem danh sách & chi tiết sản phẩm, danh mục
+- Tìm kiếm & lọc sản phẩm
+- Thêm sản phẩm vào giỏ hàng, quản lý giỏ hàng
+- Đặt hàng & thanh toán (tích hợp VNPAY)
+- Chat với admin, AI hỗ trợ trả lời tự động thông tin sản phẩm
+
+### Chức năng người bán (Seller)
+- Quản lý sản phẩm của mình (thêm/sửa/xóa/hiển thị)
+- Xem báo cáo doanh số
+- (Tuân thủ phân quyền, chỉ quản lý sản phẩm của mình)
+
+### Chức năng quản trị viên (Admin)
+- Quản lý toàn bộ sản phẩm, danh mục
+- Quản lý đơn hàng, xử lý đơn
+- Quản lý người dùng & phân quyền (USER, SELLER, ADMIN)
+- Xem báo cáo tổng thể doanh số
+- Quản trị tập trung qua trang riêng (Admin Panel)
+
+### Hệ thống phân quyền
+- **USER**: Mua sắm, đặt hàng, chat hỗ trợ
+- **SELLER**: Quản lý sản phẩm, xem báo cáo
+- **ADMIN**: Đầy đủ quyền quản lý hệ thống
+
+### Bảo mật & giao diện thông minh
+- Ẩn/hiện menu, tính năng dựa trên quyền người dùng
+- Kiểm tra quyền ở tất cả tính năng quản trị
+- Tự động đăng xuất và chuyển về đăng nhập nếu không đủ quyền
+- Bảo mật SQL theo chuẩn OWASP Mobile
+---
+
+> Ứng dụng xây dựng mô hình phân quyền chặt chẽ, bảo mật tốt và tối ưu trải nghiệm người dùng cho từng vai trò.
+
 web client ID
 615717299049-72rftta9r808nh8be19kfej1de6usg7q.apps.googleusercontent.com
 
